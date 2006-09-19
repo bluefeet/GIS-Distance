@@ -37,6 +37,18 @@ use base qw( GIS::Distance );
 use Class::Measure::Length;
 use Math::Trig qw( great_circle_distance deg2rad );
 
+=head1 METHODS
+
+=head2 distance
+
+  my $distance = $calc->distance( $lon1, $lat1 => $lon2, $lat2 );
+
+This method accepts two lat/lon sets (in degrees) and returns a
+L<Class::Measure::Length> object containing the distance
+between the two points.
+
+=cut
+
 sub distance {
     my($self,$lon1,$lat1,$lon2,$lat2) = @_;
 
