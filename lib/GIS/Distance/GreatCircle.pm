@@ -11,6 +11,11 @@ GIS::Distance::GreatCircle - Great circle distance calculations.
 
 =head1 DESCRIPTION
 
+A true Great Circle Distance calculation.  This was created
+because the L<GIS::Distance::MathTrig> calculation uses
+L<Math::Trig>'s great_circle_distance() which doesn't actually
+appear to use the actual Great Circle Distance formula.
+
 =head1 FORMULA
 
   c = 2 * asin( sqrt(

@@ -11,15 +11,18 @@ GIS::Distance::Polar - Polar coordinate flat-earth distance calculations.
 
 =head1 DESCRIPTION
 
-The formula:
+Supposedly this is a formula to better calculate distances at the
+poles.
+
+While implimented, this formula has not been tested much.  If you use it 
+PLEASE share your results with the author.
+
+=head1 FORMULA
 
   a = pi/2 - lat1
   b = pi/2 - lat2
   c = sqrt( a^2 + b^2 - 2 * a * b * cos(lon2 - lon1) )
   d = R * c
-
-While implimented, this formula has not been tested much.  If you use it 
-PLEASE share your results with the author.
 
 =cut
 

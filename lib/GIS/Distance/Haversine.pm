@@ -11,6 +11,9 @@ GIS::Distance::Haversine - Exact spherical distance calculations.
 
 =head1 DESCRIPTION
 
+This is the default distance calculation for L<GIS::Distance> as
+it keeps a good balance between speed and accuracy.
+
 =head1 FORMULA
 
   dlon = lon2 - lon1

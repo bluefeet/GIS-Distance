@@ -12,9 +12,12 @@ GIS::Distance::GeoEllipsoid - Geo::Ellipsoid distance calculations.
 
 =head1 DESCRIPTION
 
+This module is a wrapper around the L<Geo::Ellipsoid> for
+L<GIS::Distance>.
+
 =head1 FORMULA
 
-See the documentation for Geo::Ellipsoid.
+See the documentation for L<Geo::Ellipsoid>.
 
 =cut
 
@@ -43,7 +46,7 @@ __PACKAGE__->mk_classaccessor( 'ellipsoid_obj' );
   my $calc = GIS::Distance::GeoEllipsoid->new( 'WGS84' );
 
 The new() constructor in L<GIS::Distance> is overriden so that after
-blessing a new Geo::Ellipsoid object is assigned to the ellipsoid_obj()
+blessing a new L<Geo::Ellipsoid> object is assigned to the ellipsoid_obj()
 accessor.
 
 This method accepts one optional argument - the ellipsoid type.  This can
