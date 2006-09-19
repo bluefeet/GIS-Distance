@@ -1,11 +1,14 @@
 use ExtUtils::MakeMaker;
 
 WriteMakefile(
-	'NAME' => 'Geo::Distance',
-	'VERSION_FROM' => 'Distance.pm',
-	'PREREQ_PM' => {},
-	($] >= 5.005 ? (
-		ABSTRACT_FROM => 'Distance.pm',
-		AUTHOR => 'Aran Clary Deltac <aran@arandeltac.com>'
-	) : ()),
+    NAME            => 'GIS::Distance',
+    AUTHOR          => 'Aran Clary Deltac <bluefeet@cpan.org>',
+    VERSION_FROM    => 'lib/GIS/Distance.pm',
+    ABSTRACT_FROM   => 'lib/GIS/Distance.pm',
+    PREREQ_PM => {
+        'Test::More' => 0,
+        'Class::Measure' => 0,
+        'Class::Data::Accessor' => 0,
+    },
 );
+

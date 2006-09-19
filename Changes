@@ -1,7 +1,11 @@
 Revision history for Perl extension GIS::Distance.
 
-0.12
+0.01000
  - Renamed from Geo::Distance to GIS::Distance.
+ - Moved distance calculations in to their own modules.
+ - Use Class::Measure::Length to handle distance return values.
+
+Revision history for Perl extension Geo::Distance.
 
 0.11 : 2005-09-01
  - Fixed some errors in the documentation.
