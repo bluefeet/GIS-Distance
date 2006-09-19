@@ -3,9 +3,10 @@ MANIFEST
 Makefile.PL
 README
 lib/GIS/Distance.pm
-lib/GIS/Distance/Vincenty.pm
 lib/GIS/Distance/Cosine.pm
+lib/GIS/Distance/GeoEllipsoid.pm
+lib/GIS/Distance/GreatCircle.pm
 lib/GIS/Distance/Polar.pm
 lib/GIS/Distance/MathTrig.pm
-lib/GIS/Distance/GreatCircle.pm
 lib/GIS/Distance/Haversine.pm
+lib/GIS/Distance/Vincenty.pm

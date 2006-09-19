@@ -15,6 +15,10 @@ GIS::Distance - Calculate geographic distances.
 This perl library aims to provide as many tools to make it as simple as possible to calculate
 distances between geographic points, and anything that can be derived from that.
 
+Please note that this is alpha software.  This module will become the
+replacement for L<Geo::Distance>.  So, until this module is
+well tested and production worthy I would recommend using that.
+
 =cut
 
 use strict;
@@ -23,7 +27,7 @@ use warnings;
 use base qw( Class::Data::Accessor );
 use Carp qw( croak );
 
-our $VERSION = '0.01000';
+our $VERSION = '0.01001';
 
 # Number of kilometers around the equator of the earth.
 __PACKAGE__->mk_classaccessor( kilometer_rho => 6371.64 );
@@ -78,6 +82,14 @@ L<GID::Distance::MathTrig>
 L<GID::Distance::Polar>
 
 L<GID::Distance::Vincenty>
+
+=head1 TODO
+
+Create a GIS::Coord class that represents a geographic coordinate.  Then modify
+this module to accept input as either lon/lat pairs, or as GIS::Coord objects.
+
+Create an extension to DBIx::Class with the same goal as L<Geo::Distance>'s
+closest() method.
 
 =head1 AUTHOR
 
