@@ -4,7 +4,7 @@ use warnings;
 
 use Test::More;
 
-eval{ require Test::Pod };
+eval{ use Test::Pod 1.14 };
 plan skip_all => 'Test::Pod required for testing POD' if $@;
-Test::Pod::all_pod_files_ok();
+all_pod_files_ok();
 
