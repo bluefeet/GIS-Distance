@@ -2,7 +2,7 @@ package GIS::Distance::Vincenty;
 
 =head1 NAME
 
-GIS::Distance::Haversine - Thaddeus Vincenty distance calculations.
+GIS::Distance::Vincenty - Thaddeus Vincenty distance calculations.
 
 =head1 SYNOPSIS
 
