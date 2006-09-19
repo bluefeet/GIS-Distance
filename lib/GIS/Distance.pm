@@ -63,6 +63,22 @@ Calculates the distance between two lon/lat points in decimal degree
 format.  In return you will receive an L<Class::Measure::Length>
 object.
 
+=head1 FORMULAS
+
+L<GID::Distance::Cosine>
+
+L<GID::Distance::GeoEllipsoid>
+
+L<GID::Distance::GreatCircle>
+
+L<GID::Distance::Haversine>
+
+L<GID::Distance::MathTrig>
+
+L<GID::Distance::Polar>
+
+L<GID::Distance::Vincenty>
+
 =head1 AUTHOR
 
 Aran Clary Deltac <bluefeet@cpan.org>
