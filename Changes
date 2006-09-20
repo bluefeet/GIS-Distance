@@ -1,6 +1,6 @@
 Revision history for Perl extension GIS::Distance.
 
-.01001
+.01001 : 2006-09-20
  - Added basic META.yml.
  - Geo::Ellipsoid support.
  - Added a TODO section.
