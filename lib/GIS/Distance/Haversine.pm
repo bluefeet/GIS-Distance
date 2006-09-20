@@ -38,7 +38,7 @@ use Math::Trig qw( deg2rad );
 
   my $distance = $calc->distance( $lon1, $lat1 => $lon2, $lat2 );
 
-This method accepts two lat/lon sets (in degrees) and returns a
+This method accepts two lat/lon sets (in decimal degrees) and returns a
 L<Class::Measure::Length> object containing the distance
 between the two points.
 

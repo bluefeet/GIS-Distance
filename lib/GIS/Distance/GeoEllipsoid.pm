@@ -58,7 +58,8 @@ object through the ellipsiod_obj() accessor.
 =cut
 
 sub new {
-    my $self = SUPER::new( @_ );
+    my $class = shift;
+    my $self = $class->SUPER::new();
     $self->ellipsoid_obj(
         Geo::Ellipsoid->new(
             units => 'degrees',
@@ -72,7 +73,7 @@ sub new {
 
   my $distance = $calc->distance( $lon1, $lat1 => $lon2, $lat2 );
 
-This method accepts two lat/lon sets (in degrees) and returns a
+This method accepts two lat/lon sets (in decimal degrees) and returns a
 L<Class::Measure::Length> object containing the distance (or "range")
 between the two points.
 

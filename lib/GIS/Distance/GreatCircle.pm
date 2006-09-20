@@ -16,6 +16,12 @@ because the L<GIS::Distance::MathTrig> calculation uses
 L<Math::Trig>'s great_circle_distance() which doesn't actually
 appear to use the actual Great Circle Distance formula.
 
+=head1 BROKEN
+
+As documented in more detail at the BUGS section of L<GIS::Distance>,
+the distances returned by this module seem to be invalid.  Don't use
+this module unless you want to help fix it.
+
 =head1 FORMULA
 
   c = 2 * asin( sqrt(
@@ -40,7 +46,7 @@ use Math::Trig qw( deg2rad asin );
 
   my $distance = $calc->distance( $lon1, $lat1 => $lon2, $lat2 );
 
-This method accepts two lat/lon sets (in degrees) and returns a
+This method accepts two lat/lon sets (in decimal degrees) and returns a
 L<Class::Measure::Length> object containing the distance
 between the two points.
 

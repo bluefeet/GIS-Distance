@@ -1,9 +1,12 @@
 Revision history for Perl extension GIS::Distance.
 
-0.01001
+.01001
  - Added basic META.yml.
  - Geo::Ellipsoid support.
  - Added a TODO section.
+ - Various bug fixes to the Vincenty formula.
+ - GreatCircle formula marked as broken.
+ - Added a dev script for graphing the deviations in the formulas.
 
 0.01000 : 2006-09-19
  - Renamed from Geo::Distance to GIS::Distance.
@@ -19,7 +22,7 @@ Revision history for Perl extension Geo::Distance.
  - lon_field and lat_field were not being used by closest. (D. Hageman)
 
 0.10 : 2005-07-11
- - The closest() method has a changed argument syntax and no longer 
+ - The closest() method has a changed argument syntax and no longer
    supports array searches.
  - The closest() method works!
  - A real gcd formula (still, hsin is much better).
@@ -30,9 +33,9 @@ Revision history for Perl extension Geo::Distance.
  - Modified the todo list to include ideas for future algorithms.
  - Fixed the nautical mile, mile, yard, and light second units.
  - Added the British spellings for kilometre, metre, and centimetre.
- - Added the poppy seed, barleycorn, rod, pole, perch, chain, 
+ - Added the poppy seed, barleycorn, rod, pole, perch, chain,
    furlong, league, fathom, millimeter, and millimetre units.
- - The totw.pl script was written by Ren and can be used to 
+ - The totw.pl script was written by Ren and can be used to
    take over the world.
 
 0.08 : 2005-03-20
@@ -40,7 +43,7 @@ Revision history for Perl extension Geo::Distance.
  - Removed debug print()s.  Eeek!
 
 0.07 : 2005-03-16
- - Intermixed documentation with code so it is easier to keep 
+ - Intermixed documentation with code so it is easier to keep
    the docs up-to-date.
  - OO interface only - method interface completely removed.
  - By default no units are defined.  Call default_units.
@@ -53,11 +56,11 @@ Revision history for Perl extension Geo::Distance.
  - Misc documentation tweaks.
 
 0.05 : 2003-03-19
- - Added a note in the documentation about the 
+ - Added a note in the documentation about the
    inaccuracies of using Math::Trig.
- - The 'mile' unit was being calculated wrong which 
+ - The 'mile' unit was being calculated wrong which
    meant it was returning very inaccurate distances.
- - Fixed a silly bug where a sub was being relied 
+ - Fixed a silly bug where a sub was being relied
    on that no longer exists.
  - Documentation tweaks as usual.
 
@@ -65,31 +68,31 @@ Revision history for Perl extension Geo::Distance.
  - Documentation revised once again.
  - Added reg_unit() for adding your own unit type.
  - find_closest has been overhauled:
-   - Now accepts more than one field in the 
+   - Now accepts more than one field in the
      field=>'' parameter.
-   - Will now return an array reference 
-     of distances instead of attaching the 
-     distances to the locations array ref.
+   - Will now return an array reference
+     of distances instead of attaching the
+     distances to the locations array ref
    - A little more effecient.
    - Now accepts a count argument.
-   - Accepts an array reference for searching. 
+   - Accepts an array reference for searching.
      Mostly good for testing, but who knows?
- - Removed geo_ portion of names for exported 
+ - Removed geo_ portion of names for exported
    functions.
- - Removed some of the input checking.  Just not 
+ - Removed some of the input checking.  Just not
    necessary.
- - Enhanced tests.  Now we're actually doing some 
+ - Enhanced tests.  Now we're actually doing some
    real testing.  Need more tests tho.
 
 0.03 : 2003-02-15
  - Documentation modified.
- - Added find_closest() which accepts a $dbh for 
+ - Added find_closest() which accepts a $dbh for
    searching in an SQL database.
- - distance_dirty() can now accept locations as 
+ - distance_dirty() can now accept locations as
    array refs.
 
 0.02 : 2003-02-14
- - Based on a suggestion by Jack D. I migrated the code 
+ - Based on a suggestion by Jack D. I migrated the code
    to use Math::Trig for most of the distance math.
  - POD documentation written.
  - Object oriented interface created.

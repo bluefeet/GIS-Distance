@@ -74,7 +74,7 @@ use warnings;
 use base qw( GIS::Distance );
 
 use Class::Measure::Length;
-use Math::Trig qw( deg2rad pi tan atan );
+use Math::Trig qw( deg2rad pi tan atan asin );
 
 =head1 METHODS
 
@@ -82,14 +82,15 @@ use Math::Trig qw( deg2rad pi tan atan );
 
   my $distance = $calc->distance( $lon1, $lat1 => $lon2, $lat2 );
 
-This method accepts two lat/lon sets (in degrees) and returns a
-L<Class::Measure::Length> object containing the distance
+This method accepts two lat/lon sets (in decimal degrees) and
+returns a L<Class::Measure::Length> object containing the distance
 between the two points.
 
 =cut
 
 sub distance {
     my($self,$lon1,$lat1,$lon2,$lat2) = @_;
+    return length(0,'km') if (($lon1==$lon2) and ($lat1==$lat2));
     $lon1 = deg2rad($lon1); $lat1 = deg2rad($lat1);
     $lon2 = deg2rad($lon2); $lat2 = deg2rad($lat2);
 
@@ -102,7 +103,7 @@ sub distance {
     my $lambda = $l;
     my $lambda_pi = 2 * pi;
     my $iter_limit = 20;
-    my($cos_sq_alpha,$sin_sigma,$cos2sigma_m,$cos_sigma,$sigma);
+    my($cos_sq_alpha,$sin_sigma,$cos2sigma_m,$cos_sigma,$sigma) = (0,0,0,0,0);
     while( abs($lambda-$lambda_pi) > 1e-12 && --$iter_limit>0 ){
         my $sin_lambda = sin($lambda); my $cos_lambda = cos($lambda);
         $sin_sigma = sqrt(($cos_u2*$sin_lambda) * ($cos_u2*$sin_lambda) + 
@@ -117,7 +118,6 @@ sub distance {
         $lambda = $l + (1-$cc) * $f * sin($alpha) *
             ($sigma + $cc*$sin_sigma*($cos2sigma_m+$cc*$cos_sigma*(-1+2*$cos2sigma_m*$cos2sigma_m)));
     }
-    return undef if( $iter_limit==0 );
     my $usq = $cos_sq_alpha*($a*$a-$b*$b)/($b*$b);
     my $aa = 1 + $usq/16384*(4096+$usq*(-768+$usq*(320-175*$usq)));
     my $bb = $usq/1024 * (256+$usq*(-128+$usq*(74-47*$usq)));
@@ -125,7 +125,7 @@ sub distance {
             $bb/6*$cos2sigma_m*(-3+4*$sin_sigma*$sin_sigma)*(-3+4*$cos2sigma_m*$cos2sigma_m)));
     my $c = $b*$aa*($sigma-$delta_sigma);
 
-    return length( $c, 'km' );
+    return length( $c, 'm' );
 }
 
 1;
