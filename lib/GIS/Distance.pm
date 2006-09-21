@@ -27,7 +27,7 @@ use warnings;
 use base qw( Class::Data::Accessor );
 use Carp qw( croak );
 
-our $VERSION = '0.01001';
+our $VERSION = '0.01002';
 
 # Number of kilometers around the equator of the earth.
 __PACKAGE__->mk_classaccessor( kilometer_rho => 6371.64 );
@@ -85,11 +85,24 @@ L<GID::Distance::Vincenty>
 
 =head1 TODO
 
+=over 4
+
+=item *
+
 Create a GIS::Coord class that represents a geographic coordinate.  Then modify
 this module to accept input as either lon/lat pairs, or as GIS::Coord objects.
 
+=item *
+
 Create an extension to DBIx::Class with the same goal as L<Geo::Distance>'s
 closest() method.
+
+=item *
+
+Write a super accurate formula module called GIS::Distance::Geoid.  Some
+very useful info is at L<http://en.wikipedia.org/wiki/Geoid>.
+
+=back
 
 =head1 BUGS
 
