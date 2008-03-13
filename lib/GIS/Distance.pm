@@ -7,65 +7,101 @@ GIS::Distance - Calculate geographic distances.
 =head1 SYNOPSIS
 
   use GIS::Distance;
-  my $calc = GIS::Distance->new();
-  my $distance = $calc->distance( $lon1,$lat1 => $lon2,$lat2 );
+  my $gis = GIS::Distance->new();
+  $gis->formula( 'Polar' );  # Optional, default is Haversine.
+  my $distance = $gis->distance( $lat1,$lon1 => $lat2,$lon2 );
 
 =head1 DESCRIPTION
 
 This perl library aims to provide as many tools to make it as simple as possible to calculate
 distances between geographic points, and anything that can be derived from that.
 
-Please note that this is alpha software.  This module will become the
-replacement for L<Geo::Distance>.  So, until this module is
-well tested and production worthy I would recommend using that.
-
 =cut
 
-use strict;
-use warnings;
-
-use base qw( Class::Data::Accessor );
+use Moose;
+use Moose::Util::TypeConstraints;
 use Carp qw( croak );
 
 our $VERSION = '0.01002';
 
-# Number of kilometers around the equator of the earth.
-__PACKAGE__->mk_classaccessor( kilometer_rho => 6371.64 );
-
-# Number of units in a single decimal degree (lat or lon) at the equator.
-# Derived from: $geo->distance( 10,0 => 11,0 )->km() / $geo->kilometer_rho()
-__PACKAGE__->mk_classaccessor( deg_ratio => 0.0174532925199433 );
-
 =head1 METHODS
-
-=head2 new
-
-  my $calc = GIS::Distance->new();
-
-Returns a blessed L<GIS::Distance::Haversine> object by
-default.  If you want to use a different formula, such as the
-L<GIS::Distance::Vincenty>, then call new() on that class.
-
-=cut
-
-sub new {
-    my $class = shift;
-    if ($class eq 'GIS::Distance') {
-        $class = 'GIS::Distance::Haversine';
-    }
-    return bless( {}, $class );
-}
-
-1;
-__END__
 
 =head2 distance
 
-  my $distance = $calc->distance( $lon1,$lat1 => $lon2,$lat2 );
+  my $distance = $gis->distance( $lat1,$lon1 => $lat2,$lon2 );
 
-Calculates the distance between two lon/lat points in decimal degree
-format.  In return you will receive an L<Class::Measure::Length>
-object.
+Returns a L<Class::Measure::Length> object for the distance between the
+two degree lats/lons.  The distance is calculated using whatever formula
+the object is set to use.
+
+=cut
+
+sub distance {
+    my $self = shift;
+
+    return $self->formula->distance( @_ );
+}
+
+=head1 ATTRIBUTES
+
+=head2 formula
+
+This is an object who's class inherits from L<GIS::Distance::Formula>.  This
+object is used to calculate distance.  The formula may be specified as either
+a blessed object, or as a string, such as "Haversine" or any of the other formulas.
+
+If you specify the formula as a string then a few different class names will be
+searched for.  So, if you did:
+
+  $gis->formula( 'Haversine' );
+
+Then this list of packages would automatically be looked for.  The first one that
+exists will be created and used:
+
+  GIS::Distance::Formula::Haversine::Fast
+  GIS::Distance::Formula::Haversine
+  Haversine
+
+If you are using your own custom formula class make sure it extends() (L<Moose>)
+the L<GIS::Distance::Formula> class.
+
+Note that a ::Fast version of the class will be looked for first.  By default
+the ::Fast versions of the formulas, written in C, are not available and the
+pure perl ones will be used instead.  If you would like the ::Fast formulas
+then install L<GIS::Distance::Fast> and they will be automatically used.
+
+=cut
+
+subtype 'GIS-Distance-Formula'
+    => as 'Object'
+    => where { $_->isa('GIS::Distance::Formula') };
+
+coerce 'GIS-Distance-Formula'
+    => from 'Str'
+        => via {
+            my $class = $_;
+            foreach my $full_class (
+                "GIS::Distance::Formula::${class}::Fast",
+                "GIS::Distance::Formula::$class",
+                $class,
+            ) {
+                eval( "require $full_class" );
+                if (!$@) {
+                    return $full_class->new();
+                }
+            }
+            die( qq{The GIS::Distance formula "$class" can not be found} );
+        };
+
+has 'formula' => (
+    is      => 'rw',
+    isa     => 'GIS-Distance-Formula',
+    default => 'Haversine',
+    coerce  => 1,
+);
+
+1;
+__END__
 
 =head1 FORMULAS
 
@@ -90,7 +126,7 @@ L<GID::Distance::Vincenty>
 =item *
 
 Create a GIS::Coord class that represents a geographic coordinate.  Then modify
-this module to accept input as either lon/lat pairs, or as GIS::Coord objects.
+this module to accept input as either lat/lon pairs, or as GIS::Coord objects.
 
 =item *
 

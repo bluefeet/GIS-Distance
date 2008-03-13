@@ -1,13 +1,8 @@
-package GIS::Distance::Polar;
+package GIS::Distance::Formula::Polar;
 
 =head1 NAME
 
-GIS::Distance::Polar - Polar coordinate flat-earth distance calculations.
-
-=head1 SYNOPSIS
-
-  my $calc = GIS::Distance::Polar->new();
-  my $distance = $calc->distance( $lon1, $lat1 => $lon2, $lat2 );
+GIS::Distance::Formula::Polar - Polar coordinate flat-earth distance calculations.
 
 =head1 DESCRIPTION
 
@@ -16,6 +11,9 @@ poles.
 
 While implimented, this formula has not been tested much.  If you use it 
 PLEASE share your results with the author.
+
+Normally this module is not used directly.  Instead L<GIS::Distance>
+is used which in turn interfaces with the various formula classes.
 
 =head1 FORMULA
 
@@ -26,10 +24,8 @@ PLEASE share your results with the author.
 
 =cut
 
-use strict;
-use warnings;
-
-use base qw( GIS::Distance );
+use Moose;
+extends 'GIS::Distance::Formula';
 
 use Class::Measure::Length;
 use Math::Trig qw( deg2rad pi );
@@ -38,16 +34,12 @@ use Math::Trig qw( deg2rad pi );
 
 =head2 distance
 
-  my $distance = $calc->distance( $lon1, $lat1 => $lon2, $lat2 );
-
-This method accepts two lat/lon sets (in decimal degrees) and returns a
-L<Class::Measure::Length> object containing the distance
-between the two points.
+This method is called by L<GIS::Distance>'s distance() method.
 
 =cut
 
 sub distance {
-    my($self,$lon1,$lat1,$lon2,$lat2) = @_;
+    my($self,$lat1,$lon1,$lat2,$lon2) = @_;
     $lon1 = deg2rad($lon1); $lat1 = deg2rad($lat1);
     $lon2 = deg2rad($lon2); $lat2 = deg2rad($lat2);
     my $a = pi/2 - $lat1;

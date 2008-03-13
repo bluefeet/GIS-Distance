@@ -1,13 +1,8 @@
-package GIS::Distance::MathTrig;
+package GIS::Distance::Formula::MathTrig;
 
 =head1 NAME
 
-GIS::Distance::MathTrig - Great cirlce distance calculations using Math::Trig.
-
-=head1 SYNOPSIS
-
-  my $calc = GIS::Distance::MathTrig->new();
-  my $distance = $calc->distance( $lon1, $lat1 => $lon2, $lat2 );
+GIS::Distance::Formula::MathTrig - Great cirlce distance calculations using Math::Trig.
 
 =head1 DESCRIPTION
 
@@ -19,6 +14,9 @@ calculate faster (untested assumption).  For some reason this and
 the Cosine formula return slight differences at very close distances.
 This formula has the same drawbacks as the Cosine formula.
 
+Normally this module is not used directly.  Instead L<GIS::Distance>
+is used which in turn interfaces with the various formula classes.
+
 =head1 FORMULA
 
   lat0 = 90 degrees - phi0
@@ -29,10 +27,8 @@ As stated in the L<Math::Trig> POD.
 
 =cut
 
-use strict;
-use warnings;
-
-use base qw( GIS::Distance );
+use Moose;
+extends 'GIS::Distance::Formula';
 
 use Class::Measure::Length;
 use Math::Trig qw( great_circle_distance deg2rad );
@@ -41,16 +37,12 @@ use Math::Trig qw( great_circle_distance deg2rad );
 
 =head2 distance
 
-  my $distance = $calc->distance( $lon1, $lat1 => $lon2, $lat2 );
-
-This method accepts two lat/lon sets (in decimal degrees) and returns a
-L<Class::Measure::Length> object containing the distance
-between the two points.
+This method is called by L<GIS::Distance>'s distance() method.
 
 =cut
 
 sub distance {
-    my($self,$lon1,$lat1,$lon2,$lat2) = @_;
+    my($self,$lat1,$lon1,$lat2,$lon2) = @_;
 
     return length(
         great_circle_distance(

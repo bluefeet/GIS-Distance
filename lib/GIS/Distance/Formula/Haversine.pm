@@ -1,18 +1,16 @@
-package GIS::Distance::Haversine;
+package GIS::Distance::Formula::Haversine;
 
 =head1 NAME
 
-GIS::Distance::Haversine - Exact spherical distance calculations.
-
-=head1 SYNOPSIS
-
-  my $calc = GIS::Distance::Haversine->new();
-  my $distance = $calc->distance( $lon1, $lat1 => $lon2, $lat2 );
+GIS::Distance::Formula::Haversine - Exact spherical distance calculations.
 
 =head1 DESCRIPTION
 
 This is the default distance calculation for L<GIS::Distance> as
 it keeps a good balance between speed and accuracy.
+
+Normally this module is not used directly.  Instead L<GIS::Distance>
+is used which in turn interfaces with the various formula classes.
 
 =head1 FORMULA
 
@@ -20,34 +18,30 @@ it keeps a good balance between speed and accuracy.
   dlat = lat2 - lat1
   a = (sin(dlat/2))^2 + cos(lat1) * cos(lat2) * (sin(dlon/2))^2
   c = 2 * atan2( sqrt(a), sqrt(1-a) )
-  d = R * c 
+  d = R * c
 
 =cut
 
-use strict;
-use warnings;
+use Moose;
+extends 'GIS::Distance::Formula';
 
-use base qw( GIS::Distance );
-
-use Class::Measure::Length;
 use Math::Trig qw( deg2rad );
+use Class::Measure::Length;
 
 =head1 METHODS
 
 =head2 distance
 
-  my $distance = $calc->distance( $lon1, $lat1 => $lon2, $lat2 );
-
-This method accepts two lat/lon sets (in decimal degrees) and returns a
-L<Class::Measure::Length> object containing the distance
-between the two points.
+This method is called by L<GIS::Distance>'s distance() method.
 
 =cut
 
 sub distance {
-    my($self,$lon1,$lat1,$lon2,$lat2) = @_;
-    $lon1 = deg2rad($lon1); $lat1 = deg2rad($lat1);
-    $lon2 = deg2rad($lon2); $lat2 = deg2rad($lat2);
+    my ($self, $lat1, $lon1, $lat2, $lon2) = @_;
+    $lon1 = deg2rad($lon1);
+    $lat1 = deg2rad($lat1);
+    $lon2 = deg2rad($lon2);
+    $lat2 = deg2rad($lat2);
 
     my $dlon = $lon2 - $lon1;
     my $dlat = $lat2 - $lat1;
@@ -65,6 +59,12 @@ __END__
 L<http://mathforum.org/library/drmath/view/51879.html>
 
 L<http://www.faqs.org/faqs/geography/infosystems-faq/>
+
+=head1 SEE ALSO
+
+L<GIS::Distance::Formula>
+
+L<GIS::Distance::Formula::Haversine::Fast>
 
 =head1 AUTHOR
 

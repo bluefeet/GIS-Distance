@@ -1,13 +1,8 @@
-package GIS::Distance::Vincenty;
+package GIS::Distance::Formula::Vincenty;
 
 =head1 NAME
 
-GIS::Distance::Vincenty - Thaddeus Vincenty distance calculations.
-
-=head1 SYNOPSIS
-
-  my $calc = GIS::Distance::Vincenty->new();
-  my $distance = $calc->distance( $lon1, $lat1 => $lon2, $lat2 );
+GIS::Distance::Formula::Vincenty - Thaddeus Vincenty distance calculations.
 
 =head1 DESCRIPTION
 
@@ -30,6 +25,9 @@ ellipsoid, which provides a better fit for the UK.
 
 NOTE: This formula is still considered alpha quality in GIS::Distance.  It has
 not been tested enough to be used in production.
+
+Normally this module is not used directly.  Instead L<GIS::Distance>
+is used which in turn interfaces with the various formula classes.
 
 =head1 FORMULA
 
@@ -68,10 +66,8 @@ not been tested enough to be used in production.
 
 =cut
 
-use strict;
-use warnings;
-
-use base qw( GIS::Distance );
+use Moose;
+extends 'GIS::Distance::Formula';
 
 use Class::Measure::Length;
 use Math::Trig qw( deg2rad pi tan atan asin );
@@ -80,16 +76,12 @@ use Math::Trig qw( deg2rad pi tan atan asin );
 
 =head2 distance
 
-  my $distance = $calc->distance( $lon1, $lat1 => $lon2, $lat2 );
-
-This method accepts two lat/lon sets (in decimal degrees) and
-returns a L<Class::Measure::Length> object containing the distance
-between the two points.
+This method is called by L<GIS::Distance>'s distance() method.
 
 =cut
 
 sub distance {
-    my($self,$lon1,$lat1,$lon2,$lat2) = @_;
+    my($self,$lat1,$lon1,$lat2,$lon2) = @_;
     return length(0,'km') if (($lon1==$lon2) and ($lat1==$lat2));
     $lon1 = deg2rad($lon1); $lat1 = deg2rad($lat1);
     $lon2 = deg2rad($lon2); $lat2 = deg2rad($lat2);

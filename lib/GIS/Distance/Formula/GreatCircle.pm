@@ -1,13 +1,8 @@
-package GIS::Distance::GreatCircle;
+package GIS::Distance::Formula::GreatCircle;
 
 =head1 NAME
 
-GIS::Distance::GreatCircle - Great circle distance calculations.
-
-=head1 SYNOPSIS
-
-  my $calc = GIS::Distance::GreatCircle->new();
-  my $distance = $calc->distance( $lon1, $lat1 => $lon2, $lat2 );
+GIS::Distance::Formula::GreatCircle - Great circle distance calculations.
 
 =head1 DESCRIPTION
 
@@ -15,6 +10,9 @@ A true Great Circle Distance calculation.  This was created
 because the L<GIS::Distance::MathTrig> calculation uses
 L<Math::Trig>'s great_circle_distance() which doesn't actually
 appear to use the actual Great Circle Distance formula.
+
+Normally this module is not used directly.  Instead L<GIS::Distance>
+is used which in turn interfaces with the various formula classes.
 
 =head1 BROKEN
 
@@ -32,10 +30,8 @@ this module unless you want to help fix it.
 
 =cut
 
-use strict;
-use warnings;
-
-use base qw( GIS::Distance );
+use Moose;
+extends 'GIS::Distance::Formula';
 
 use Class::Measure::Length;
 use Math::Trig qw( deg2rad asin );
@@ -44,16 +40,12 @@ use Math::Trig qw( deg2rad asin );
 
 =head2 distance
 
-  my $distance = $calc->distance( $lon1, $lat1 => $lon2, $lat2 );
-
-This method accepts two lat/lon sets (in decimal degrees) and returns a
-L<Class::Measure::Length> object containing the distance
-between the two points.
+This method is called by L<GIS::Distance>'s distance() method.
 
 =cut
 
 sub distance {
-    my($self,$lon1,$lat1,$lon2,$lat2) = @_;
+    my($self,$lat1,$lon1,$lat2,$lon2) = @_;
     $lon1 = deg2rad($lon1); $lat1 = deg2rad($lat1);
     $lon2 = deg2rad($lon2); $lat2 = deg2rad($lat2);
 

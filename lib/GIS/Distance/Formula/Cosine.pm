@@ -1,18 +1,16 @@
-package GIS::Distance::Cosine;
+package GIS::Distance::Formula::Cosine;
 
 =head1 NAME
 
-GIS::Distance::Cosine - Cosine distance calculations.
-
-=head1 SYNOPSIS
-
-  my $calc = GIS::Distance::Cosine->new();
-  my $distance = $calc->distance( $lon1, $lat1 => $lon2, $lat2 );
+GIS::Distance::Formula::Cosine - Cosine distance calculations.
 
 =head1 DESCRIPTION
 
 Although this formula is mathematically exact, it is unreliable for
 small distances because the inverse cosine is ill-conditioned.
+
+Normally this module is not used directly.  Instead L<GIS::Distance>
+is used which in turn interfaces with the various formula classes.
 
 =head1 FORMULA
 
@@ -23,10 +21,8 @@ small distances because the inverse cosine is ill-conditioned.
 
 =cut
 
-use strict;
-use warnings;
-
-use base qw( GIS::Distance );
+use Moose;
+extends 'GIS::Distance::Formula';
 
 use Class::Measure::Length;
 use Math::Trig qw( deg2rad acos );
@@ -35,16 +31,12 @@ use Math::Trig qw( deg2rad acos );
 
 =head2 distance
 
-  my $distance = $calc->distance( $lon1, $lat1 => $lon2, $lat2 );
-
-This method accepts two lat/lon sets (in decimal degrees) and returns a
-L<Class::Measure::Length> object containing the distance
-between the two points.
+This method is called by L<GIS::Distance>'s distance() method.
 
 =cut
 
 sub distance {
-    my($self,$lon1,$lat1,$lon2,$lat2) = @_;
+    my($self,$lat1,$lon1,$lat2,$lon2) = @_;
     $lon1 = deg2rad($lon1); $lat1 = deg2rad($lat1);
     $lon2 = deg2rad($lon2); $lat2 = deg2rad($lat2);
 
