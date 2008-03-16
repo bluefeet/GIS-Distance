@@ -1,7 +1,6 @@
 package GIS::Distance::Formula;
 
 use Moose;
-use Scalar::Util qw( blessed );
 use Carp qw( croak );
 
 =head1 ATTRIBUTES

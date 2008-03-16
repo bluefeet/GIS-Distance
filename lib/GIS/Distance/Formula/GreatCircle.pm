@@ -2,7 +2,7 @@ package GIS::Distance::Formula::GreatCircle;
 
 =head1 NAME
 
-GIS::Distance::Formula::GreatCircle - Great circle distance calculations.
+GIS::Distance::Formula::GreatCircle - Great circle distance calculations. (BROKEN)
 
 =head1 DESCRIPTION
 

@@ -1,7 +1,15 @@
 Revision history for Perl extension GIS::Distance.
 
-0.01002
+0.02 : 2008-03-16
  - Added Geoid to the TODO section.
+ - Using Module::Install now.
+ - Moved all formulas in to the GIS::Distance::Formula namespace.
+ - Using Moose for all OO now.
+ - Added tests (bout time!).
+ - Added support for the up-and-coming ::Fast:: modules.
+ - Added (BROKEN) to the abstract for the GreatCircle and Polar formulas.
+ - Fixed POD testing.
+ - Changed version scheme to use the simple x.xx format.
 
 0.01001 : 2006-09-20
  - Added basic META.yml.

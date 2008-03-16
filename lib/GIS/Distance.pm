@@ -22,7 +22,7 @@ use Moose;
 use Moose::Util::TypeConstraints;
 use Carp qw( croak );
 
-our $VERSION = '0.01002';
+our $VERSION = '0.02';
 
 =head1 METHODS
 
@@ -105,19 +105,19 @@ __END__
 
 =head1 FORMULAS
 
-L<GID::Distance::Cosine>
+L<GID::Distance::Formula::Cosine>
 
-L<GID::Distance::GeoEllipsoid>
+L<GID::Distance::Formula::GeoEllipsoid>
 
-L<GID::Distance::GreatCircle>
+L<GID::Distance::Formula::GreatCircle>
 
-L<GID::Distance::Haversine>
+L<GID::Distance::Formula::Haversine>
 
-L<GID::Distance::MathTrig>
+L<GID::Distance::Formula::MathTrig>
 
-L<GID::Distance::Polar>
+L<GID::Distance::Formula::Polar>
 
-L<GID::Distance::Vincenty>
+L<GID::Distance::Formula::Vincenty>
 
 =head1 TODO
 
@@ -142,10 +142,8 @@ very useful info is at L<http://en.wikipedia.org/wiki/Geoid>.
 
 =head1 BUGS
 
-The graphs produce by graph_deviations.pl script show that the
-L<GIS::Distance::GreatCircle> formula is not performing well at
-all.  In most cases it is either returning a distance of 0 or a
-distance of 20,000 km.
+Both the L<GIS::Distance::Formula::GreatCircle> and L<GIS::Distance::Formuka::Polar> formulas are
+broken.  Read their respective man pages for details.
 
 =head1 AUTHOR
 

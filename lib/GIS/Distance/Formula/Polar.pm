@@ -2,18 +2,22 @@ package GIS::Distance::Formula::Polar;
 
 =head1 NAME
 
-GIS::Distance::Formula::Polar - Polar coordinate flat-earth distance calculations.
+GIS::Distance::Formula::Polar - Polar coordinate flat-earth distance calculations. (BROKEN)
 
 =head1 DESCRIPTION
 
 Supposedly this is a formula to better calculate distances at the
 poles.
 
-While implimented, this formula has not been tested much.  If you use it 
-PLEASE share your results with the author.
-
 Normally this module is not used directly.  Instead L<GIS::Distance>
 is used which in turn interfaces with the various formula classes.
+
+=head1 BROKEN
+
+While implimented, this formula has not been tested much.  If you use it
+PLEASE share your results with the author.  I've tested the results of this
+formula versus Vincenty and it appears that this formula is broken (or
+the implementation is) as you can see in 02_polar.t.
 
 =head1 FORMULA
 

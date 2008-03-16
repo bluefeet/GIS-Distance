@@ -25,6 +25,7 @@ See the documentation for L<Geo::Ellipsoid>.
 =cut
 
 use Moose;
+use Moose::Util::TypeConstraints;
 extends 'GIS::Distance::Formula';
 
 use Class::Measure::Length;
@@ -40,8 +41,6 @@ Set and retrieve the ellipsoid object.  If a string is passed
 then it will be coerced in to an object.
 
 =cut
-
-__PACKAGE__->mk_classaccessor( 'ellipsoid_obj' );
 
 subtype 'Geo-Ellipsoid'
     => as 'Object'
