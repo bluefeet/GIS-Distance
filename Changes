@@ -2,6 +2,8 @@ Revision history for Perl extension GIS::Distance.
 
 0.03
  - Reduced the README to a one-liner.
+ - Added docs to GIS::Distance::Formula.
+ - Fixed some documentation typos that were using GID instead of GIS.
 
 0.02 : 2008-03-16
  - Added Geoid to the TODO section.

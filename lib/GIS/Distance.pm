@@ -105,19 +105,19 @@ __END__
 
 =head1 FORMULAS
 
-L<GID::Distance::Formula::Cosine>
+L<GIS::Distance::Formula::Cosine>
 
-L<GID::Distance::Formula::GeoEllipsoid>
+L<GIS::Distance::Formula::GeoEllipsoid>
 
-L<GID::Distance::Formula::GreatCircle>
+L<GIS::Distance::Formula::GreatCircle>
 
-L<GID::Distance::Formula::Haversine>
+L<GIS::Distance::Formula::Haversine>
 
-L<GID::Distance::Formula::MathTrig>
+L<GIS::Distance::Formula::MathTrig>
 
-L<GID::Distance::Formula::Polar>
+L<GIS::Distance::Formula::Polar>
 
-L<GID::Distance::Formula::Vincenty>
+L<GIS::Distance::Formula::Vincenty>
 
 =head1 TODO
 

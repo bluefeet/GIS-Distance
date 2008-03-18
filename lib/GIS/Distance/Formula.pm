@@ -1,5 +1,16 @@
 package GIS::Distance::Formula;
 
+=head1 NAME
+
+GIS::Distance::Formula - Base class for all the GIS::Distance::Formula:: classes.
+
+=head1 DESCRIPTION
+
+This class enforces an API and provides shared information for the
+formula classes that inherit from it.  Don't use this module directly.
+
+=cut
+
 use Moose;
 use Carp qw( croak );
 
@@ -49,3 +60,14 @@ sub distance {
 }
 
 1;
+__END__
+
+=head1 AUTHOR
+
+Aran Clary Deltac <bluefeet@cpan.org>
+
+=head1 LICENSE
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
