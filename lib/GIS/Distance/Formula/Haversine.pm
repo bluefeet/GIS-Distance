@@ -54,17 +54,17 @@ sub distance {
 1;
 __END__
 
+=head1 SEE ALSO
+
+L<GIS::Distanc>
+
+L<GIS::Distance::Formula::Haversine::Fast>
+
 =head1 RESOURCES
 
 L<http://mathforum.org/library/drmath/view/51879.html>
 
 L<http://www.faqs.org/faqs/geography/infosystems-faq/>
-
-=head1 SEE ALSO
-
-L<GIS::Distance::Formula>
-
-L<GIS::Distance::Formula::Haversine::Fast>
 
 =head1 AUTHOR
 

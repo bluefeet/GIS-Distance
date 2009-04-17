@@ -1,9 +1,14 @@
 Revision history for Perl extension GIS::Distance.
 
 0.03
+ - Fixed for latest Moose.
  - Reduced the README to a one-liner.
  - Added docs to GIS::Distance::Formula.
  - Fixed some documentation typos that were using GID instead of GIS.
+ - Fixed a typo that mispelled "formula" as "formuka".
+ - Refer to GIS::Distance::Fast in the SEE ALSO section.
+ - Added a one liner to the SYNOPSIS showing how to used the returned distance object.
+ - Added a TEST COVERAGE section with output from Devel::Cover.
 
 0.02 : 2008-03-16
  - Added Geoid to the TODO section.

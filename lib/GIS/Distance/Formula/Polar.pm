@@ -55,6 +55,10 @@ sub distance {
 1;
 __END__
 
+=head1 SEE ALSO
+
+L<GIS::Distanc>
+
 =head1 AUTHOR
 
 Aran Clary Deltac <bluefeet@cpan.org>

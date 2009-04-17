@@ -123,6 +123,12 @@ sub distance {
 1;
 __END__
 
+=head1 SEE ALSO
+
+L<GIS::Distanc>
+
+L<GIS::Distance::Formula::Vincenty::Fast>
+
 =head1 RESOURCES
 
 L<http://www.ngs.noaa.gov/PUBS_LIB/inverse.pdf>

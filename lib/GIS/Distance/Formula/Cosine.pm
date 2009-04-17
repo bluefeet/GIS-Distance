@@ -50,6 +50,12 @@ sub distance {
 1;
 __END__
 
+=head1 SEE ALSO
+
+L<GIS::Distanc>
+
+L<GIS::Distance::Formula::Cosine::Fast>
+
 =head1 AUTHOR
 
 Aran Clary Deltac <bluefeet@cpan.org>

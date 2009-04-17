@@ -1,11 +1,11 @@
 ---
-abstract: Calculate geographic distances.
+abstract: 'Calculate geographic distances.'
 author:
   - 'Aran Clary Deltac <bluefeet@cpan.org>'
 build_requires:
   Test::More: 0.62
 distribution_type: module
-generated_by: Module::Install version 0.69
+generated_by: 'Module::Install version 0.73'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.3.html
@@ -24,4 +24,4 @@ requires:
   Math::Complex: 0
   Moose: 0.39
   perl: 5.8.3
-version: 0.02
+version: 0.03
