@@ -28,7 +28,7 @@ use Moose;
 use Moose::Util::TypeConstraints;
 extends 'GIS::Distance::Formula';
 
-use Class::Measure::Length;
+use Class::Measure::Length qw( length );
 use Geo::Ellipsoid;
 
 =head1 ATTRIBUTES
@@ -42,11 +42,11 @@ then it will be coerced in to an object.
 
 =cut
 
-subtype 'Geo-Ellipsoid'
+subtype 'GeoEllipsoid'
     => as 'Object'
     => where { $_->isa('Geo::Ellipsoid') };
 
-coerce 'Geo-Ellipsoid'
+coerce 'GeoEllipsoid'
     => from 'Str'
         => via {
             my $type = $_;
@@ -58,7 +58,7 @@ coerce 'Geo-Ellipsoid'
 
 has 'ellipsoid' => (
     is      => 'rw',
-    isa     => 'Geo-Ellipsoid',
+    isa     => 'GeoEllipsoid',
     default => '',
     coerce  => 1,
 );

@@ -24,7 +24,7 @@ is used which in turn interfaces with the various formula classes.
 use Moose;
 extends 'GIS::Distance::Formula';
 
-use Class::Measure::Length;
+use Class::Measure::Length qw( length );
 use Math::Trig qw( deg2rad acos );
 
 =head1 METHODS

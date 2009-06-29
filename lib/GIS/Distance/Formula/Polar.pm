@@ -31,7 +31,7 @@ the implementation is) as you can see in 02_polar.t.
 use Moose;
 extends 'GIS::Distance::Formula';
 
-use Class::Measure::Length;
+use Class::Measure::Length qw( length );
 use Math::Trig qw( deg2rad pi );
 
 =head1 METHODS

@@ -26,7 +26,7 @@ use Moose;
 extends 'GIS::Distance::Formula';
 
 use Math::Trig qw( deg2rad );
-use Class::Measure::Length;
+use Class::Measure::Length qw( length );
 
 =head1 METHODS
 

@@ -33,7 +33,7 @@ this module unless you want to help fix it.
 use Moose;
 extends 'GIS::Distance::Formula';
 
-use Class::Measure::Length;
+use Class::Measure::Length qw( length );
 use Math::Trig qw( deg2rad asin );
 
 =head1 METHODS

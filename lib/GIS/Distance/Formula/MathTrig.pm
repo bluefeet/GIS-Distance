@@ -30,7 +30,7 @@ As stated in the L<Math::Trig> POD.
 use Moose;
 extends 'GIS::Distance::Formula';
 
-use Class::Measure::Length;
+use Class::Measure::Length qw( length );
 use Math::Trig qw( great_circle_distance deg2rad );
 
 =head1 METHODS

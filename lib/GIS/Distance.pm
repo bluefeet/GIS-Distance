@@ -27,7 +27,7 @@ use Moose;
 use Moose::Util::TypeConstraints;
 use Carp qw( croak );
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 =head1 METHODS
 

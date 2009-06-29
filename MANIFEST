@@ -1,9 +1,4 @@
 Changes
-MANIFEST
-META.yml
-Makefile
-Makefile.PL
-README
 inc/Module/Install.pm
 inc/Module/Install/Base.pm
 inc/Module/Install/Can.pm
@@ -21,6 +16,10 @@ lib/GIS/Distance/Formula/Haversine.pm
 lib/GIS/Distance/Formula/MathTrig.pm
 lib/GIS/Distance/Formula/Polar.pm
 lib/GIS/Distance/Formula/Vincenty.pm
+Makefile.PL
+MANIFEST			This list of files
+META.yml
+README
 t/00_pod.t
 t/01_accuracy.t
 t/02_polar.t
