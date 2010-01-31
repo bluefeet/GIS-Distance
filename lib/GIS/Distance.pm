@@ -29,7 +29,7 @@ use namespace::autoclean;
 use Moose::Util::TypeConstraints;
 use Carp qw( croak );
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 =head1 METHODS
 

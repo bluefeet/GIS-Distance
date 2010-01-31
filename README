@@ -1,2 +1,114 @@
-perldoc lib/GIS/Distance.pm
+NAME
+    GIS::Distance - Calculate geographic distances.
+
+SYNOPSIS
+      use GIS::Distance;
+  
+      my $gis = GIS::Distance->new();
+  
+      $gis->formula( 'Polar' );  # Optional, default is Haversine.
+  
+      my $distance = $gis->distance( $lat1,$lon1 => $lat2,$lon2 );
+  
+      print $distance->meters();
+
+DESCRIPTION
+    This perl library aims to provide as many tools to make it as simple as
+    possible to calculate distances between geographic points, and anything
+    that can be derived from that.
+
+METHODS
+  distance
+      my $distance = $gis->distance( $lat1,$lon1 => $lat2,$lon2 );
+
+    Returns a Class::Measure::Length object for the distance between the two
+    degree lats/lons. The distance is calculated using whatever formula the
+    object is set to use.
+
+ATTRIBUTES
+  formula
+    This is an object who's class inherits from GIS::Distance::Formula. This
+    object is used to calculate distance. The formula may be specified as
+    either a blessed object, or as a string, such as "Haversine" or any of
+    the other formulas.
+
+    If you specify the formula as a string then a few different class names
+    will be searched for. So, if you did:
+
+      $gis->formula( 'Haversine' );
+
+    Then this list of packages would automatically be looked for. The first
+    one that exists will be created and used:
+
+      GIS::Distance::Formula::Haversine::Fast
+      GIS::Distance::Formula::Haversine
+      Haversine
+
+    If you are using your own custom formula class make sure it extends()
+    (Moose) the GIS::Distance::Formula class.
+
+    Note that a ::Fast version of the class will be looked for first. By
+    default the ::Fast versions of the formulas, written in C, are not
+    available and the pure perl ones will be used instead. If you would like
+    the ::Fast formulas then install GIS::Distance::Fast and they will be
+    automatically used.
+
+SEE ALSO
+    GIS::Distance::Fast - C implmentation of some of the formulas shipped
+    with GIS::Distance. This greatly increases the speed at which distance
+    calculations can be made.
+
+FORMULAS
+    GIS::Distance::Formula::Cosine
+
+    GIS::Distance::Formula::GeoEllipsoid
+
+    GIS::Distance::Formula::GreatCircle
+
+    GIS::Distance::Formula::Haversine
+
+    GIS::Distance::Formula::MathTrig
+
+    GIS::Distance::Formula::Polar
+
+    GIS::Distance::Formula::Vincenty
+
+TODO
+    *   Create a GIS::Coord class that represents a geographic coordinate.
+        Then modify this module to accept input as either lat/lon pairs, or
+        as GIS::Coord objects.
+
+    *   Create an extension to DBIx::Class with the same goal as
+        Geo::Distance's closest() method.
+
+    *   Write a super accurate formula module called GIS::Distance::Geoid.
+        Some very useful info is at <http://en.wikipedia.org/wiki/Geoid>.
+
+BUGS
+    Both the GIS::Distance::Formula::GreatCircle and
+    GIS::Distance::Formula::Polar formulas are broken. Read their respective
+    man pages for details.
+
+TEST COVERAGE
+      ---------------------------- ------ ------ ------ ------ ------ ------ ------
+      File                           stmt   bran   cond    sub    pod   time  total
+      ---------------------------- ------ ------ ------ ------ ------ ------ ------
+      blib/lib/GIS/Distance.pm      100.0    n/a    n/a  100.0  100.0   24.0  100.0
+      ...b/GIS/Distance/Formula.pm   75.0    n/a    n/a   66.7  100.0    1.9   75.0
+      ...istance/Formula/Cosine.pm  100.0    n/a    n/a  100.0  100.0    5.9  100.0
+      ...e/Formula/GeoEllipsoid.pm  100.0    n/a    n/a  100.0  100.0    3.6  100.0
+      ...ce/Formula/GreatCircle.pm  100.0    n/a    n/a  100.0  100.0    5.9  100.0
+      ...ance/Formula/Haversine.pm  100.0    n/a    n/a  100.0  100.0    9.1  100.0
+      ...tance/Formula/MathTrig.pm  100.0    n/a    n/a  100.0  100.0    2.4  100.0
+      ...Distance/Formula/Polar.pm  100.0    n/a    n/a  100.0  100.0    2.7  100.0
+      ...tance/Formula/Vincenty.pm  100.0   50.0   50.0  100.0  100.0   44.6   93.1
+      Total                          98.8   50.0   50.0   97.2  100.0  100.0   96.7
+      ---------------------------- ------ ------ ------ ------ ------ ------ ------
+
+AUTHOR
+    Aran Clary Deltac <bluefeet@cpan.org>
+
+LICENSE
+    This library is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
 
