@@ -23,8 +23,8 @@ greater. In the UK, if you measure the distance from Land's End to John O'
 Groats using WGS-84, it will be 28m - 0.003% - greater than using the Airy
 ellipsoid, which provides a better fit for the UK.
 
-NOTE: This formula is still considered alpha quality in GIS::Distance.  It has
-not been tested enough to be used in production.
+NOTE: This formula is still considered alpha quality in GIS::Distance as it
+hasn't been tested all that much.
 
 Normally this module is not used directly.  Instead L<GIS::Distance>
 is used which in turn interfaces with the various formula classes.
@@ -67,7 +67,9 @@ is used which in turn interfaces with the various formula classes.
 =cut
 
 use Moose;
-extends 'GIS::Distance::Formula';
+use namespace::autoclean;
+
+with 'GIS::Distance::Formula';
 
 use Class::Measure::Length qw( length );
 use Math::Trig qw( deg2rad pi tan atan asin );
@@ -119,6 +121,8 @@ sub distance {
 
     return length( $c, 'm' );
 }
+
+__PACKAGE__->meta->make_immutable;
 
 1;
 __END__

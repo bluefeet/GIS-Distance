@@ -24,10 +24,12 @@ distances between geographic points, and anything that can be derived from that.
 =cut
 
 use Moose;
+use namespace::autoclean;
+
 use Moose::Util::TypeConstraints;
 use Carp qw( croak );
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 =head1 METHODS
 
@@ -38,14 +40,6 @@ our $VERSION = '0.04';
 Returns a L<Class::Measure::Length> object for the distance between the
 two degree lats/lons.  The distance is calculated using whatever formula
 the object is set to use.
-
-=cut
-
-sub distance {
-    my $self = shift;
-
-    return $self->formula->distance( @_ );
-}
 
 =head1 ATTRIBUTES
 
@@ -78,8 +72,7 @@ then install L<GIS::Distance::Fast> and they will be automatically used.
 =cut
 
 subtype 'GISDistanceFormula'
-    => as 'Object'
-    => where { $_->isa('GIS::Distance::Formula') };
+    => as 'Object';
 
 coerce 'GISDistanceFormula'
     => from 'Str'
@@ -102,8 +95,11 @@ has 'formula' => (
     is      => 'rw',
     isa     => 'GISDistanceFormula',
     default => 'Haversine',
+    handles => ['distance'],
     coerce  => 1,
 );
+
+__PACKAGE__->meta->make_immutable;
 
 1;
 __END__

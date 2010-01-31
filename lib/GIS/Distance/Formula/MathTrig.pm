@@ -28,7 +28,9 @@ As stated in the L<Math::Trig> POD.
 =cut
 
 use Moose;
-extends 'GIS::Distance::Formula';
+use namespace::autoclean;
+
+with 'GIS::Distance::Formula';
 
 use Class::Measure::Length qw( length );
 use Math::Trig qw( great_circle_distance deg2rad );
@@ -55,6 +57,8 @@ sub distance {
         'km'
     );
 }
+
+__PACKAGE__->meta->make_immutable;
 
 1;
 __END__

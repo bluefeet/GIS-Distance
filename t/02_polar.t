@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 2;
+use Test::More;
 
 use_ok( 'GIS::Distance' );
 
@@ -15,10 +15,8 @@ my $v_length = $gis->distance( @coords );
 $gis->formula( 'GIS::Distance::Formula::Polar' );
 my $p_length = $gis->distance( @coords );
 
-TODO: {
-    local $TODO = 'Polar formula is broken';
-    is_close( $v_length->km(), $p_length->km(), 'Vincenty versus Polar' );
-}
+local $TODO = 'Polar formula is broken';
+is_close( $v_length->km(), $p_length->km(), 'Vincenty versus Polar' );
 
 sub is_close {
     my ($num1, $num2, $description) = @_;
@@ -31,3 +29,4 @@ sub is_close {
     }
 }
 
+done_testing;

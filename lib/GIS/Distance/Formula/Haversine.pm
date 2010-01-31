@@ -23,7 +23,9 @@ is used which in turn interfaces with the various formula classes.
 =cut
 
 use Moose;
-extends 'GIS::Distance::Formula';
+use namespace::autoclean;
+
+with 'GIS::Distance::Formula';
 
 use Math::Trig qw( deg2rad );
 use Class::Measure::Length qw( length );
@@ -50,6 +52,8 @@ sub distance {
 
     return length( $self->kilometer_rho() * $c, 'km' );
 }
+
+__PACKAGE__->meta->make_immutable;
 
 1;
 __END__

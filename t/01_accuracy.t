@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 31;
+use Test::More;
 
 use_ok( 'GIS::Distance' );
 
@@ -19,19 +19,28 @@ my $gis = GIS::Distance->new();
 my $formulas = [qw( Vincenty Cosine Haversine MathTrig )];
 
 foreach my $formula (@$formulas) {
-    test_formula( $formula );
+    subtest "run $formula" => sub {
+        test_formula( $formula );
+        done_testing;
+    };
 }
 
-SKIP: {
+subtest 'run GeoEllipsoid' => sub {
     eval { require Geo::Ellipsoid };
-    skip('Geo::Ellipsoid is not installed', $test_case_count) if ($@);
-    test_formula( 'GeoEllipsoid' );
-}
+    plan skip_all => 'Geo::Ellipsoid is not installed' if $@;
 
-TODO: {
+    test_formula( 'GeoEllipsoid' );
+
+    done_testing;
+};
+
+subtest 'run GreatCircle' => sub {
     local $TODO = 'GreatCircle formula is broken';
     test_formula( 'GreatCircle' );
-}
+    done_testing;
+};
+
+done_testing;
 
 sub test_formula {
     my ($formula) = @_;
@@ -43,7 +52,7 @@ sub test_formula {
 
         my $length = $gis->distance( $case->[0], $case->[1], $case->[2], $case->[3] )->$unit();
 
-        is_close( $length, $distance, "$formula: $title" );
+        is_close( $length, $distance, $title );
     }
 }
 

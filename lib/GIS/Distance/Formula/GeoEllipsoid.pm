@@ -25,9 +25,11 @@ See the documentation for L<Geo::Ellipsoid>.
 =cut
 
 use Moose;
-use Moose::Util::TypeConstraints;
-extends 'GIS::Distance::Formula';
+use namespace::autoclean;
 
+with 'GIS::Distance::Formula';
+
+use Moose::Util::TypeConstraints;
 use Class::Measure::Length qw( length );
 use Geo::Ellipsoid;
 
@@ -79,6 +81,8 @@ sub distance {
         'm'
     );
 }
+
+__PACKAGE__->meta->make_immutable;
 
 1;
 __END__

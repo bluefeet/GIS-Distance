@@ -1,5 +1,8 @@
 Revision history for Perl extension GIS::Distance.
 
+0.05 : 2010-01-30
+ - Speed improvements under Moose (now uses immutable).
+
 0.04 : 2009-06-29
  - Fixed for latest Moose.
  - Fixed for latest Class::Measure.
