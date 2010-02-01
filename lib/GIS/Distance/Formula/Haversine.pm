@@ -22,7 +22,7 @@ is used which in turn interfaces with the various formula classes.
 
 =cut
 
-use Moose;
+use Any::Moose;
 use namespace::autoclean;
 
 with 'GIS::Distance::Formula';

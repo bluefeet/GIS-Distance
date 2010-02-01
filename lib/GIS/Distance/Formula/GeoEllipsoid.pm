@@ -24,12 +24,12 @@ See the documentation for L<Geo::Ellipsoid>.
 
 =cut
 
-use Moose;
+use Any::Moose;
 use namespace::autoclean;
 
 with 'GIS::Distance::Formula';
 
-use Moose::Util::TypeConstraints;
+use Any::Moose '::Util::TypeConstraints';
 use Class::Measure::Length qw( length );
 use Geo::Ellipsoid;
 

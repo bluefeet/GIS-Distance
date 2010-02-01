@@ -28,7 +28,7 @@ the implementation is) as you can see in 02_polar.t.
 
 =cut
 
-use Moose;
+use Any::Moose;
 use namespace::autoclean;
 
 with 'GIS::Distance::Formula';

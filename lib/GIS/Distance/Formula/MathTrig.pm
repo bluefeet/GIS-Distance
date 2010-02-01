@@ -27,7 +27,7 @@ As stated in the L<Math::Trig> POD.
 
 =cut
 
-use Moose;
+use Any::Moose;
 use namespace::autoclean;
 
 with 'GIS::Distance::Formula';

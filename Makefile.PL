@@ -9,9 +9,11 @@ all_from 'lib/GIS/Distance.pm';
 readme_from 'lib/GIS/Distance.pm';
 githubmeta;
 
-requires 'Moose' => 0.39;
+requires 'Any::Moose' => 0.39;
+requires 'Mouse' => 0.48;
 requires 'Class::Measure';
 requires 'Math::Complex';
+requires 'namespace::autoclean';
 
 test_requires 'Test::More' => 0.94;
 

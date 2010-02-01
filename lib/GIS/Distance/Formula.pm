@@ -11,7 +11,8 @@ formula classes that use it.
 
 =cut
 
-use Moose::Role;
+use Any::Moose '::Role';
+
 use Carp qw( croak );
 
 requires 'distance';

@@ -30,7 +30,7 @@ this module unless you want to help fix it.
 
 =cut
 
-use Moose;
+use Any::Moose;
 use namespace::autoclean;
 
 with 'GIS::Distance::Formula';
