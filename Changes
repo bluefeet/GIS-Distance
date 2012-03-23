@@ -1,6 +1,8 @@
 Revision history for Perl extension GIS::Distance.
 
 {{$NEXT}}
+
+0.08      2012-03-23
  - Release with Dist::Zilla.
  - Fix Great Circle formula to use ** instead of ^.
 
