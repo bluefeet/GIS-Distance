@@ -23,9 +23,9 @@ this module unless you want to help fix it.
 =head1 FORMULA
 
   c = 2 * asin( sqrt(
-    ( sin(( lat1 - lat2 )/2) )^2 + 
+    ( sin(( lat1 - lat2 )/2) )**2 + 
     cos( lat1 ) * cos( lat2 ) * 
-    ( sin(( lon1 - lon2 )/2) )^2
+    ( sin(( lon1 - lon2 )/2) )**2
   ) )
 
 =cut
@@ -52,9 +52,9 @@ sub distance {
     $lon2 = deg2rad($lon2); $lat2 = deg2rad($lat2);
 
     my $c = 2*asin( sqrt(
-        ( sin(($lat1-$lat2)/2) )^2 + 
+        ( sin(($lat1-$lat2)/2) )**2 + 
         cos($lat1) * cos($lat2) * 
-        ( sin(($lon1-$lon2)/2) )^2
+        ( sin(($lon1-$lon2)/2) )**2
     ) );
 
     return length( $self->kilometer_rho() * $c, 'km' );

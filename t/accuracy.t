@@ -16,7 +16,7 @@ my $test_cases = {
 my $test_case_count = @{[ keys %$test_cases ]} + 0;
 
 my $gis = GIS::Distance->new();
-my $formulas = [qw( Vincenty Cosine Haversine MathTrig )];
+my $formulas = [qw( Vincenty Cosine Haversine MathTrig GreatCircle )];
 
 foreach my $formula (@$formulas) {
     subtest "run $formula" => sub {
@@ -31,12 +31,6 @@ subtest 'run GeoEllipsoid' => sub {
 
     test_formula( 'GeoEllipsoid' );
 
-    done_testing;
-};
-
-subtest 'run GreatCircle' => sub {
-    local $TODO = 'GreatCircle formula is broken';
-    test_formula( 'GreatCircle' );
     done_testing;
 };
 

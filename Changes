@@ -1,5 +1,8 @@
 Revision history for Perl extension GIS::Distance.
 
+{{$NEXT}}
+ - Release with Dist::Zilla.
+ - Fix Great Circle formula to use ** instead of ^.
  - Use Any::Moose instead of Moose directly.
  - Declare namespace::autoclean dependency.
 

@@ -1,5 +1,3 @@
-package GIS::Distance;
-
 =head1 NAME
 
 GIS::Distance - Calculate geographic distances.
@@ -20,14 +18,6 @@ GIS::Distance - Calculate geographic distances.
 
 This perl library aims to provide as many tools to make it as simple as possible to calculate
 distances between geographic points, and anything that can be derived from that.
-
-=cut
-
-use Any::Moose;
-use namespace::autoclean;
-
-use Any::Moose '::Util::TypeConstraints';
-use Carp qw( croak );
 
 =head1 METHODS
 
@@ -66,41 +56,6 @@ Note that a ::Fast version of the class will be looked for first.  By default
 the ::Fast versions of the formulas, written in C, are not available and the
 pure perl ones will be used instead.  If you would like the ::Fast formulas
 then install L<GIS::Distance::Fast> and they will be automatically used.
-
-=cut
-
-subtype 'GISDistanceFormula'
-    => as 'Object';
-
-coerce 'GISDistanceFormula'
-    => from 'Str'
-        => via {
-            my $class = $_;
-            foreach my $full_class (
-                "GIS::Distance::Formula::${class}::Fast",
-                "GIS::Distance::Formula::$class",
-                $class,
-            ) {
-                eval( "require $full_class" );
-                if (!$@) {
-                    return $full_class->new();
-                }
-            }
-            die( qq{The GIS::Distance formula "$class" can not be found} );
-        };
-
-has 'formula' => (
-    is      => 'rw',
-    isa     => 'GISDistanceFormula',
-    default => 'Haversine',
-    handles => ['distance'],
-    coerce  => 1,
-);
-
-__PACKAGE__->meta->make_immutable;
-
-1;
-__END__
 
 =head1 SEE ALSO
 
