@@ -165,23 +165,6 @@ very useful info is at L<http://en.wikipedia.org/wiki/Geoid>.
 Both the L<GIS::Distance::Formula::GreatCircle> and L<GIS::Distance::Formula::Polar> formulas are
 broken.  Read their respective man pages for details.
 
-=head1 TEST COVERAGE
-
-  ---------------------------- ------ ------ ------ ------ ------ ------ ------
-  File                           stmt   bran   cond    sub    pod   time  total
-  ---------------------------- ------ ------ ------ ------ ------ ------ ------
-  blib/lib/GIS/Distance.pm      100.0    n/a    n/a  100.0  100.0   24.0  100.0
-  ...b/GIS/Distance/Formula.pm   75.0    n/a    n/a   66.7  100.0    1.9   75.0
-  ...istance/Formula/Cosine.pm  100.0    n/a    n/a  100.0  100.0    5.9  100.0
-  ...e/Formula/GeoEllipsoid.pm  100.0    n/a    n/a  100.0  100.0    3.6  100.0
-  ...ce/Formula/GreatCircle.pm  100.0    n/a    n/a  100.0  100.0    5.9  100.0
-  ...ance/Formula/Haversine.pm  100.0    n/a    n/a  100.0  100.0    9.1  100.0
-  ...tance/Formula/MathTrig.pm  100.0    n/a    n/a  100.0  100.0    2.4  100.0
-  ...Distance/Formula/Polar.pm  100.0    n/a    n/a  100.0  100.0    2.7  100.0
-  ...tance/Formula/Vincenty.pm  100.0   50.0   50.0  100.0  100.0   44.6   93.1
-  Total                          98.8   50.0   50.0   97.2  100.0  100.0   96.7
-  ---------------------------- ------ ------ ------ ------ ------ ------ ------
-
 =head1 AUTHOR
 
 Aran Clary Deltac <bluefeet@cpan.org>
