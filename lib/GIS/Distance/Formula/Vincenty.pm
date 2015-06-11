@@ -66,13 +66,14 @@ is used which in turn interfaces with the various formula classes.
 
 =cut
 
-use Any::Moose;
-use namespace::autoclean;
-
-with 'GIS::Distance::Formula';
-
 use Class::Measure::Length qw( length );
 use Math::Trig qw( deg2rad pi tan atan asin );
+
+use Moo;
+use strictures 1;
+use namespace::clean;
+
+with 'GIS::Distance::Formula';
 
 =head1 METHODS
 
@@ -121,8 +122,6 @@ sub distance {
 
     return length( $c, 'm' );
 }
-
-__PACKAGE__->meta->make_immutable;
 
 1;
 __END__

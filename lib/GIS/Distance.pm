@@ -6,28 +6,45 @@ GIS::Distance - Calculate geographic distances.
 
 =head1 SYNOPSIS
 
-  use GIS::Distance;
-  
-  my $gis = GIS::Distance->new();
-  
-  $gis->formula( 'Polar' );  # Optional, default is Haversine.
-  
-  my $distance = $gis->distance( $lat1,$lon1 => $lat2,$lon2 );
-  
-  print $distance->meters();
+    use GIS::Distance;
+    
+    my $gis = GIS::Distance->new();
+    $gis->formula( 'Polar' );  # Optional, default is Haversine.
+    
+    # Or:
+    my $gis = GIS::Distance->new( 'Polar' );
+    
+    my $distance = $gis->distance( $lat1,$lon1 => $lat2,$lon2 );
+    
+    print $distance->meters();
 
 =head1 DESCRIPTION
 
-This perl library aims to provide as many tools to make it as simple as possible to calculate
-distances between geographic points, and anything that can be derived from that.
+This module calculates distances between geographic points on, at the moment,
+plant Earth.  Various formulas are available that provide different levels of
+accuracy versus calculation speed tradeoffs.
+
+All distances are returned as L<Class::Measure> objects.
 
 =cut
 
-use Any::Moose;
-use namespace::autoclean;
+use Types::Standard -types;
+use Type::Utils -all;
 
-use Any::Moose '::Util::TypeConstraints';
-use Carp qw( croak );
+use Moo;
+use strictures 1;
+use namespace::clean;
+
+around BUILDARGS => sub{
+    my $orig = shift;
+    my $class = shift;
+
+    if (@_==1 and ref($_[0]) ne 'HASH') {
+        return { formula => $_[0] };
+    }
+
+    return $class->$orig( @_ );
+};
 
 =head1 METHODS
 
@@ -59,8 +76,8 @@ exists will be created and used:
   GIS::Distance::Formula::Haversine
   Haversine
 
-If you are using your own custom formula class make sure it extends() (L<Moose>)
-the L<GIS::Distance::Formula> class.
+If you are using your own custom formula class make sure it applies
+the L<GIS::Distance::Formula> role.
 
 Note that a ::Fast version of the class will be looked for first.  By default
 the ::Fast versions of the formulas, written in C, are not available and the
@@ -69,35 +86,33 @@ then install L<GIS::Distance::Fast> and they will be automatically used.
 
 =cut
 
-subtype 'GISDistanceFormula'
-    => as 'Object';
+my $formula_type = declare 'GISDistanceFormula',
+    as HasMethods[ 'distance' ];
 
-coerce 'GISDistanceFormula'
-    => from 'Str'
-        => via {
-            my $class = $_;
-            foreach my $full_class (
-                "GIS::Distance::Formula::${class}::Fast",
-                "GIS::Distance::Formula::$class",
-                $class,
-            ) {
-                eval( "require $full_class" );
-                if (!$@) {
-                    return $full_class->new();
-                }
-            }
-            die( qq{The GIS::Distance formula "$class" can not be found} );
-        };
+coerce $formula_type,
+    from Str,
+    via {
+        my $class = $_;
+        foreach my $full_class (
+            "GIS::Distance::Formula::${class}::Fast",
+            "GIS::Distance::Formula::$class",
+            $class,
+        ) {
+            local $@;
+            my $success = eval( "require $full_class; 1" );
+            return $full_class->new() if $success;
+            die $@ if $@ !~ m{^Can't locate};
+        }
+        die( qq{The GIS::Distance formula "$class" cannot be found} );
+    };
 
-has 'formula' => (
+has formula => (
     is      => 'rw',
-    isa     => 'GISDistanceFormula',
+    isa     => $formula_type,
+    coerce  => 1,
     default => 'Haversine',
     handles => ['distance'],
-    coerce  => 1,
 );
-
-__PACKAGE__->meta->make_immutable;
 
 1;
 __END__

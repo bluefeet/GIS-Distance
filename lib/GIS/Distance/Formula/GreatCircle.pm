@@ -30,13 +30,14 @@ this module unless you want to help fix it.
 
 =cut
 
-use Any::Moose;
-use namespace::autoclean;
-
-with 'GIS::Distance::Formula';
-
 use Class::Measure::Length qw( length );
 use Math::Trig qw( deg2rad asin );
+
+use Moo;
+use strictures 1;
+use namespace::clean;
+
+with 'GIS::Distance::Formula';
 
 =head1 METHODS
 
@@ -59,8 +60,6 @@ sub distance {
 
     return length( $self->kilometer_rho() * $c, 'km' );
 }
-
-__PACKAGE__->meta->make_immutable;
 
 1;
 __END__

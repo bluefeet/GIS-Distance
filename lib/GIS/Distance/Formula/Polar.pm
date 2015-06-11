@@ -28,13 +28,14 @@ the implementation is) as you can see in 02_polar.t.
 
 =cut
 
-use Any::Moose;
-use namespace::autoclean;
-
-with 'GIS::Distance::Formula';
-
 use Class::Measure::Length qw( length );
 use Math::Trig qw( deg2rad pi );
+
+use Moo;
+use strictures 1;
+use namespace::clean;
+
+with 'GIS::Distance::Formula';
 
 =head1 METHODS
 
@@ -53,8 +54,6 @@ sub distance {
     my $c = sqrt( $a ** 2 + $b ** 2 - 2 * $a * $b * cos($lon2 - $lon1) );
     return length( $self->kilometer_rho() * $c, 'km' );
 }
-
-__PACKAGE__->meta->make_immutable;
 
 1;
 __END__

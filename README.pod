@@ -1,23 +1,30 @@
+=pod
+
 =head1 NAME
 
 GIS::Distance - Calculate geographic distances.
 
 =head1 SYNOPSIS
 
-  use GIS::Distance;
-  
-  my $gis = GIS::Distance->new();
-  
-  $gis->formula( 'Polar' );  # Optional, default is Haversine.
-  
-  my $distance = $gis->distance( $lat1,$lon1 => $lat2,$lon2 );
-  
-  print $distance->meters();
+    use GIS::Distance;
+    
+    my $gis = GIS::Distance->new();
+    $gis->formula( 'Polar' );  # Optional, default is Haversine.
+    
+    # Or:
+    my $gis = GIS::Distance->new( 'Polar' );
+    
+    my $distance = $gis->distance( $lat1,$lon1 => $lat2,$lon2 );
+    
+    print $distance->meters();
 
 =head1 DESCRIPTION
 
-This perl library aims to provide as many tools to make it as simple as possible to calculate
-distances between geographic points, and anything that can be derived from that.
+This module calculates distances between geographic points on, at the moment,
+plant Earth.  Various formulas are available that provide different levels of
+accuracy versus calculation speed tradeoffs.
+
+All distances are returned as L<Class::Measure> objects.
 
 =head1 METHODS
 
@@ -49,8 +56,8 @@ exists will be created and used:
   GIS::Distance::Formula::Haversine
   Haversine
 
-If you are using your own custom formula class make sure it extends() (L<Moose>)
-the L<GIS::Distance::Formula> class.
+If you are using your own custom formula class make sure it applies
+the L<GIS::Distance::Formula> role.
 
 Note that a ::Fast version of the class will be looked for first.  By default
 the ::Fast versions of the formulas, written in C, are not available and the
@@ -131,3 +138,4 @@ Aran Clary Deltac <bluefeet@cpan.org>
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
+=cut

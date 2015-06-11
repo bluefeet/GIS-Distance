@@ -11,9 +11,11 @@ formula classes that use it.
 
 =cut
 
-use Any::Moose '::Role';
+use Types::Standard -types;
 
-use Carp qw( croak );
+use Moo::Role;
+use strictures 1;
+use namespace::clean;
 
 requires 'distance';
 
@@ -26,9 +28,9 @@ Defaults to 6371.64.
 
 =cut
 
-has 'kilometer_rho' => (
+has kilometer_rho => (
     is      => 'ro',
-    isa     => 'Num',
+    isa     => Num,
     default => 6371.64,
 );
 
@@ -41,9 +43,9 @@ The default, 0.0174532925199433, is derived from:
 
 =cut
 
-has 'deg_ratio' => (
+has deg_ratio => (
     is      => 'ro',
-    isa     => 'Num',
+    isa     => Num,
     default => 0.0174532925199433,
 );
 

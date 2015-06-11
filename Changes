@@ -1,6 +1,9 @@
 Revision history for Perl extension GIS::Distance.
 
 {{$NEXT}}
+ - Move away from Any::Moose to Moo (yay!).
+ - Better formula loading logic.
+ - Support single-arg (formula) GIS::Distance instantiation.
 
 0.08      2012-03-23
  - Release with Dist::Zilla.

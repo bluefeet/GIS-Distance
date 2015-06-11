@@ -24,14 +24,16 @@ See the documentation for L<Geo::Ellipsoid>.
 
 =cut
 
-use Any::Moose;
-use namespace::autoclean;
-
-with 'GIS::Distance::Formula';
-
-use Any::Moose '::Util::TypeConstraints';
+use Types::Standard -types;
+use Type::Utils -all;
 use Class::Measure::Length qw( length );
 use Geo::Ellipsoid;
+
+use Moo;
+use strictures 1;
+use namespace::clean;
+
+with 'GIS::Distance::Formula';
 
 =head1 ATTRIBUTES
 
@@ -40,29 +42,27 @@ use Geo::Ellipsoid;
   $calc->ellipsoid( 'AIRY' );
 
 Set and retrieve the ellipsoid object.  If a string is passed
-then it will be coerced in to an object.
+then it will be coerced into an object.
 
 =cut
 
-subtype 'GeoEllipsoid'
-    => as 'Object'
-    => where { $_->isa('Geo::Ellipsoid') };
+my $ellipsoid_type = declare 'GeoEllipsoid',
+    as InstanceOf[ 'Geo::Ellipsoid' ];
 
-coerce 'GeoEllipsoid'
-    => from 'Str'
-        => via {
-            my $type = $_;
-            return Geo::Ellipsoid->new(
-                units => 'degrees',
-                ( $type ? (ellipsoid=>$type) : () ),
-            );
-        };
+coerce $ellipsoid_type,
+    from Str,
+    via {
+        return Geo::Ellipsoid->new(
+            units     => 'degrees',
+            ellipsoid => $_,
+        );
+    };
 
-has 'ellipsoid' => (
+has ellipsoid => (
     is      => 'rw',
-    isa     => 'GeoEllipsoid',
-    default => '',
+    isa     => $ellipsoid_type,
     coerce  => 1,
+    default => sub{ Geo::Ellipsoid->new( units=>'degrees' ) },
 );
 
 =head1 METHODS
@@ -81,8 +81,6 @@ sub distance {
         'm'
     );
 }
-
-__PACKAGE__->meta->make_immutable;
 
 1;
 __END__

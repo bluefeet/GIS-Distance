@@ -27,13 +27,14 @@ As stated in the L<Math::Trig> POD.
 
 =cut
 
-use Any::Moose;
-use namespace::autoclean;
-
-with 'GIS::Distance::Formula';
-
 use Class::Measure::Length qw( length );
 use Math::Trig qw( great_circle_distance deg2rad );
+
+use Moo;
+use strictures 1;
+use namespace::clean;
+
+with 'GIS::Distance::Formula';
 
 =head1 METHODS
 
@@ -57,8 +58,6 @@ sub distance {
         'km'
     );
 }
-
-__PACKAGE__->meta->make_immutable;
 
 1;
 __END__
