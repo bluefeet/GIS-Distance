@@ -1,6 +1,5 @@
-#!/usr/bin/perl
-use strict;
-use warnings;
+#!/usr/bin/end perl
+use strictures 1;
 
 use Test::More;
 
