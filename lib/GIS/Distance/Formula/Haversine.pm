@@ -3,6 +3,8 @@ use 5.008001;
 use strictures 2;
 our $VERSION = '0.09';
 
+=encoding utf8
+
 =head1 NAME
 
 GIS::Distance::Formula::Haversine - Exact spherical distance calculations.
@@ -71,12 +73,9 @@ L<http://mathforum.org/library/drmath/view/51879.html>
 
 L<http://www.faqs.org/faqs/geography/infosystems-faq/>
 
-=head1 AUTHOR
+=head1 AUTHORS AND LICENSE
 
-Aran Clary Deltac <bluefeet@cpan.org>
+See L<GIS::Distance/AUTHORS> and L<GIS::Distance/LICENSE>.
 
-=head1 LICENSE
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+=cut
 

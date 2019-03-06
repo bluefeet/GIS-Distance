@@ -46,7 +46,7 @@
             "Geo::Ellipsoid" : "0.902"
          },
          "requires" : {
-            "Class::Measure" : "0",
+            "Class::Measure::Length" : "0",
             "Math::Complex" : "0",
             "Moo" : "2.000000",
             "Moo::Role" : "2.000000",

@@ -72,7 +72,7 @@ Revision history for Perl extension GIS-Distance.
  - Use Class::Measure::Length to handle distance return values.
  - Test POD syntax.
 
-Revision history for Perl extension Geo::Distance.
+Revision history for Perl extension Geo-Distance.
 
 0.11 2005-09-01
 

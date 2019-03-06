@@ -3,6 +3,8 @@ use 5.008001;
 use strictures 2;
 our $VERSION = '0.09';
 
+=encoding utf8
+
 =head1 NAME
 
 GIS::Distance::Formula::MathTrig - Great cirlce distance calculations using Math::Trig.
@@ -70,12 +72,9 @@ L<GIS::Distanc>
 
 L<Math::Trig>
 
-=head1 AUTHOR
+=head1 AUTHORS AND LICENSE
 
-Aran Clary Deltac <bluefeet@cpan.org>
+See L<GIS::Distance/AUTHORS> and L<GIS::Distance/LICENSE>.
 
-=head1 LICENSE
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+=cut
 

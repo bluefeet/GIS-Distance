@@ -2,7 +2,7 @@ requires 'namespace::clean' => '0.24';
 requires 'perl' => '5.008001';
 requires 'strictures' => '2.000000';
 
-requires 'Class::Measure';
+requires 'Class::Measure::Length';
 requires 'Math::Complex';
 requires 'Moo' => '2.000000';
 requires 'Moo::Role' => '2.000000';
