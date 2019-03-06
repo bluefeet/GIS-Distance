@@ -3,7 +3,7 @@ requires 'perl' => '5.008001';
 requires 'strictures' => '2.000000';
 
 requires 'Class::Measure::Length';
-requires 'Math::Complex';
+requires 'Math::Trig';
 requires 'Moo' => '2.000000';
 requires 'Moo::Role' => '2.000000';
 requires 'Type::Utils' => '1.000005';

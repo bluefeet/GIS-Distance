@@ -47,7 +47,7 @@
          },
          "requires" : {
             "Class::Measure::Length" : "0",
-            "Math::Complex" : "0",
+            "Math::Trig" : "0",
             "Moo" : "2.000000",
             "Moo::Role" : "2.000000",
             "Type::Utils" : "1.000005",
