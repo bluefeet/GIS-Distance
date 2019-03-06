@@ -1,4 +1,7 @@
 package GIS::Distance::Formula::MathTrig;
+use 5.008001;
+use strictures 2;
+our $VERSION = '0.09';
 
 =head1 NAME
 
@@ -31,7 +34,6 @@ use Class::Measure::Length qw( length );
 use Math::Trig qw( great_circle_distance deg2rad );
 
 use Moo;
-use strictures 1;
 use namespace::clean;
 
 with 'GIS::Distance::Formula';

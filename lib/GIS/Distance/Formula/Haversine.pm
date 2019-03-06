@@ -1,4 +1,7 @@
 package GIS::Distance::Formula::Haversine;
+use 5.008001;
+use strictures 2;
+our $VERSION = '0.09';
 
 =head1 NAME
 
@@ -26,7 +29,6 @@ use Math::Trig qw( deg2rad );
 use Class::Measure::Length qw( length );
 
 use Moo;
-use strictures 1;
 use namespace::clean;
 
 with 'GIS::Distance::Formula';

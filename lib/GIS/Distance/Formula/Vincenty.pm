@@ -1,4 +1,7 @@
 package GIS::Distance::Formula::Vincenty;
+use 5.008001;
+use strictures 2;
+our $VERSION = '0.09';
 
 =head1 NAME
 
@@ -70,7 +73,6 @@ use Class::Measure::Length qw( length );
 use Math::Trig qw( deg2rad pi tan atan asin );
 
 use Moo;
-use strictures 1;
 use namespace::clean;
 
 with 'GIS::Distance::Formula';

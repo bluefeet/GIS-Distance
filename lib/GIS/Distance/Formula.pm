@@ -1,4 +1,7 @@
 package GIS::Distance::Formula;
+use 5.008001;
+use strictures 2;
+our $VERSION = '0.09';
 
 =head1 NAME
 
@@ -14,7 +17,6 @@ formula classes that use it.
 use Types::Standard -types;
 
 use Moo::Role;
-use strictures 1;
 use namespace::clean;
 
 requires 'distance';

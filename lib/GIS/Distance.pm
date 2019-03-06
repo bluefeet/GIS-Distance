@@ -1,4 +1,7 @@
 package GIS::Distance;
+use 5.008001;
+use strictures 2;
+our $VERSION = '0.09';
 
 =head1 NAME
 
@@ -32,7 +35,6 @@ use Types::Standard -types;
 use Type::Utils -all;
 
 use Moo;
-use strictures 1;
 use namespace::clean;
 
 around BUILDARGS => sub{
@@ -165,12 +167,20 @@ very useful info is at L<http://en.wikipedia.org/wiki/Geoid>.
 Both the L<GIS::Distance::Formula::GreatCircle> and L<GIS::Distance::Formula::Polar> formulas are
 broken.  Read their respective man pages for details.
 
-=head1 AUTHOR
+=head1 SUPPORT
 
-Aran Clary Deltac <bluefeet@cpan.org>
+Please submit bugs and feature requests to the GIS-Distance GitHub issue tracker:
+
+L<https://github.com/bluefeet/GIS-Distance/issues>
+
+=head1 AUTHORS
+
+    Aran Clary Deltac <bluefeet@cpan.org>
 
 =head1 LICENSE
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
+
+=cut
 
