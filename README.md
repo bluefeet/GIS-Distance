@@ -22,6 +22,10 @@ This module calculates distances between geographic points on, at the moment,
 planet Earth.  Various ["FORMULAS"](#formulas) are available that provide different levels
 of accuracy versus speed.
 
+[GIS::Distance::Fast](https://metacpan.org/pod/GIS::Distance::Fast), a separate distribution, ships with C implmentations of
+some of the formulas shipped with GIS::Distance.  If you're looking for speed
+then install it and the ::Fast formulas will be automatically used by this module.
+
 # METHODS
 
 ## distance
@@ -62,24 +66,19 @@ then install [GIS::Distance::Fast](https://metacpan.org/pod/GIS::Distance::Fast)
 ## args
 
 Returns the formula arguments, an array ref, containing the rest of the
-arguments passed to `new()`.  Most formulas do not take arguments.  If
-they do it will be described in their respective documentation.
+arguments passed to `new()` (anything passed after the ["formula"](#formula)).
+Most formulas do not take arguments.  If they do it will be described in
+their respective documentation.
 
 ## module
 
 Returns the fully qualified module name that ["formula"](#formula) resolved to.
 
-# SEE ALSO
-
-[GIS::Distance::Fast](https://metacpan.org/pod/GIS::Distance::Fast) - C implmentation of some of the formulas
-shipped with GIS::Distance.  This greatly increases the speed at
-which distance calculations can be made.
-
 # FORMULAS
 
-[GIS::Distance::Cosine](https://metacpan.org/pod/GIS::Distance::Cosine)
+These formulas come with this distribution:
 
-[GIS::Distance::GeoEllipsoid](https://metacpan.org/pod/GIS::Distance::GeoEllipsoid)
+[GIS::Distance::Cosine](https://metacpan.org/pod/GIS::Distance::Cosine)
 
 [GIS::Distance::GreatCircle](https://metacpan.org/pod/GIS::Distance::GreatCircle)
 
@@ -90,6 +89,12 @@ which distance calculations can be made.
 [GIS::Distance::Polar](https://metacpan.org/pod/GIS::Distance::Polar)
 
 [GIS::Distance::Vincenty](https://metacpan.org/pod/GIS::Distance::Vincenty)
+
+These distributions are availabe separately:
+
+[GID::Distance::Fast](https://metacpan.org/pod/GID::Distance::Fast)
+
+[GIS::Distance::GeoEllipsoid](https://metacpan.org/pod/GIS::Distance::GeoEllipsoid)
 
 # TODO
 

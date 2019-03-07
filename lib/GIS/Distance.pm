@@ -99,6 +99,10 @@ This module calculates distances between geographic points on, at the moment,
 planet Earth.  Various L</FORMULAS> are available that provide different levels
 of accuracy versus speed.
 
+L<GIS::Distance::Fast>, a separate distribution, ships with C implmentations of
+some of the formulas shipped with GIS::Distance.  If you're looking for speed
+then install it and the ::Fast formulas will be automatically used by this module.
+
 =head1 METHODS
 
 =head2 distance
@@ -139,24 +143,19 @@ then install L<GIS::Distance::Fast> and they will be automatically used.
 =head2 args
 
 Returns the formula arguments, an array ref, containing the rest of the
-arguments passed to C<new()>.  Most formulas do not take arguments.  If
-they do it will be described in their respective documentation.
+arguments passed to C<new()> (anything passed after the L</formula>).
+Most formulas do not take arguments.  If they do it will be described in
+their respective documentation.
 
 =head2 module
 
 Returns the fully qualified module name that L</formula> resolved to.
 
-=head1 SEE ALSO
-
-L<GIS::Distance::Fast> - C implmentation of some of the formulas
-shipped with GIS::Distance.  This greatly increases the speed at
-which distance calculations can be made.
-
 =head1 FORMULAS
 
-L<GIS::Distance::Cosine>
+These formulas come with this distribution:
 
-L<GIS::Distance::GeoEllipsoid>
+L<GIS::Distance::Cosine>
 
 L<GIS::Distance::GreatCircle>
 
@@ -167,6 +166,12 @@ L<GIS::Distance::MathTrig>
 L<GIS::Distance::Polar>
 
 L<GIS::Distance::Vincenty>
+
+These distributions are availabe separately:
+
+L<GID::Distance::Fast>
+
+L<GIS::Distance::GeoEllipsoid>
 
 =head1 TODO
 
