@@ -222,6 +222,7 @@ L<Geo::Distance::Google> looks pretty neat.
 Create a GIS::Coord class that represents a geographic coordinate.  Then modify
 this module to accept input as either lat/lon pairs, or as GIS::Coord objects.
 This would make coordinate conversion as described in L</COORDINATES> automatic.
+Maybe use L<Geo::Point>.
 
 =item *
 

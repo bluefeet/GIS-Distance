@@ -141,6 +141,7 @@ into the GIS::Distance interface.
 - Create a GIS::Coord class that represents a geographic coordinate.  Then modify
 this module to accept input as either lat/lon pairs, or as GIS::Coord objects.
 This would make coordinate conversion as described in ["COORDINATES"](#coordinates) automatic.
+Maybe use [Geo::Point](https://metacpan.org/pod/Geo::Point).
 - Create some sort of equivalent to [Geo::Distance](https://metacpan.org/pod/Geo::Distance)'s closest() method.
 - Write a formula module called GIS::Distance::Geoid.  Some very useful info is
 at [http://en.wikipedia.org/wiki/Geoid](http://en.wikipedia.org/wiki/Geoid).
