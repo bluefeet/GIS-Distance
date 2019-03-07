@@ -14,8 +14,7 @@ my $test_cases = {
 };
 my $test_case_count = @{[ keys %$test_cases ]} + 0;
 
-my $gis = GIS::Distance->new();
-my $formulas = [qw( Vincenty Cosine Haversine MathTrig GreatCircle )];
+my $formulas = [qw( Cosine GreatCircle Haversine MathTrig Vincenty )];
 
 foreach my $formula (@$formulas) {
     subtest "run $formula" => sub {
@@ -37,7 +36,7 @@ done_testing;
 
 sub test_formula {
     my ($formula) = @_;
-    $gis->formula( 'GIS::Distance::Formula::'.$formula );
+    my $gis = GIS::Distance->new( "GIS::Distance::$formula" );
     foreach my $title (keys %$test_cases) {
         my $case     = $test_cases->{$title};
         my $unit     = $case->[5];
