@@ -5,6 +5,7 @@ requires 'strictures' => '2.000000';
 requires 'Class::Measure::Length';
 requires 'Const::Fast' => '0.014';
 
+requires 'Carp';
 requires 'Math::Trig';
 
 recommends 'GIS::Distance::Fast' => '0.09';

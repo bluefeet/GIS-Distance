@@ -45,6 +45,7 @@
             "GIS::Distance::Fast" : "0.09"
          },
          "requires" : {
+            "Carp" : "0",
             "Class::Measure::Length" : "0",
             "Const::Fast" : "0.014",
             "Math::Trig" : "0",

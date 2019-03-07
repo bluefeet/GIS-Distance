@@ -2,6 +2,7 @@ Revision history for Perl extension GIS-Distance.
 
 {{$NEXT}}
 
+ - Declare Carp dep.
  - Fix some POD typos.
  - Recommend the newer GIS::Distance::Fast.
 
