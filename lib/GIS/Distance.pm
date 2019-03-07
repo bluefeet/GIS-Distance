@@ -21,10 +21,6 @@ sub new {
         "GIS::Distance::Fast::${formula}",
         "GIS::Distance::$formula",
 
-        # Continue supporting the older package names:
-        "GIS::Distance::Formula::${formula}::Fast",
-        "GIS::Distance::Formula::$formula",
-
         # Support custom formula classes:
         $formula,
     ) {
@@ -100,8 +96,8 @@ GIS::Distance - Calculate geographic distances.
 =head1 DESCRIPTION
 
 This module calculates distances between geographic points on, at the moment,
-plant Earth.  Various formulas are available that provide different levels of
-accuracy versus calculation speed tradeoffs.
+planet Earth.  Various L</FORMULAS> are available that provide different levels
+of accuracy versus speed.
 
 =head1 METHODS
 
@@ -116,7 +112,7 @@ See L</distance_km> to return raw kilometers instead.
 
 =head2 distance_km
 
-This works just like L</distance> but return a raw kilometer measurement.
+This works just like L</distance> but returns a raw kilometer measurement.
 
 =head1 ATTRIBUTES
 

@@ -19,8 +19,8 @@ GIS::Distance - Calculate geographic distances.
 # DESCRIPTION
 
 This module calculates distances between geographic points on, at the moment,
-plant Earth.  Various formulas are available that provide different levels of
-accuracy versus calculation speed tradeoffs.
+planet Earth.  Various ["FORMULAS"](#formulas) are available that provide different levels
+of accuracy versus speed.
 
 # METHODS
 
@@ -35,7 +35,7 @@ See ["distance\_km"](#distance_km) to return raw kilometers instead.
 
 ## distance\_km
 
-This works just like ["distance"](#distance) but return a raw kilometer measurement.
+This works just like ["distance"](#distance) but returns a raw kilometer measurement.
 
 # ATTRIBUTES
 
