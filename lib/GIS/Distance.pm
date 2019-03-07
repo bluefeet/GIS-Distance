@@ -185,9 +185,13 @@ L<GIS::Distance::Polar>
 
 L<GIS::Distance::Vincenty>
 
-These distributions are availabe separately:
+These formulas are available on CPAN:
 
-L<GID::Distance::Fast>
+L<GIS::Distance::Fast::Cosine>
+
+L<GIS::Distance::Fast::Haversine>
+
+L<GIS::Distance::Fast::Vincenty>
 
 L<GIS::Distance::GeoEllipsoid>
 

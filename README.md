@@ -108,9 +108,13 @@ These formulas come with this distribution:
 
 [GIS::Distance::Vincenty](https://metacpan.org/pod/GIS::Distance::Vincenty)
 
-These distributions are availabe separately:
+These formulas are available on CPAN:
 
-[GID::Distance::Fast](https://metacpan.org/pod/GID::Distance::Fast)
+[GIS::Distance::Fast::Cosine](https://metacpan.org/pod/GIS::Distance::Fast::Cosine)
+
+[GIS::Distance::Fast::Haversine](https://metacpan.org/pod/GIS::Distance::Fast::Haversine)
+
+[GIS::Distance::Fast::Vincenty](https://metacpan.org/pod/GIS::Distance::Fast::Vincenty)
 
 [GIS::Distance::GeoEllipsoid](https://metacpan.org/pod/GIS::Distance::GeoEllipsoid)
 
