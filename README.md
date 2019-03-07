@@ -99,10 +99,6 @@ this module to accept input as either lat/lon pairs, or as GIS::Coord objects.
 - Write a formula module called GIS::Distance::Geoid.  Some very useful info is
 at [http://en.wikipedia.org/wiki/Geoid](http://en.wikipedia.org/wiki/Geoid).
 
-# BUGS
-
-See ["BROKEN" in GIS::Distance::Polar](https://metacpan.org/pod/GIS::Distance::Polar#BROKEN).
-
 # SUPPORT
 
 Please submit bugs and feature requests to the GIS-Distance GitHub issue tracker:

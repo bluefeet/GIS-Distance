@@ -36,12 +36,11 @@ GIS::Distance::Cosine - Cosine distance calculations.
 Although this formula is mathematically exact, it is unreliable for
 small distances because the inverse cosine is ill-conditioned.
 
+A faster (XS) version of this formula is available as
+L<GIS::Distance::Fast::Cosine>.
+
 Normally this module is not used directly.  Instead L<GIS::Distance>
 is used which in turn interfaces with the various formula modules.
-
-=head1 ARGUMENTS
-
-Takes none.
 
 =head1 FORMULA
 
@@ -49,12 +48,6 @@ Takes none.
     b = cos(lat1) * cos(lat2) * cos(lon2 - lon1)
     c = arccos(a + b)
     d = R * c
-
-=head1 SEE ALSO
-
-L<GIS::Distance>
-
-L<GIS::Distance::Fast::Cosine>
 
 =head1 AUTHORS AND LICENSE
 

@@ -2,6 +2,8 @@ Revision history for Perl extension GIS-Distance.
 
 {{$NEXT}}
 
+ - Don't support older ::Formula modules, makes no sense and
+   they wouldn't work anyways.
  - Declare Carp dep.
  - Fix some POD typos.
  - Recommend the newer GIS::Distance::Fast.

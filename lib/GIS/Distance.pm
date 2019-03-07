@@ -188,10 +188,6 @@ at L<http://en.wikipedia.org/wiki/Geoid>.
 
 =back
 
-=head1 BUGS
-
-See L<GIS::Distance::Polar/BROKEN>.
-
 =head1 SUPPORT
 
 Please submit bugs and feature requests to the GIS-Distance GitHub issue tracker:

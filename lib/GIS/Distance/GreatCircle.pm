@@ -52,10 +52,6 @@ is used which in turn interfaces with the various formula modules.
         ( sin(( lon1 - lon2 )/2) )**2
     ) )
 
-=head1 SEE ALSO
-
-L<GIS::Distance>
-
 =head1 AUTHORS AND LICENSE
 
 See L<GIS::Distance/AUTHORS> and L<GIS::Distance/LICENSE>.

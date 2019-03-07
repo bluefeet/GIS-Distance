@@ -37,6 +37,9 @@ GIS::Distance::Haversine - Exact spherical distance calculations.
 This is the default distance calculation for L<GIS::Distance> as
 it keeps a good balance between speed and accuracy.
 
+A faster (XS) version of this formula is available as
+L<GIS::Distance::Fast::Haversine>.
+
 Normally this module is not used directly.  Instead L<GIS::Distance>
 is used which in turn interfaces with the various formula modules.
 
@@ -47,12 +50,6 @@ is used which in turn interfaces with the various formula modules.
     a = (sin(dlat/2))^2 + cos(lat1) * cos(lat2) * (sin(dlon/2))^2
     c = 2 * atan2( sqrt(a), sqrt(1-a) )
     d = R * c
-
-=head1 SEE ALSO
-
-L<GIS::Distance>
-
-L<GIS::Distance::Fast::Haversine>
 
 =head1 RESOURCES
 

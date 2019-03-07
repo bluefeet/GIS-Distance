@@ -43,17 +43,11 @@ is used which in turn interfaces with the various formula modules.
 
 =head1 FORMULA
 
+As stated in the L<Math::Trig> POD:
+
     lat0 = 90 degrees - phi0
     lat1 = 90 degrees - phi1
     d = R * arccos(cos(lat0) * cos(lat1) * cos(lon1 - lon01) + sin(lat0) * sin(lat1))
-
-As stated in the L<Math::Trig> POD.
-
-=head1 SEE ALSO
-
-L<GIS::Distance>
-
-L<Math::Trig>
 
 =head1 AUTHORS AND LICENSE
 
