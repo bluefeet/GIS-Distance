@@ -4,6 +4,7 @@ requires 'strictures' => '2.000000';
 
 requires 'Class::Measure::Length';
 requires 'Math::Trig';
+requires 'Const::Fast' => '0.014';
 
 recommends 'GIS::Distance::Fast' => '0.04';
 recommends 'Geo::Ellipsoid' => '0.902';
