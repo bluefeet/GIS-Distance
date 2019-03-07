@@ -151,6 +151,21 @@ their respective documentation.
 
 Returns the fully qualified module name that L</formula> resolved to.
 
+=head1 COORDINATES
+
+When passing latitudinal and longitudinal coordinates to L</distance> and
+L</distance_km> they must always be in decimal degree format.  Here is some
+sample code for converting from other formats to decimal:
+
+    # DMS to Decimal
+    my $decimal = $degrees + ($minutes/60) + ($seconds/3600);
+    
+    # Precision Six Integer to Decimal
+    my $decimal = $integer * .000001;
+
+If you want to convert from decimal radians to degrees you can use L<Math::Trig>'s
+rad2deg function.
+
 =head1 FORMULAS
 
 These formulas come with this distribution:
@@ -173,6 +188,24 @@ L<GID::Distance::Fast>
 
 L<GIS::Distance::GeoEllipsoid>
 
+=head1 SEE ALSO
+
+L<GIS::Distance::Lite> was long ago forked from GIS::Distance and modified
+to have less dependencies.  Since then GIS::Distance itself has become
+tremendously lighter dep-wise, and is still maintained, I suggest you not
+use GIS::Distance::Lite.
+
+L<Geo::Distance> and L<Geo::Distance::XS> have long been deprecated in favor
+of using this module.
+
+L<Geo::Inverse> seems to do some distance calculation using L<Geo::Ellipsoid>
+but if you look at the source code it clearly states that the entire meat of
+it is copied from Geo::Ellipsoid... so I'm not sure why it exists... just use
+Geo::Ellipsoid or L<GIS::Distance::GeoEllipsoid> which wraps Geo::Ellipsoid
+into the GIS::Distance interface.
+
+L<Geo::Distance::Google> looks pretty neat.
+
 =head1 TODO
 
 =over 4
@@ -181,6 +214,7 @@ L<GIS::Distance::GeoEllipsoid>
 
 Create a GIS::Coord class that represents a geographic coordinate.  Then modify
 this module to accept input as either lat/lon pairs, or as GIS::Coord objects.
+This would make coordinate conversion as described in L</COORDINATES> automatic.
 
 =item *
 
@@ -190,6 +224,11 @@ Create some sort of equivalent to L<Geo::Distance>'s closest() method.
 
 Write a formula module called GIS::Distance::Geoid.  Some very useful info is
 at L<http://en.wikipedia.org/wiki/Geoid>.
+
+=item *
+
+Make L<GIS::Distance::Google> (or some such name) and wrap it around
+L<Geo::Distance::Google> (most likely).
 
 =back
 

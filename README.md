@@ -74,6 +74,21 @@ their respective documentation.
 
 Returns the fully qualified module name that ["formula"](#formula) resolved to.
 
+# COORDINATES
+
+When passing latitudinal and longitudinal coordinates to ["distance"](#distance) and
+["distance\_km"](#distance_km) they must always be in decimal degree format.  Here is some
+sample code for converting from other formats to decimal:
+
+    # DMS to Decimal
+    my $decimal = $degrees + ($minutes/60) + ($seconds/3600);
+    
+    # Precision Six Integer to Decimal
+    my $decimal = $integer * .000001;
+
+If you want to convert from decimal radians to degrees you can use [Math::Trig](https://metacpan.org/pod/Math::Trig)'s
+rad2deg function.
+
 # FORMULAS
 
 These formulas come with this distribution:
@@ -96,13 +111,34 @@ These distributions are availabe separately:
 
 [GIS::Distance::GeoEllipsoid](https://metacpan.org/pod/GIS::Distance::GeoEllipsoid)
 
+# SEE ALSO
+
+[GIS::Distance::Lite](https://metacpan.org/pod/GIS::Distance::Lite) was long ago forked from GIS::Distance and modified
+to have less dependencies.  Since then GIS::Distance itself has become
+tremendously lighter dep-wise, and is still maintained, I suggest you not
+use GIS::Distance::Lite.
+
+[Geo::Distance](https://metacpan.org/pod/Geo::Distance) and [Geo::Distance::XS](https://metacpan.org/pod/Geo::Distance::XS) have long been deprecated in favor
+of using this module.
+
+[Geo::Inverse](https://metacpan.org/pod/Geo::Inverse) seems to do some distance calculation using [Geo::Ellipsoid](https://metacpan.org/pod/Geo::Ellipsoid)
+but if you look at the source code it clearly states that the entire meat of
+it is copied from Geo::Ellipsoid... so I'm not sure why it exists... just use
+Geo::Ellipsoid or [GIS::Distance::GeoEllipsoid](https://metacpan.org/pod/GIS::Distance::GeoEllipsoid) which wraps Geo::Ellipsoid
+into the GIS::Distance interface.
+
+[Geo::Distance::Google](https://metacpan.org/pod/Geo::Distance::Google) looks pretty neat.
+
 # TODO
 
 - Create a GIS::Coord class that represents a geographic coordinate.  Then modify
 this module to accept input as either lat/lon pairs, or as GIS::Coord objects.
+This would make coordinate conversion as described in ["COORDINATES"](#coordinates) automatic.
 - Create some sort of equivalent to [Geo::Distance](https://metacpan.org/pod/Geo::Distance)'s closest() method.
 - Write a formula module called GIS::Distance::Geoid.  Some very useful info is
 at [http://en.wikipedia.org/wiki/Geoid](http://en.wikipedia.org/wiki/Geoid).
+- Make [GIS::Distance::Google](https://metacpan.org/pod/GIS::Distance::Google) (or some such name) and wrap it around
+[Geo::Distance::Google](https://metacpan.org/pod/Geo::Distance::Google) (most likely).
 
 # SUPPORT
 
