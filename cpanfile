@@ -7,7 +7,6 @@ requires 'Math::Trig';
 requires 'Const::Fast' => '0.014';
 
 recommends 'GIS::Distance::Fast' => '0.04';
-recommends 'Geo::Ellipsoid' => '0.902';
 
 on test => sub {
     requires 'Test2::V0' => '0.000094';

@@ -42,8 +42,7 @@
       },
       "runtime" : {
          "recommends" : {
-            "GIS::Distance::Fast" : "0.04",
-            "Geo::Ellipsoid" : "0.902"
+            "GIS::Distance::Fast" : "0.04"
          },
          "requires" : {
             "Class::Measure::Length" : "0",

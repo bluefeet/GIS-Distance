@@ -23,15 +23,6 @@ foreach my $formula (@$formulas) {
     };
 }
 
-subtest 'run GeoEllipsoid' => sub {
-    eval { require Geo::Ellipsoid };
-    plan skip_all => 'Geo::Ellipsoid is not installed' if $@;
-
-    test_formula( 'GeoEllipsoid' );
-
-    done_testing;
-};
-
 done_testing;
 
 sub test_formula {
