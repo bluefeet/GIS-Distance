@@ -54,7 +54,7 @@ is used which in turn interfaces with the various formula modules.
 
 =head1 SEE ALSO
 
-L<GIS::Distanc>
+L<GIS::Distance>
 
 =head1 AUTHORS AND LICENSE
 

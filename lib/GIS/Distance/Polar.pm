@@ -55,7 +55,7 @@ the implementation is) as you can see in C<t/polar.t>.
 
 =head1 SEE ALSO
 
-L<GIS::Distanc>
+L<GIS::Distance>
 
 =head1 AUTHORS AND LICENSE
 

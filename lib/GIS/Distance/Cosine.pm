@@ -52,7 +52,7 @@ Takes none.
 
 =head1 SEE ALSO
 
-L<GIS::Distanc>
+L<GIS::Distance>
 
 L<GIS::Distance::Fast::Cosine>
 

@@ -51,7 +51,7 @@ As stated in the L<Math::Trig> POD.
 
 =head1 SEE ALSO
 
-L<GIS::Distanc>
+L<GIS::Distance>
 
 L<Math::Trig>
 
