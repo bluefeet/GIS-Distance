@@ -29,7 +29,7 @@ __END__
 
 =head1 NAME
 
-GIS::Distance::Cosine - Cosine distance calculations.
+GIS::Distance::Cosine - Spherical law of cosines distance calculations.
 
 =head1 DESCRIPTION
 
@@ -48,6 +48,10 @@ is used which in turn interfaces with the various formula modules.
     b = cos(lat1) * cos(lat2) * cos(lon2 - lon1)
     c = arccos(a + b)
     d = R * c
+
+=head1 SEE ALSO
+
+L<https://en.wikipedia.org/wiki/Spherical_law_of_cosines>
 
 =head1 AUTHORS AND LICENSE
 

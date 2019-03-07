@@ -63,6 +63,9 @@ the `Fast::` versions of the formulas, written in C, are not available and the
 pure perl ones will be used instead.  If you would like the `Fast::` formulas
 then install [GIS::Distance::Fast](https://metacpan.org/pod/GIS::Distance::Fast) and they will be automatically used.
 
+You may disable the automatic use of the `Fast::` formulas by setting the
+`GIS_DISTANCE_PP` environment variable.
+
 ## args
 
 Returns the formula arguments, an array ref, containing the rest of the

@@ -17,13 +17,13 @@ sub new {
         args    => \@args,
     }, $class;
 
-    foreach my $module (
-        "GIS::Distance::Fast::${formula}",
-        "GIS::Distance::$formula",
+    my @modules;
+    push @modules, "GIS::Distance::Fast::${formula}"
+        unless $ENV{GIS_DISTANCE_PP} or $ENV{GEO_DISTANCE_PP};
+    push @modules, "GIS::Distance::$formula";
+    push @modules, $formula;
 
-        # Support custom formula classes:
-        $formula,
-    ) {
+    foreach my $module (@modules) {
         my $code = $module->can('distance');
 
         if (!$code) {
@@ -139,6 +139,9 @@ Note that a C<Fast::> version of the class will be looked for first.  By default
 the C<Fast::> versions of the formulas, written in C, are not available and the
 pure perl ones will be used instead.  If you would like the C<Fast::> formulas
 then install L<GIS::Distance::Fast> and they will be automatically used.
+
+You may disable the automatic use of the C<Fast::> formulas by setting the
+C<GIS_DISTANCE_PP> environment variable.
 
 =head2 args
 

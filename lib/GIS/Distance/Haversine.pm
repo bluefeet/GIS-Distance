@@ -23,6 +23,19 @@ sub distance {
     return $KILOMETER_RHO * $c;
 }
 
+# Eric Samuelson recommended this formula.
+# http://forums.devshed.com/t54655/sc3d021a264676b9b440ea7cbe1f775a1.html
+# http://williams.best.vwh.net/avform.htm
+# It seems to produce the same results at the hsin formula, so...
+#
+# my $dlon = $lon2 - $lon1;
+# my $dlat = $lat2 - $lat1;
+# my $a = (sin($dlat / 2)) ** 2
+#     + cos($lat1) * cos($lat2) * (sin($dlon / 2)) ** 2;
+# $c = 2 * atan2(sqrt($a), sqrt(1 - $a));
+#
+# Maybe test for speed before tossing?
+
 1;
 __END__
 

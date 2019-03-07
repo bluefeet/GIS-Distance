@@ -2,10 +2,11 @@ Revision history for Perl extension GIS-Distance.
 
 {{$NEXT}}
 
+ - Support the GIS_DISTANCE_PP environment variable.
  - Don't support older ::Formula modules, makes no sense and
    they wouldn't work anyways.
  - Declare Carp dep.
- - Fix some POD typos.
+ - Lots and lots of documentation edits.
  - Recommend the newer GIS::Distance::Fast.
 
 0.10 2019-03-07T16:28:48Z
