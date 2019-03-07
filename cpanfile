@@ -3,8 +3,9 @@ requires 'perl' => '5.008001';
 requires 'strictures' => '2.000000';
 
 requires 'Class::Measure::Length';
-requires 'Math::Trig';
 requires 'Const::Fast' => '0.014';
+
+requires 'Math::Trig';
 
 recommends 'GIS::Distance::Fast' => '0.09';
 
