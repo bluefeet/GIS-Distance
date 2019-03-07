@@ -1,7 +1,7 @@
 package GIS::Distance::Cosine;
 use 5.008001;
 use strictures 2;
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 use Math::Trig qw( deg2rad acos );
 use GIS::Distance::Constants qw( :all );
