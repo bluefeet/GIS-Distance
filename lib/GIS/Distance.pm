@@ -217,6 +217,8 @@ L<GIS::Distance::Haversine>
 
 L<GIS::Distance::MathTrig>
 
+L<GIS::Distance::Null>
+
 L<GIS::Distance::Polar>
 
 L<GIS::Distance::Vincenty>

@@ -132,6 +132,8 @@ These formulas come with this distribution:
 
 [GIS::Distance::MathTrig](https://metacpan.org/pod/GIS::Distance::MathTrig)
 
+[GIS::Distance::Null](https://metacpan.org/pod/GIS::Distance::Null)
+
 [GIS::Distance::Polar](https://metacpan.org/pod/GIS::Distance::Polar)
 
 [GIS::Distance::Vincenty](https://metacpan.org/pod/GIS::Distance::Vincenty)

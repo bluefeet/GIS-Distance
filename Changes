@@ -2,6 +2,8 @@ Revision history for Perl extension GIS-Distance.
 
 {{$NEXT}}
 
+ - Added GIS::Distance::Null, the fastest formula yet.
+
 0.12 2019-03-08T18:32:13Z
 
  - Added the distance_metal() method to GIS::Distance.
