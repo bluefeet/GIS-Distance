@@ -4,10 +4,7 @@ use strictures 2;
 use Benchmark qw( cmpthese );
 
 use Geo::Distance;
-BEGIN {
-    no warnings 'ref';
-    *Geo::Distance::new_distance = \&Geo::Distance::distance;
-}
+BEGIN { *Geo::Distance::new_distance = \&Geo::Distance::distance }
 use Geo::Distance::XS;
 
 # Geo::Distance::new_distance() proxies to GIS::Distance.
@@ -17,44 +14,50 @@ use Geo::Distance::XS;
 my $geo = Geo::Distance->new();
 $geo->formula('hsin');
 
-my $gis = GIS::Distance->new( 'GIS::Distance::Fast::Haversine' );
+my $gis_xs = GIS::Distance->new( 'GIS::Distance::Fast::Haversine' );
+my $gis_pp = GIS::Distance->new( 'GIS::Distance::Haversine' );
 
 my @coords = ( 34.202361, -118.601875,  37.752258, -122.441254 );
 
-# These tests aren't for comparing Perl to XS, so they all
-# are using the C haversine for better apples to apples and
-# benchmark runtime.
-
 my @tests = (
-    ['Geo::Distance::new_distance' => sub{
+    ['Geo::Distance::new_distance-gis_xs' => sub{
         return $geo->new_distance( 'kilometer', @coords );
     }],
-    ['Geo::Distance::distance' => sub{
+    ['Geo::Distance::distance-geo_xs' => sub{
         return $geo->distance( 'kilometer', @coords );
     }],
-    ['Geo::Distance::old_distance' => sub{
+    ['Geo::Distance::old_distance-geo_pp' => sub{
         return $geo->old_distance( 'kilometer', @coords );
     }],
 
-    ['Geo::Distance::XS::distance' => sub{
+    ['GIS::Distance::distance-xs' => sub{
+        return $gis_xs->distance( @coords );
+    }],
+    ['GIS::Distance::distance-pp' => sub{
+        return $gis_pp->distance( @coords );
+    }],
+
+    ['GIS::Distance::distance_km-xs' => sub{
+        return $gis_xs->distance_km( @coords );
+    }],
+    ['GIS::Distance::distance_km-pp' => sub{
+        return $gis_pp->distance_km( @coords );
+    }],
+
+    ['Geo::Distance::XS::distance-xs' => sub{
         return Geo::Distance::XS::distance(
             $geo, 'kilometer', @coords,
         );
     }],
-
-    ['GIS::Distance::distance' => sub{
-        return $gis->distance( @coords );
-    }],
-    ['GIS::Distance::distance_km' => sub{
-        return $gis->distance_km( @coords );
-    }],
-
-    ['GIS::Distance::Fast::Haversine::distance' => sub{
+    ['GIS::Distance::Fast::Haversine::distance-xs' => sub{
         return GIS::Distance::Fast::Haversine::distance(
             @coords,
         );
     }],
 );
+
+# Run them all once in case there are runtime errors.
+$_->[1]->() for @tests;
 
 cmpthese(
     5_000_000,
