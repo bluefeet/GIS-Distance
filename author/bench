@@ -13,10 +13,10 @@ use Geo::Distance::XS;
 # Geo::Distance::old_distance() is pure-perl, pre GIS::Distance gutting.
 
 my $geo = Geo::Distance->new();
-$geo->formula('hsin');
+$geo->formula('null');
 
-my $gis_xs = GIS::Distance->new( 'GIS::Distance::Fast::Haversine' );
-my $gis_pp = GIS::Distance->new( 'GIS::Distance::Haversine' );
+my $gis_xs = GIS::Distance->new( 'GIS::Distance::Fast::Null' );
+my $gis_pp = GIS::Distance->new( 'GIS::Distance::Null' );
 
 my @coords = ( 34.202361, -118.601875,  37.752258, -122.441254 );
 
@@ -57,13 +57,13 @@ my @tests = (
             $geo, 'kilometer', @coords,
         );
     }],
-    ['GIS::Distance::Fast::Haversine::distance-xs' => sub{
-        return GIS::Distance::Fast::Haversine::distance(
+    ['GIS::Distance::Fast::Null::distance-xs' => sub{
+        return GIS::Distance::Fast::Null::distance(
             @coords,
         );
     }],
-    ['GIS::Distance::Haversine::distance-pp' => sub{
-        return GIS::Distance::Haversine::distance(
+    ['GIS::Distance::Null::distance-pp' => sub{
+        return GIS::Distance::Null::distance(
             @coords,
         );
     }],
