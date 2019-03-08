@@ -1,0 +1,62 @@
+#!/usr/bin/env perl
+use strictures 2;
+
+use Benchmark qw( cmpthese );
+
+use Geo::Distance;
+BEGIN {
+    no warnings 'ref';
+    *Geo::Distance::new_distance = \&Geo::Distance::distance;
+}
+use Geo::Distance::XS;
+
+# Geo::Distance::new_distance() proxies to GIS::Distance.
+# Geo::Distance::distance() is installed by Geo::Distance::XS.
+# Geo::Distance::old_distance() is pure-perl, pre GIS::Distance gutting.
+
+my $geo = Geo::Distance->new();
+$geo->formula('hsin');
+
+my $gis = GIS::Distance->new( 'GIS::Distance::Fast::Haversine' );
+
+my @coords = ( 34.202361, -118.601875,  37.752258, -122.441254 );
+
+# These tests aren't for comparing Perl to XS, so they all
+# are using the C haversine for better apples to apples and
+# benchmark runtime.
+
+my @tests = (
+    ['Geo::Distance::new_distance' => sub{
+        return $geo->new_distance( 'kilometer', @coords );
+    }],
+    ['Geo::Distance::distance' => sub{
+        return $geo->distance( 'kilometer', @coords );
+    }],
+    ['Geo::Distance::old_distance' => sub{
+        return $geo->old_distance( 'kilometer', @coords );
+    }],
+
+    ['Geo::Distance::XS::distance' => sub{
+        return Geo::Distance::XS::distance(
+            $geo, 'kilometer', @coords,
+        );
+    }],
+
+    ['GIS::Distance::distance' => sub{
+        return $gis->distance( @coords );
+    }],
+    ['GIS::Distance::distance_km' => sub{
+        return $gis->distance_km( @coords );
+    }],
+
+    ['GIS::Distance::Fast::Haversine::distance' => sub{
+        return GIS::Distance::Fast::Haversine::distance(
+            @coords,
+        );
+    }],
+);
+
+cmpthese(
+    5_000_000,
+    { map { @$_ } @tests },
+);
