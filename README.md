@@ -35,12 +35,20 @@ then install it and the ::Fast formulas will be automatically used by this modul
 Returns a [Class::Measure::Length](https://metacpan.org/pod/Class::Measure::Length) object for the distance between the
 two degree lats/lons.
 
-See ["distance\_km"](#distance_km) to return raw kilometers instead.
+See ["distance\_km"](#distance_km) and ["distance\_metal"](#distance_metal) to return raw kilometers instead.
 
 ## distance\_km
 
 This works just like ["distance"](#distance), but returns a raw kilometer measurement,
 and is faster when benchmarked over millions of iterations.
+
+## distance\_metal
+
+This works just like ["distance\_km"](#distance_km), but does no argument checking and ignores
+any formula ["args"](#args).  Calling this gets you pretty close to the fastest bare
+metal speed you can get.  Again, like with ["distance\_km"](#distance_km), the speed
+improvements of calling this is noticeable over millions of iterations only
+and you've got to decide if its worth the safety and features you are dropping.
 
 # ATTRIBUTES
 
@@ -86,7 +94,7 @@ faster.  Here are some options.
 
 Install [GIS::Distance::Fast](https://metacpan.org/pod/GIS::Distance::Fast).
 
-Use ["distance\_km"](#distance_km) instead of ["distance"](#distance).
+Use ["distance\_km"](#distance_km) or ["distance\_metal"](#distance_metal) instead of ["distance"](#distance).
 
 Call the undocumented `distance()` function that each formula module
 has.  For example you could bypass this module entirely and just do:
@@ -99,9 +107,9 @@ but throws away some flexibility and adds some foot-gun support.
 
 # COORDINATES
 
-When passing latitudinal and longitudinal coordinates to ["distance"](#distance) and
-["distance\_km"](#distance_km) they must always be in decimal degree format.  Here is some
-sample code for converting from other formats to decimal:
+When passing latitudinal and longitudinal coordinates to ["distance"](#distance)
+they must always be in decimal degree format.  Here is some sample code
+for converting from other formats to decimal:
 
     # DMS to Decimal
     my $decimal = $degrees + ($minutes/60) + ($seconds/3600);

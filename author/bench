@@ -44,6 +44,13 @@ my @tests = (
         return $gis_pp->distance_km( @coords );
     }],
 
+    ['GIS::Distance::distance_metal-xs' => sub{
+        return $gis_xs->distance_metal( @coords );
+    }],
+    ['GIS::Distance::distance_metal-pp' => sub{
+        return $gis_pp->distance_metal( @coords );
+    }],
+
     ['Geo::Distance::XS::distance-xs' => sub{
         return Geo::Distance::XS::distance(
             $geo, 'kilometer', @coords,

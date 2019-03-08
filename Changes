@@ -2,6 +2,7 @@ Revision history for Perl extension GIS-Distance.
 
 {{$NEXT}}
 
+ - Added the distance_metal() method to GIS::Distance.
  - Various documentation edits, including a new SPEED section.
 
 0.11 2019-03-07T22:23:02Z
