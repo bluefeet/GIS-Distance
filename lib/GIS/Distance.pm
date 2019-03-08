@@ -237,6 +237,10 @@ at L<http://en.wikipedia.org/wiki/Geoid>.
 Make L<GIS::Distance::Google> (or some such name) and wrap it around
 L<Geo::Distance::Google> (most likely).
 
+=item *
+
+Figure out why L<GIS::Distance::Polar> has issues.
+
 =back
 
 =head1 SUPPORT

@@ -146,6 +146,7 @@ Maybe use [Geo::Point](https://metacpan.org/pod/Geo::Point).
 at [http://en.wikipedia.org/wiki/Geoid](http://en.wikipedia.org/wiki/Geoid).
 - Make [GIS::Distance::Google](https://metacpan.org/pod/GIS::Distance::Google) (or some such name) and wrap it around
 [Geo::Distance::Google](https://metacpan.org/pod/Geo::Distance::Google) (most likely).
+- Figure out why [GIS::Distance::Polar](https://metacpan.org/pod/GIS::Distance::Polar) has issues.
 
 # SUPPORT
 
