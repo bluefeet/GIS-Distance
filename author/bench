@@ -31,10 +31,10 @@ my @tests = (
     }],
 
     ['GIS::Distance::distance-xs' => sub{
-        return $gis_xs->distance( @coords );
+        return $gis_xs->distance( @coords )->km();
     }],
     ['GIS::Distance::distance-pp' => sub{
-        return $gis_pp->distance( @coords );
+        return $gis_pp->distance( @coords )->km();
     }],
 
     ['GIS::Distance::distance_km-xs' => sub{
