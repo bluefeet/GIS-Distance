@@ -16,9 +16,11 @@ Revision history for Perl extension GIS-Distance.
 
 0.10 2019-03-07T16:28:48Z
 
+ - WARNING: The GIS::Distance object is now immutable, thus the
+   formula can no longer be set with the formula attribute!
  - Moved GIS::Distance::GeoEllipsoid to a separate distro.
  - Added the distance_km() method to GIS::Distance.
- - Removed Moo/Type::Tiny, all unecessary, simple OO.
+ - Removed Moo and Type::Tiny, all unecessary, simple OO.
  - Move GIS::Distance::Formula:: modules to GIS::Distance::.
  - Migrate build tooling from Dist::Zilla to Minilla.
 

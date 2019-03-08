@@ -225,7 +225,11 @@ These formulas are available on CPAN:
 
 L<GIS::Distance::Fast::Cosine>
 
+L<GIS::Distance::Fast::GreatCircle>
+
 L<GIS::Distance::Fast::Haversine>
+
+L<GIS::Distance::Fast::Polar>
 
 L<GIS::Distance::Fast::Vincenty>
 

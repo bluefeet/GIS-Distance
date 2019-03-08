@@ -2,6 +2,7 @@
 use strictures 2;
 
 use Benchmark qw( cmpthese );
+use List::Util qw( any );
 
 use Geo::Distance;
 BEGIN { *Geo::Distance::new_distance = \&Geo::Distance::distance }
@@ -65,6 +66,14 @@ my @tests = (
 
 # Run them all once in case there are runtime errors.
 $_->[1]->() for @tests;
+
+@tests = (
+    grep {
+        my $test = $_;
+        any { $test->[0] eq $_ } @ARGV;
+    }
+    @tests
+) if @ARGV;
 
 cmpthese(
     5_000_000,
