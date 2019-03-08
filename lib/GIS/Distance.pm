@@ -204,6 +204,8 @@ use GIS::Distance::Lite.
 
 L<Geo::Distance> has long been deprecated in favor of using this module.
 
+L<Geo::Distance::XS> used to be used by L<Geo::Distance> but no longer does.
+
 L<Geo::Inverse> seems to do some distance calculation using L<Geo::Ellipsoid>
 but if you look at the source code it clearly states that the entire meat of
 it is copied from Geo::Ellipsoid... so I'm not sure why it exists... just use

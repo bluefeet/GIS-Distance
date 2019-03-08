@@ -127,6 +127,8 @@ use GIS::Distance::Lite.
 
 [Geo::Distance](https://metacpan.org/pod/Geo::Distance) has long been deprecated in favor of using this module.
 
+[Geo::Distance::XS](https://metacpan.org/pod/Geo::Distance::XS) used to be used by [Geo::Distance](https://metacpan.org/pod/Geo::Distance) but no longer does.
+
 [Geo::Inverse](https://metacpan.org/pod/Geo::Inverse) seems to do some distance calculation using [Geo::Ellipsoid](https://metacpan.org/pod/Geo::Ellipsoid)
 but if you look at the source code it clearly states that the entire meat of
 it is copied from Geo::Ellipsoid... so I'm not sure why it exists... just use
