@@ -202,8 +202,7 @@ to have less dependencies.  Since then GIS::Distance itself has become
 tremendously lighter dep-wise, and is still maintained, I suggest you not
 use GIS::Distance::Lite.
 
-L<Geo::Distance> and L<Geo::Distance::XS> have long been deprecated in favor
-of using this module.
+L<Geo::Distance> has long been deprecated in favor of using this module.
 
 L<Geo::Inverse> seems to do some distance calculation using L<Geo::Ellipsoid>
 but if you look at the source code it clearly states that the entire meat of

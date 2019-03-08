@@ -125,8 +125,7 @@ to have less dependencies.  Since then GIS::Distance itself has become
 tremendously lighter dep-wise, and is still maintained, I suggest you not
 use GIS::Distance::Lite.
 
-[Geo::Distance](https://metacpan.org/pod/Geo::Distance) and [Geo::Distance::XS](https://metacpan.org/pod/Geo::Distance::XS) have long been deprecated in favor
-of using this module.
+[Geo::Distance](https://metacpan.org/pod/Geo::Distance) has long been deprecated in favor of using this module.
 
 [Geo::Inverse](https://metacpan.org/pod/Geo::Inverse) seems to do some distance calculation using [Geo::Ellipsoid](https://metacpan.org/pod/Geo::Ellipsoid)
 but if you look at the source code it clearly states that the entire meat of
