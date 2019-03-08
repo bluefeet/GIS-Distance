@@ -59,7 +59,10 @@ sub distance {
 
     croak 'Four arguments must be passed to distance()' if @_!=4;
 
-    return length( $self->distance_km(@_), 'km' );
+    return length(
+        $self->{code}->( @_, @{$self->{args}} ),
+        'km',
+    );
 }
 
 sub distance_km {
@@ -116,7 +119,8 @@ See L</distance_km> to return raw kilometers instead.
 
 =head2 distance_km
 
-This works just like L</distance> but returns a raw kilometer measurement.
+This works just like L</distance>, but returns a raw kilometer measurement,
+and is faster when benchmarked over millions of iterations.
 
 =head1 ATTRIBUTES
 
@@ -153,6 +157,25 @@ their respective documentation.
 =head2 module
 
 Returns the fully qualified module name that L</formula> resolved to.
+
+=head1 SPEED
+
+Not that this module is slow, but if you're doing millions of distance
+calculations you may find that adjusting your code a bit may make it
+faster.  Here are some options.
+
+Install L<GIS::Distance::Fast>.
+
+Use L</distance_km> instead of L</distance>.
+
+Call the undocumented C<distance()> function that each formula module
+has.  For example you could bypass this module entirely and just do:
+
+    use GIS::Distance::Fast::Haversine;
+    my $km = GIS::Distance::Fast::Haversine::distance( @coords );
+
+The above would be the ultimate speed demon (as shown in benchmarking)
+but throws away some flexibility and adds some foot-gun support.
 
 =head1 COORDINATES
 

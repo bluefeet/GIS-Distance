@@ -39,7 +39,8 @@ See ["distance\_km"](#distance_km) to return raw kilometers instead.
 
 ## distance\_km
 
-This works just like ["distance"](#distance) but returns a raw kilometer measurement.
+This works just like ["distance"](#distance), but returns a raw kilometer measurement,
+and is faster when benchmarked over millions of iterations.
 
 # ATTRIBUTES
 
@@ -76,6 +77,25 @@ their respective documentation.
 ## module
 
 Returns the fully qualified module name that ["formula"](#formula) resolved to.
+
+# SPEED
+
+Not that this module is slow, but if you're doing millions of distance
+calculations you may find that adjusting your code a bit may make it
+faster.  Here are some options.
+
+Install [GIS::Distance::Fast](https://metacpan.org/pod/GIS::Distance::Fast).
+
+Use ["distance\_km"](#distance_km) instead of ["distance"](#distance).
+
+Call the undocumented `distance()` function that each formula module
+has.  For example you could bypass this module entirely and just do:
+
+    use GIS::Distance::Fast::Haversine;
+    my $km = GIS::Distance::Fast::Haversine::distance( @coords );
+
+The above would be the ultimate speed demon (as shown in benchmarking)
+but throws away some flexibility and adds some foot-gun support.
 
 # COORDINATES
 
