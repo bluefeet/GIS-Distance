@@ -2,6 +2,9 @@ Revision history for Perl extension GIS-Distance.
 
 {{$NEXT}}
 
+0.13 2019-03-09T12:32:55Z
+
+ - Add abs() to Haversine.
  - Added GIS::Distance::Null, the fastest formula yet.
 
 0.12 2019-03-08T18:32:13Z

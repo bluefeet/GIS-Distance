@@ -1,7 +1,7 @@
 package GIS::Distance::Haversine;
 use 5.008001;
 use strictures 2;
-our $VERSION = '0.12';
+our $VERSION = '0.13';
 
 use Math::Trig qw( deg2rad );
 use GIS::Distance::Constants qw( :all );
@@ -18,7 +18,7 @@ sub distance {
     my $dlon = $lon2 - $lon1;
     my $dlat = $lat2 - $lat1;
     my $a = (sin($dlat/2)) ** 2 + cos($lat1) * cos($lat2) * (sin($dlon/2)) ** 2;
-    my $c = 2 * atan2(sqrt($a), sqrt(1-$a));
+    my $c = 2 * atan2(sqrt($a), sqrt(abs(1-$a)));
 
     return $KILOMETER_RHO * $c;
 }
