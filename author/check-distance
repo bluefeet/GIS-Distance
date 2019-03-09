@@ -1,0 +1,51 @@
+#!/usr/bin/env perl
+use strictures 2;
+
+use Module::Find qw( findallmod );
+
+use Geo::Distance;
+use Geo::Distance::XS;
+
+# Geo::Distance::distance() is installed by Geo::Distance::XS.
+# Geo::Distance::old_distance() is pure-perl, pre GIS::Distance gutting.
+
+my @gis_formulas = (
+    grep { $_ !~ m{::Formula} }
+    grep { $_ ne 'GIS::Distance::Constants' }
+    grep { $_ ne 'GIS::Distance::Fast' }
+    findallmod('GIS::Distance')
+);
+
+# Beirut to Dimashq.
+my @coords = ( 33.863146, 35.52824, 33.516496, 36.287842 );
+
+my %distances;
+
+foreach my $formula (@gis_formulas) {
+    my $gis = GIS::Distance->new( $formula );
+    my $km = $gis->distance( @coords );
+    $distances{ $formula } = $km;
+}
+
+my @geo_pp_formulas = @Geo::Distance::FORMULAS;
+
+foreach my $formula (@geo_pp_formulas) {
+    my $geo = Geo::Distance->new();
+    $geo->formula( $formula );
+    my $km = $geo->old_distance( 'kilometer', @coords );
+    $distances{ "Geo::Distance-$formula" } = $km;
+}
+
+my @geo_xs_formulas = @Geo::Distance::XS::FORMULAS;
+
+foreach my $formula (@geo_xs_formulas) {
+    my $geo = Geo::Distance->new();
+    $geo->formula( $formula );
+    my $km = $geo->distance( 'kilometer', @coords );
+    $distances{ "Geo::Distance::XS-$formula" } = $km;
+}
+
+foreach my $formula (sort keys %distances) {
+    my $km = $distances{ $formula };
+    print "$formula: $km\n";
+}
