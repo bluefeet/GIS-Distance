@@ -2,6 +2,8 @@ Revision history for Perl extension GIS-Distance.
 
 {{$NEXT}}
 
+ - Removed distance_km().
+
 0.13 2019-03-09T12:32:55Z
 
  - Add abs() to Haversine.

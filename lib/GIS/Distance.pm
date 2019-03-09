@@ -65,14 +65,6 @@ sub distance {
     );
 }
 
-sub distance_km {
-    my $self = shift;
-
-    croak 'Four arguments must be passed to distance_km()' if @_!=4;
-
-    return $self->{code}->( @_, @{$self->{args}} );
-}
-
 sub distance_metal {
     my $self = shift;
     return $self->{code}->( @_ );
@@ -120,20 +112,15 @@ then install it and the ::Fast formulas will be automatically used by this modul
 Returns a L<Class::Measure::Length> object for the distance between the
 two degree lats/lons.
 
-See L</distance_km> and L</distance_metal> to return raw kilometers instead.
-
-=head2 distance_km
-
-This works just like L</distance>, but returns a raw kilometer measurement,
-and is faster when benchmarked over millions of iterations.
+See L</distance_metal> to return raw kilometers instead.
 
 =head2 distance_metal
 
-This works just like L</distance_km>, but does no argument checking and ignores
-any formula L</args>.  Calling this gets you pretty close to the fastest bare
-metal speed you can get.  Again, like with L</distance_km>, the speed
-improvements of calling this is noticeable over millions of iterations only
-and you've got to decide if its worth the safety and features you are dropping.
+This works just like L</distance>, but always returns raw kilometers, does no
+argument checking and ignores any formula L</args>.  Calling this gets you pretty
+close to the fastest bare metal speed you can get.  The speed improvements of
+calling this is noticeable over millions of iterations only and you've got to
+decide if its worth the safety and features you are dropping.
 
 =head1 ATTRIBUTES
 
@@ -179,7 +166,7 @@ faster.  Here are some options.
 
 Install L<GIS::Distance::Fast>.
 
-Use L</distance_km> or L</distance_metal> instead of L</distance>.
+Use L</distance_metal> instead of L</distance>.
 
 Call the undocumented C<distance()> function that each formula module
 has.  For example you could bypass this module entirely and just do:
