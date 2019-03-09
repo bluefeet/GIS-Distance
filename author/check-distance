@@ -16,8 +16,13 @@ my @gis_formulas = (
     findallmod('GIS::Distance')
 );
 
+my @coords;
+
 # Beirut to Dimashq.
-my @coords = ( 33.863146, 35.52824, 33.516496, 36.287842 );
+@coords = ( 33.863146, 35.52824, 33.516496, 36.287842 );
+
+# https://github.com/bluefeet/Geo-Distance/issues/15
+#@coords = ( 52.484977, 13.385900, 52.485033, 13.370897 );
 
 my %distances;
 
@@ -32,7 +37,7 @@ my @geo_pp_formulas = @Geo::Distance::FORMULAS;
 foreach my $formula (@geo_pp_formulas) {
     my $geo = Geo::Distance->new();
     $geo->formula( $formula );
-    my $km = $geo->old_distance( 'kilometer', @coords );
+    my $km = $geo->old_distance( 'kilometer', reverse @coords );
     $distances{ "Geo::Distance-$formula" } = $km;
 }
 
@@ -41,11 +46,18 @@ my @geo_xs_formulas = @Geo::Distance::XS::FORMULAS;
 foreach my $formula (@geo_xs_formulas) {
     my $geo = Geo::Distance->new();
     $geo->formula( $formula );
-    my $km = $geo->distance( 'kilometer', @coords );
+    my $km = $geo->distance( 'kilometer', reverse @coords );
     $distances{ "Geo::Distance::XS-$formula" } = $km;
 }
 
-foreach my $formula (sort keys %distances) {
-    my $km = $distances{ $formula };
-    print "$formula: $km\n";
+my %formulas_by_distance;
+foreach my $formula (keys %distances) {
+    my $distance = sprintf('%.016f', $distances{$formula});
+    my $formulas = $formulas_by_distance{ $distance } ||= [];
+    push @$formulas, $formula;
+}
+
+foreach my $distance (sort keys %formulas_by_distance) {
+  print "$distance:\n";
+  print map { " - $_\n" } @{ $formulas_by_distance{$distance} };
 }
