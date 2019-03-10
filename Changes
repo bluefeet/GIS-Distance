@@ -2,6 +2,9 @@ Revision history for Perl extension GIS-Distance.
 
 {{$NEXT}}
 
+ - Support using Geo::Point as arguments to distance() instead of
+   lat/lon decimal pairs.
+
 0.14 2019-03-10T05:04:54Z
 
  - Add GIS::Distance::ALT formula.

@@ -49,9 +49,13 @@
             "Class::Measure::Length" : "0",
             "Const::Fast" : "0.014",
             "Math::Trig" : "0",
+            "Scalar::Util" : "0",
             "namespace::clean" : "0.24",
             "perl" : "5.008001",
             "strictures" : "2.000000"
+         },
+         "suggests" : {
+            "Geo::Point" : "0.95"
          }
       },
       "test" : {

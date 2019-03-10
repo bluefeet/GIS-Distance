@@ -12,7 +12,7 @@ GIS::Distance - Calculate geographic distances.
     # Or choose a different formula:
     my $gis = GIS::Distance->new( 'Polar' );
     
-    my $distance = $gis->distance( $lat1,$lon1 => $lat2,$lon2 );
+    my $distance = $gis->distance( $lat1, $lon1, $lat2, $lon2 );
     
     print $distance->meters();
 
@@ -30,7 +30,14 @@ then install it and the ::Fast formulas will be automatically used by this modul
 
 ## distance
 
-    my $distance = $gis->distance( $lat1,$lon1 => $lat2,$lon2 );
+    my $distance = $gis->distance( $lat1, $lon1, $lat2, $lon2 );
+    
+    my $point1 = Geo::Point->latlong( $lat1, $lon1 );
+    my $point2 = Geo::Point->latlong( $lat2, $lon2 );
+    my $distance = $gis->distance( $point1, $point2 );
+
+Takes either two decimal latitude and longitude pairs, or two [Geo::Point](https://metacpan.org/pod/Geo::Point)
+objects.
 
 Returns a [Class::Measure::Length](https://metacpan.org/pod/Class::Measure::Length) object for the distance between the
 two degree lats/lons.

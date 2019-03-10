@@ -5,6 +5,7 @@ our $VERSION = '0.14';
 
 use Class::Measure::Length qw( length );
 use Carp qw( croak );
+use Scalar::Util qw( blessed );
 use namespace::clean;
 
 sub new {
@@ -55,12 +56,22 @@ sub args { $_[0]->{args} }
 sub module { $_[0]->{module} }
 
 sub distance {
-    my $self = shift;
+    my ($self, @coords) = @_;
 
-    croak 'Four arguments must be passed to distance()' if @_!=4;
+    @coords = (
+        map {
+            (blessed($_) and $_->isa('Geo::Point'))
+            ? ($_->lat(), $_->long())
+            : $_
+        }
+        @coords
+    );
+
+    croak 'Two lat/lon pairs, or two Geo::Point objects, must be passed to distance()'
+        if @coords != 4;
 
     return length(
-        $self->{code}->( @_, @{$self->{args}} ),
+        $self->{code}->( @coords, @{$self->{args}} ),
         'km',
     );
 }
@@ -89,7 +100,7 @@ GIS::Distance - Calculate geographic distances.
     # Or choose a different formula:
     my $gis = GIS::Distance->new( 'Polar' );
     
-    my $distance = $gis->distance( $lat1,$lon1 => $lat2,$lon2 );
+    my $distance = $gis->distance( $lat1, $lon1, $lat2, $lon2 );
     
     print $distance->meters();
 
@@ -107,7 +118,14 @@ then install it and the ::Fast formulas will be automatically used by this modul
 
 =head2 distance
 
-    my $distance = $gis->distance( $lat1,$lon1 => $lat2,$lon2 );
+    my $distance = $gis->distance( $lat1, $lon1, $lat2, $lon2 );
+    
+    my $point1 = Geo::Point->latlong( $lat1, $lon1 );
+    my $point2 = Geo::Point->latlong( $lat2, $lon2 );
+    my $distance = $gis->distance( $point1, $point2 );
+
+Takes either two decimal latitude and longitude pairs, or two L<Geo::Point>
+objects.
 
 Returns a L<Class::Measure::Length> object for the distance between the
 two degree lats/lons.
