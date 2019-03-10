@@ -119,6 +119,8 @@ rad2deg function.
 
 These formulas come with this distribution:
 
+[GIS::Distance::ALT](https://metacpan.org/pod/GIS::Distance::ALT)
+
 [GIS::Distance::Cosine](https://metacpan.org/pod/GIS::Distance::Cosine)
 
 [GIS::Distance::GreatCircle](https://metacpan.org/pod/GIS::Distance::GreatCircle)
@@ -134,6 +136,8 @@ These formulas come with this distribution:
 [GIS::Distance::Vincenty](https://metacpan.org/pod/GIS::Distance::Vincenty)
 
 These formulas are available on CPAN:
+
+[GIS::Distance::Fast::ALT](https://metacpan.org/pod/GIS::Distance::Fast::ALT)
 
 [GIS::Distance::Fast::Cosine](https://metacpan.org/pod/GIS::Distance::Fast::Cosine)
 

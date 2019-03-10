@@ -196,6 +196,8 @@ rad2deg function.
 
 These formulas come with this distribution:
 
+L<GIS::Distance::ALT>
+
 L<GIS::Distance::Cosine>
 
 L<GIS::Distance::GreatCircle>
@@ -211,6 +213,8 @@ L<GIS::Distance::Polar>
 L<GIS::Distance::Vincenty>
 
 These formulas are available on CPAN:
+
+L<GIS::Distance::Fast::ALT>
 
 L<GIS::Distance::Fast::Cosine>
 

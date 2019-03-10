@@ -41,6 +41,9 @@ PLEASE share your results with the author.  I've tested the results of this
 formula versus L<GIS::Distance::Vincenty> and it appears that this formula
 is broken (or the implementation is) as you can see in C<t/polar.t>.
 
+A faster (XS) version of this formula is available as
+L<GIS::Distance::Fast::Polar>.
+
 Normally this module is not used directly.  Instead L<GIS::Distance>
 is used which in turn interfaces with the various formula modules.
 

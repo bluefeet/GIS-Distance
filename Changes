@@ -2,6 +2,7 @@ Revision history for Perl extension GIS-Distance.
 
 {{$NEXT}}
 
+ - Add GIS::Distance::ALT formula.
  - Removed distance_km().
 
 0.13 2019-03-09T12:32:55Z

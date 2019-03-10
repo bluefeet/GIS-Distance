@@ -41,6 +41,9 @@ L<Math::Trig>'s great_circle_distance() which doesn't actually
 appear to use the actual Great Circle Distance formula (more like
 Cosine).
 
+A faster (XS) version of this formula is available as
+L<GIS::Distance::Fast::GreatCircle>.
+
 Normally this module is not used directly.  Instead L<GIS::Distance>
 is used which in turn interfaces with the various formula modules.
 
