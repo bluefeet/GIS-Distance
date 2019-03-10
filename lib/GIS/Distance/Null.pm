@@ -1,7 +1,7 @@
 package GIS::Distance::Null;
 use 5.008001;
 use strictures 2;
-our $VERSION = '0.13';
+our $VERSION = '0.14';
 
 sub distance { 0 }
 
