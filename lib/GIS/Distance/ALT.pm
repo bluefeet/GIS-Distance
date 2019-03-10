@@ -75,6 +75,8 @@ is used which in turn interfaces with the various formula modules.
 
 =head1 AUTHORS AND LICENSE
 
+This formula was taken from L<GIS::Distance::XS> and modified to fit.
+
 See L<GIS::Distance/AUTHORS> and L<GIS::Distance/LICENSE>.
 
 =cut
