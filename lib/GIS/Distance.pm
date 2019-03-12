@@ -56,19 +56,20 @@ sub args { $_[0]->{args} }
 sub module { $_[0]->{module} }
 
 sub distance {
-    my ($self, @coords) = @_;
+    my $self = shift;
 
-    @coords = (
-        map {
-            (blessed($_) and $_->isa('Geo::Point'))
-            ? ($_->lat(), $_->long())
-            : $_
+    my @coords;
+    foreach my $coord (@_) {
+        if ((blessed($coord)||'') eq 'Geo::Point') {
+            push @coords, $coord->latlong();
+            next;
         }
-        @coords
-    );
 
-    croak 'Two lat/lon pairs, or two Geo::Point objects, must be passed to distance()'
-        if @coords != 4;
+        push @coords, $coord;
+    }
+
+    croak 'Invalid arguments passsed to distance()'
+        if @coords!=4;
 
     return length(
         $self->{code}->( @coords, @{$self->{args}} ),
@@ -124,21 +125,42 @@ then install it and the ::Fast formulas will be automatically used by this modul
     my $point2 = Geo::Point->latlong( $lat2, $lon2 );
     my $distance = $gis->distance( $point1, $point2 );
 
-Takes either two decimal latitude and longitude pairs, or two L<Geo::Point>
-objects.
+Takes either two latitude/longitude pairs, or two L<Geo::Point> objects.
 
 Returns a L<Class::Measure::Length> object for the distance between the
 two degree lats/lons.
 
-See L</distance_metal> to return raw kilometers instead.
+See L</distance_metal> for a faster, but less feature rich, method.
 
 =head2 distance_metal
 
-This works just like L</distance>, but always returns raw kilometers, does no
-argument checking and ignores any formula L</args>.  Calling this gets you pretty
-close to the fastest bare metal speed you can get.  The speed improvements of
-calling this is noticeable over millions of iterations only and you've got to
-decide if its worth the safety and features you are dropping.
+This works just like L</distance> except for:
+
+=over
+
+=item *
+
+Does not accept L<Geo::Point> objects.  Only latitude/longitutde pairs.
+
+=item *
+
+Does not return a L<Class::Measure> object.  Instead kilometers are always
+returned.
+
+=item *
+
+Does no argument checking.
+
+=item *
+
+Does not support formula L</args>, which are needed by at least the
+L<GIS::Distance::GeoEllipsoid> formula.
+
+=back
+
+Calling this gets you pretty close to the fastest bare metal speed you can get.
+The speed improvements of calling this is noticeable over millions of iterations
+only and you've got to decide if its worth the safety and features you are dropping.
 
 =head1 ATTRIBUTES
 
