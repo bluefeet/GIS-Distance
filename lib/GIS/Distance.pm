@@ -141,7 +141,8 @@ This works just like L</distance> except for:
 
 =item *
 
-Does not accept L<Geo::Point> objects.  Only latitude/longitutde pairs.
+Does not accept L<Geo::Point> objects.  Only decimal latitude and longitude
+pairs.
 
 =item *
 
@@ -327,6 +328,11 @@ L<GIS::Distance::Lite> - An old fork of this module, not recommended.
 =item *
 
 L<Geo::Distance::XS> - Used to be used by L<Geo::Distance> but no longer is.
+
+=item *
+
+L<Geo::Ellipsoid> - Or use L<GIS::Distance::GeoEllipsoid> for a uniform
+interface.
 
 =item *
 

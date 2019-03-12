@@ -52,7 +52,8 @@ See ["distance\_metal"](#distance_metal) for a faster, but less feature rich, me
 
 This works just like ["distance"](#distance) except for:
 
-- Does not accept [Geo::Point](https://metacpan.org/pod/Geo::Point) objects.  Only latitude/longitutde pairs.
+- Does not accept [Geo::Point](https://metacpan.org/pod/Geo::Point) objects.  Only decimal latitude and longitude
+pairs.
 - Does not return a [Class::Measure](https://metacpan.org/pod/Class::Measure) object.  Instead kilometers are always
 returned.
 - Does no argument checking.
@@ -171,6 +172,8 @@ These formulas are available on CPAN:
 actually related to Geo::Distance at all.  Might be useful.
 - [GIS::Distance::Lite](https://metacpan.org/pod/GIS::Distance::Lite) - An old fork of this module, not recommended.
 - [Geo::Distance::XS](https://metacpan.org/pod/Geo::Distance::XS) - Used to be used by [Geo::Distance](https://metacpan.org/pod/Geo::Distance) but no longer is.
+- [Geo::Ellipsoid](https://metacpan.org/pod/Geo::Ellipsoid) - Or use [GIS::Distance::GeoEllipsoid](https://metacpan.org/pod/GIS::Distance::GeoEllipsoid) for a uniform
+interface.
 - [Geo::Inverse](https://metacpan.org/pod/Geo::Inverse) - Does some distance calculations, but seems less than useful
 as all the code looks to be taken from [Geo::Ellipsoid](https://metacpan.org/pod/Geo::Ellipsoid).
 
