@@ -184,9 +184,11 @@ GIS-Distance GitHub issue tracker:
 
 [https://github.com/bluefeet/GIS-Distance/issues](https://github.com/bluefeet/GIS-Distance/issues)
 
-# AUTHOR
+# AUTHORS
 
-Aran Clary Deltac <bluefeet@cpan.org>
+```
+Aran Clary Deltac <bluefeet@gmail.com>
+```
 
 # LICENSE
 
