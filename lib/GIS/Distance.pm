@@ -125,7 +125,8 @@ then install it and the ::Fast formulas will be automatically used by this modul
     my $point2 = Geo::Point->latlong( $lat2, $lon2 );
     my $distance = $gis->distance( $point1, $point2 );
 
-Takes either two latitude/longitude pairs, or two L<Geo::Point> objects.
+Takes either two decimal latitude and longitude pairs, or two L<Geo::Point>
+objects.
 
 Returns a L<Class::Measure::Length> object for the distance between the
 two degree lats/lons.
@@ -236,97 +237,114 @@ rad2deg function.
 
 These formulas come with this distribution:
 
+=over
+
+=item *
+
 L<GIS::Distance::ALT>
+
+=item *
 
 L<GIS::Distance::Cosine>
 
+=item *
+
 L<GIS::Distance::GreatCircle>
+
+=item *
 
 L<GIS::Distance::Haversine>
 
+=item *
+
 L<GIS::Distance::MathTrig>
+
+=item *
 
 L<GIS::Distance::Null>
 
+=item *
+
 L<GIS::Distance::Polar>
+
+=item *
 
 L<GIS::Distance::Vincenty>
 
+=back
+
 These formulas are available on CPAN:
+
+=over
+
+=item *
 
 L<GIS::Distance::Fast::ALT>
 
+=item *
+
 L<GIS::Distance::Fast::Cosine>
+
+=item *
 
 L<GIS::Distance::Fast::GreatCircle>
 
+=item *
+
 L<GIS::Distance::Fast::Haversine>
+
+=item *
 
 L<GIS::Distance::Fast::Polar>
 
+=item *
+
 L<GIS::Distance::Fast::Vincenty>
+
+=item *
 
 L<GIS::Distance::GeoEllipsoid>
 
+=back
+
 =head1 SEE ALSO
 
-L<GIS::Distance::Lite> was long ago forked from GIS::Distance and modified
-to have less dependencies.  Since then GIS::Distance itself has become
-tremendously lighter dep-wise, and is still maintained, I suggest you not
-use GIS::Distance::Lite.
-
-L<Geo::Distance> has long been deprecated in favor of using this module.
-
-L<Geo::Distance::XS> used to be used by L<Geo::Distance> but no longer does.
-
-L<Geo::Inverse> seems to do some distance calculation using L<Geo::Ellipsoid>
-but if you look at the source code it clearly states that the entire meat of
-it is copied from Geo::Ellipsoid... so I'm not sure why it exists... just use
-Geo::Ellipsoid or L<GIS::Distance::GeoEllipsoid> which wraps Geo::Ellipsoid
-into the GIS::Distance interface.
-
-L<Geo::Distance::Google> looks pretty neat.
-
-=head1 TODO
-
-=over 4
+=over
 
 =item *
 
-Create a GIS::Coord class that represents a geographic coordinate.  Then modify
-this module to accept input as either lat/lon pairs, or as GIS::Coord objects.
-This would make coordinate conversion as described in L</COORDINATES> automatic.
-Maybe use L<Geo::Point>.
+L<Geo::Distance> - Is deprecated in favor of using this module.
 
 =item *
 
-Create some sort of equivalent to L<Geo::Distance>'s closest() method.
+L<Geo::Distance::Google> - While in the Geo::Distance, namespace this isn't
+actually related to Geo::Distance at all.  Might be useful.
 
 =item *
 
-Write a formula module called GIS::Distance::Geoid.  Some very useful info is
-at L<http://en.wikipedia.org/wiki/Geoid>.
+L<GIS::Distance::Lite> - An old fork of this module, not recommended.
 
 =item *
 
-Make L<GIS::Distance::Google> (or some such name) and wrap it around
-L<Geo::Distance::Google> (most likely).
+L<Geo::Distance::XS> - Used to be used by L<Geo::Distance> but no longer is.
 
 =item *
 
-Figure out why L<GIS::Distance::Polar> has issues.
+L<Geo::Inverse> - Does some distance calculations, but seems less than useful
+as all the code looks to be taken from L<Geo::Ellipsoid>.
 
 =back
 
 =head1 SUPPORT
 
-Please submit bugs and feature requests to the GIS-Distance GitHub issue tracker:
+Please submit bugs and feature requests to the
+GIS-Distance GitHub issue tracker:
 
 L<https://github.com/bluefeet/GIS-Distance/issues>
 
-=head1 AUTHORS
+=head1 AUTHOR
 
-    Aran Clary Deltac <bluefeet@cpan.org>
+Aran Clary Deltac E<lt>bluefeet@cpan.orgE<gt>
 
 =head1 LICENSE
 
