@@ -58,7 +58,7 @@ pairs.
 returned.
 - Does no argument checking.
 - Does not support formula ["args"](#args), which are needed by at least the
-[GIS::Distance::GeoEllipsoid](https://metacpan.org/pod/GIS::Distance::GeoEllipsoid) formula.
+[GIS::Distance::GeoEllipsoid](https://metacpan.org/pod/GIS::Distance::GeoEllipsoid) formula.  Read more in the ["SPEED"](#speed) section.
 
 Calling this gets you pretty close to the fastest bare metal speed you can get.
 The speed improvements of calling this is noticeable over millions of iterations
@@ -155,8 +155,8 @@ This could be a substantial burden in some contexts, such as live HTTP
 responses to human users and running large batch jobs, to name just two.
 
 In conclusion, if you can justify the speed gain, switching to
-["distance\_metal"](#distance_metal) and installing [GIS::Distance::Fast](https://metacpan.org/pod/GIS::Distance::Fast), seems
-the ideal setup.
+["distance\_metal"](#distance_metal) and installing [GIS::Distance::Fast](https://metacpan.org/pod/GIS::Distance::Fast) looks to be an
+ideal setup.
 
 As always, YMMV.
 
@@ -179,7 +179,7 @@ rad2deg function.
 
 # FORMULAS
 
-These formulas come with this distribution:
+These formulas come bundled with this distribution:
 
 - [GIS::Distance::ALT](https://metacpan.org/pod/GIS::Distance::ALT)
 - [GIS::Distance::Cosine](https://metacpan.org/pod/GIS::Distance::Cosine)
@@ -198,8 +198,8 @@ These formulas are available on CPAN:
 # SEE ALSO
 
 - [Geo::Distance](https://metacpan.org/pod/Geo::Distance) - Is deprecated in favor of using this module.
-- [Geo::Distance::Google](https://metacpan.org/pod/Geo::Distance::Google) - While in the Geo::Distance, namespace this isn't
-actually related to Geo::Distance at all.  Might be useful.
+- [Geo::Distance::Google](https://metacpan.org/pod/Geo::Distance::Google) - While in the Geo::Distance namespace, this isn't
+actually related to Geo::Distance at all.  Might be useful though.
 - [GIS::Distance::Lite](https://metacpan.org/pod/GIS::Distance::Lite) - An old fork of this module, not recommended.
 - [Geo::Distance::XS](https://metacpan.org/pod/Geo::Distance::XS) - Used to be used by [Geo::Distance](https://metacpan.org/pod/Geo::Distance) but no longer is.
 - [Geo::Ellipsoid](https://metacpan.org/pod/Geo::Ellipsoid) - Or use [GIS::Distance::GeoEllipsoid](https://metacpan.org/pod/GIS::Distance::GeoEllipsoid) for a uniform

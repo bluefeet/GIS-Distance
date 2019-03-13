@@ -156,7 +156,7 @@ Does no argument checking.
 =item *
 
 Does not support formula L</args>, which are needed by at least the
-L<GIS::Distance::GeoEllipsoid> formula.
+L<GIS::Distance::GeoEllipsoid> formula.  Read more in the L</SPEED> section.
 
 =back
 
@@ -245,8 +245,8 @@ This could be a substantial burden in some contexts, such as live HTTP
 responses to human users and running large batch jobs, to name just two.
 
 In conclusion, if you can justify the speed gain, switching to
-L</distance_metal> and installing L<GIS::Distance::Fast>, seems
-the ideal setup.
+L</distance_metal> and installing L<GIS::Distance::Fast> looks to be an
+ideal setup.
 
 As always, YMMV.
 
@@ -267,7 +267,7 @@ rad2deg function.
 
 =head1 FORMULAS
 
-These formulas come with this distribution:
+These formulas come bundled with this distribution:
 
 =over
 
@@ -329,8 +329,8 @@ L<Geo::Distance> - Is deprecated in favor of using this module.
 
 =item *
 
-L<Geo::Distance::Google> - While in the Geo::Distance, namespace this isn't
-actually related to Geo::Distance at all.  Might be useful.
+L<Geo::Distance::Google> - While in the Geo::Distance namespace, this isn't
+actually related to Geo::Distance at all.  Might be useful though.
 
 =item *
 
