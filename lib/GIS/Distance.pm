@@ -240,8 +240,9 @@ script.  The above results were produced with:
 
     author/bench -f Haversine
 
-Even the slowest result was C<125913/s>, which is C<125.913/ms>, which
-means each call took about C<0.0079ms>.
+The slowest result was about C<125000/s>, or about C<8ms> each call.
+This could be a substantial burden in some contexts, such as live HTTP
+responses to human users and running large batch jobs, to name just two.
 
 In conclusion, if you can justify the speed gain, switching to
 L</distance_metal> and installing L<GIS::Distance::Fast>, seems

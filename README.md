@@ -150,8 +150,9 @@ script.  The above results were produced with:
 author/bench -f Haversine
 ```
 
-Even the slowest result was `125913/s`, which is `125.913/ms`, which
-means each call took about `0.0079ms`.
+The slowest result was about `125000/s`, or about `8ms` each call.
+This could be a substantial burden in some contexts, such as live HTTP
+responses to human users and running large batch jobs, to name just two.
 
 In conclusion, if you can justify the speed gain, switching to
 ["distance\_metal"](#distance_metal) and installing [GIS::Distance::Fast](https://metacpan.org/pod/GIS::Distance::Fast), seems
