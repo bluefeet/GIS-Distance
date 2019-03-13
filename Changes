@@ -2,6 +2,9 @@ Revision history for Perl extension GIS-Distance.
 
 {{$NEXT}}
 
+ - Fix a pretty bad math typo in the SPEED section.
+ - Lots of other documentation edits.
+
 0.15 2019-03-13T06:06:09Z
 
  - Support using Geo::Point as arguments to distance().
