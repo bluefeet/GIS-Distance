@@ -203,8 +203,8 @@ Returns the fully qualified module name that L</formula> resolved to.
 =head1 SPEED
 
 Not that this module is slow, but if you're doing millions of distance
-calculations you may find that adjusting your code a bit may make it
-faster.  Here are some options.
+calculations a second you may find that adjusting your code a bit may
+make it faster.  Here are some options.
 
 Install L<GIS::Distance::Fast>.
 
@@ -218,6 +218,21 @@ has.  For example you could bypass this module entirely and just do:
 
 The above would be the ultimate speed demon (as shown in benchmarking)
 but throws away some flexibility and adds some foot-gun support.
+
+Here's some benchmarks for these options:
+
+    Haversine-GIS::Distance::distance-pp                   128436/s
+    Haversine-GIS::Distance::distance-xs                   202184/s
+    Haversine-GIS::Distance::distance_metal-pp             363636/s
+    Haversine-GIS::Distance::Haversine::distance-pp        389105/s
+    Haversine-GIS::Distance::distance_metal-xs            3424658/s
+    Haversine-GIS::Distance::Fast::Haversine::distance-xs 8620690/s
+
+You can run your own benchmarks using the included `author/bench`
+script.  I ran `author/bench --f=Haversine` to produce the above output.
+
+My conclusion is that if you're needing some speed, switching to
+L</distance_metal> is ideal.
 
 =head1 COORDINATES
 
