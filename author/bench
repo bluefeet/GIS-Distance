@@ -155,6 +155,35 @@ if ($dry_run) {
 # Run them all once in case there are runtime errors.
 foreach my $test (@tests) { $test->[1]->() }
 
+my @time = gmtime( time() );
+my $stamp = sprintf(
+    '%04d-%02d-%02dT%02d:%02d:%02dZ',
+    $time[5] + 1900,
+    $time[4] + 1,
+    $time[3],
+    $time[2], $time[1], $time[0],
+);
+print "$stamp\n";
+
+my %versions;
+
+foreach my $module (keys %INC) {
+    next if $module !~ m{\.pm$};
+
+    $module =~ s{\.pm$}{};
+    $module =~ s{/}{::}g;
+
+    next unless $module->can('distance')
+         or $module eq 'GIS::Distance::Fast';
+
+    my $version = eval("\$$module\::VERSION");
+    $versions{$module} = $version if $version;
+}
+
+foreach my $module (sort keys %versions) {
+    print "$module $versions{ $module }\n";
+}
+
 cmpthese(
     $iters,
     { map { @$_ } @tests },

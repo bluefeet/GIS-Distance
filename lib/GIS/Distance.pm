@@ -220,14 +220,20 @@ has.  For example you could bypass this module entirely and just do:
 The above would be the ultimate speed demon (as shown in benchmarking)
 but throws away some flexibility and adds some foot-gun support.
 
-Here's some benchmarks for these options:
+Here's a benchmarks for these options:
 
-    PP Haversine - GIS::Distance->distance                   125913/s
-    XS Haversine - GIS::Distance->distance                   203335/s
-    PP Haversine - GIS::Distance->distance_metal             366569/s
-    PP Haversine - GIS::Distance::Haversine::distance        390320/s
-    XS Haversine - GIS::Distance->distance_metal            3289474/s
-    XS Haversine - GIS::Distance::Fast::Haversine::distance 8064516/s
+    2019-03-13T09:34:00Z
+    GIS::Distance 0.15
+    GIS::Distance::Fast 0.12
+    GIS::Distance::Fast::Haversine 0.12
+    GIS::Distance::Haversine 0.15
+                                                                 Rate
+    PP Haversine - GIS::Distance->distance                   123213/s
+    XS Haversine - GIS::Distance->distance                   196232/s
+    PP Haversine - GIS::Distance->distance_metal             356379/s
+    PP Haversine - GIS::Distance::Haversine::distance        385208/s
+    XS Haversine - GIS::Distance->distance_metal            3205128/s
+    XS Haversine - GIS::Distance::Fast::Haversine::distance 8620690/s
 
 You can run your own benchmarks using the included C<author/bench>
 script.  The above results were produced with:
