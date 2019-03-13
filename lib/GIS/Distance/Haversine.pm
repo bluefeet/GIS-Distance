@@ -64,15 +64,31 @@ is used which in turn interfaces with the various formula modules.
     c = 2 * atan2( sqrt(a), sqrt(1-a) )
     d = R * c
 
-=head1 RESOURCES
+=head1 SEE ALSO
+
+=over
+
+=item *
 
 L<http://mathforum.org/library/drmath/view/51879.html>
 
+=item *
+
 L<http://www.faqs.org/faqs/geography/infosystems-faq/>
 
-=head1 AUTHORS AND LICENSE
+=back
 
-See L<GIS::Distance/AUTHORS> and L<GIS::Distance/LICENSE>.
+=head1 SUPPORT
+
+See L<GIS::Distance/SUPPORT>.
+
+=head1 AUTHORS
+
+See L<GIS::Distance/AUTHORS>.
+
+=head1 LICENSE
+
+See L<GIS::Distance/LICENSE>.
 
 =cut
 

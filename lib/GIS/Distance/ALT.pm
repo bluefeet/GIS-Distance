@@ -64,8 +64,12 @@ GIS::Distance::ALT - Andoyer-Lambert-Thomas distance calculations.
 
 =head1 DESCRIPTION
 
-This is faster than the L<GIS::Distance::Vincenty> formula, but
-looses a bit of accuracy.
+The ALT formula is intended as a much faster, but slightly less accurate,
+alternative of the L<GIS::Distance::Vincenty> formula. This formulas is
+about 5x faster than Vincenty.
+
+The code for this formula was taken from L<GIS::Distance::XS> and
+modified to fit.
 
 A faster (XS) version of this formula is available as
 L<GIS::Distance::Fast::ALT>.
@@ -73,11 +77,17 @@ L<GIS::Distance::Fast::ALT>.
 Normally this module is not used directly.  Instead L<GIS::Distance>
 is used which in turn interfaces with the various formula modules.
 
-=head1 AUTHORS AND LICENSE
+=head1 SUPPORT
 
-This formula was taken from L<GIS::Distance::XS> and modified to fit.
+See L<GIS::Distance/SUPPORT>.
 
-See L<GIS::Distance/AUTHORS> and L<GIS::Distance/LICENSE>.
+=head1 AUTHORS
+
+See L<GIS::Distance/AUTHORS>.
+
+=head1 LICENSE
+
+See L<GIS::Distance/LICENSE>.
 
 =cut
 

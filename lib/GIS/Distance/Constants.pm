@@ -44,9 +44,17 @@ This value is derived from:
     $gis = GIS::Distance->new( 'Haversine' );
     $DEG_RATIO = $gis->distance( 10,0 => 11,0 )->km() / $KILOMETER_RHO;
 
-=head1 AUTHORS AND LICENSE
+=head1 SUPPORT
 
-See L<GIS::Distance/AUTHORS> and L<GIS::Distance/LICENSE>.
+See L<GIS::Distance/SUPPORT>.
+
+=head1 AUTHORS
+
+See L<GIS::Distance/AUTHORS>.
+
+=head1 LICENSE
+
+See L<GIS::Distance/LICENSE>.
 
 =cut
 

@@ -34,7 +34,7 @@ GIS::Distance::Cosine - Spherical law of cosines distance calculations.
 =head1 DESCRIPTION
 
 Although this formula is mathematically exact, it is unreliable for
-small distances because the inverse cosine is ill-conditioned.
+small distances.  See L<GIS::Distance::MathTrig> for related details.
 
 A faster (XS) version of this formula is available as
 L<GIS::Distance::Fast::Cosine>.
@@ -51,11 +51,25 @@ is used which in turn interfaces with the various formula modules.
 
 =head1 SEE ALSO
 
+=over
+
+=item *
+
 L<https://en.wikipedia.org/wiki/Spherical_law_of_cosines>
 
-=head1 AUTHORS AND LICENSE
+=back
 
-See L<GIS::Distance/AUTHORS> and L<GIS::Distance/LICENSE>.
+=head1 SUPPORT
+
+See L<GIS::Distance/SUPPORT>.
+
+=head1 AUTHORS
+
+See L<GIS::Distance/AUTHORS>.
+
+=head1 LICENSE
+
+See L<GIS::Distance/LICENSE>.
 
 =cut
 

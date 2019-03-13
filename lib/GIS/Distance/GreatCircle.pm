@@ -35,11 +35,10 @@ GIS::Distance::GreatCircle - Great circle distance calculations.
 
 =head1 DESCRIPTION
 
-A true Great Circle Distance calculation.  This was created
-because the L<GIS::Distance::MathTrig> calculation uses
-L<Math::Trig>'s great_circle_distance() which doesn't actually
-appear to use the actual Great Circle Distance formula (more like
-Cosine).
+A true Great Circle Distance calculation.  This was created because the
+L<GIS::Distance::MathTrig> formula uses L<Math::Trig>'s
+C<great_circle_distance()> which doesn't actually appear to use the
+actual Great Circle Distance formula (more likely Cosine).
 
 A faster (XS) version of this formula is available as
 L<GIS::Distance::Fast::GreatCircle>.
@@ -55,9 +54,17 @@ is used which in turn interfaces with the various formula modules.
         ( sin(( lon1 - lon2 )/2) )**2
     ) )
 
-=head1 AUTHORS AND LICENSE
+=head1 SUPPORT
 
-See L<GIS::Distance/AUTHORS> and L<GIS::Distance/LICENSE>.
+See L<GIS::Distance/SUPPORT>.
+
+=head1 AUTHORS
+
+See L<GIS::Distance/AUTHORS>.
+
+=head1 LICENSE
+
+See L<GIS::Distance/LICENSE>.
 
 =cut
 

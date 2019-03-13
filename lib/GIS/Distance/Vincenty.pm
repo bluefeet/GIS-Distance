@@ -78,6 +78,9 @@ greater. In the UK, if you measure the distance from Land's End to John O'
 Groats using WGS-84, it will be 28m - 0.003% - greater than using the Airy
 ellipsoid, which provides a better fit for the UK.
 
+Take a look at the L<GIS::Distance::ALT> formula for a much quicker
+alternative with nearly the same accuracy.
+
 A faster (XS) version of this formula is available as
 L<GIS::Distance::Fast::Vincenty>.
 
@@ -119,15 +122,31 @@ is used which in turn interfaces with the various formula modules.
       bb/6*cos2sigma_m*(-3+4*sin_sigma*sin_sigma)*(-3+4*cos2sigma_m*cos2sigma_m)))
     c = b*aa*(sigma-delta_sigma)
 
-=head1 RESOURCES
+=head1 SEE ALSO
+
+=over
+
+=item *
 
 L<http://www.ngs.noaa.gov/PUBS_LIB/inverse.pdf>
 
+=item *
+
 L<http://www.movable-type.co.uk/scripts/LatLongVincenty.html>
 
-=head1 AUTHORS AND LICENSE
+=back
 
-See L<GIS::Distance/AUTHORS> and L<GIS::Distance/LICENSE>.
+=head1 SUPPORT
+
+See L<GIS::Distance/SUPPORT>.
+
+=head1 AUTHORS
+
+See L<GIS::Distance/AUTHORS>.
+
+=head1 LICENSE
+
+See L<GIS::Distance/LICENSE>.
 
 =cut
 

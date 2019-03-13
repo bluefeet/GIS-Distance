@@ -18,19 +18,41 @@ GIS::Distance::Null - For planets with no surface.
 
 Always returns C<0>.
 
+A faster (XS) version of this formula is available as
+L<GIS::Distance::Fast::Null>.
+
+Normally this module is not used directly.  Instead L<GIS::Distance>
+is used which in turn interfaces with the various formula modules.
+
 =head1 FORMULA
 
     d = 0
 
 =head1 SEE ALSO
 
+=over
+
+=item *
+
 L<https://en.wikipedia.org/wiki/0>
+
+=item *
 
 L<GIS::Distance::Fast::Null>
 
-=head1 AUTHORS AND LICENSE
+=back
 
-See L<GIS::Distance/AUTHORS> and L<GIS::Distance/LICENSE>.
+=head1 SUPPORT
+
+See L<GIS::Distance/SUPPORT>.
+
+=head1 AUTHORS
+
+See L<GIS::Distance/AUTHORS>.
+
+=head1 LICENSE
+
+See L<GIS::Distance/LICENSE>.
 
 =cut
 

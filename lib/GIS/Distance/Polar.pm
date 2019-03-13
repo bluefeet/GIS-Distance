@@ -54,9 +54,17 @@ is used which in turn interfaces with the various formula modules.
     c = sqrt( a^2 + b^2 - 2 * a * b * cos(lon2 - lon1) )
     d = R * c
 
-=head1 AUTHORS AND LICENSE
+=head1 SUPPORT
 
-See L<GIS::Distance/AUTHORS> and L<GIS::Distance/LICENSE>.
+See L<GIS::Distance/SUPPORT>.
+
+=head1 AUTHORS
+
+See L<GIS::Distance/AUTHORS>.
+
+=head1 LICENSE
+
+See L<GIS::Distance/LICENSE>.
 
 =cut
 

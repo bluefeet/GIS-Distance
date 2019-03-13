@@ -304,27 +304,7 @@ These formulas are available on CPAN:
 
 =item *
 
-L<GIS::Distance::Fast::ALT>
-
-=item *
-
-L<GIS::Distance::Fast::Cosine>
-
-=item *
-
-L<GIS::Distance::Fast::GreatCircle>
-
-=item *
-
-L<GIS::Distance::Fast::Haversine>
-
-=item *
-
-L<GIS::Distance::Fast::Polar>
-
-=item *
-
-L<GIS::Distance::Fast::Vincenty>
+L<GIS::Distance::Fast/FORMULAS>
 
 =item *
 
