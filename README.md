@@ -110,7 +110,8 @@ Not that this module is slow, but if you're doing millions of distance
 calculations a second you may find that adjusting your code a bit may
 make it faster.  Here are some options.
 
-Install [GIS::Distance::Fast](https://metacpan.org/pod/GIS::Distance::Fast).
+Install [GIS::Distance::Fast](https://metacpan.org/pod/GIS::Distance::Fast) to get the XS variants for most of the
+PP formulas.
 
 Use ["distance\_metal"](#distance_metal) instead of ["distance"](#distance).
 
@@ -128,19 +129,29 @@ but throws away some flexibility and adds some foot-gun support.
 Here's some benchmarks for these options:
 
 ```
-Haversine-GIS::Distance::distance-pp                   128436/s
-Haversine-GIS::Distance::distance-xs                   202184/s
-Haversine-GIS::Distance::distance_metal-pp             363636/s
-Haversine-GIS::Distance::Haversine::distance-pp        389105/s
-Haversine-GIS::Distance::distance_metal-xs            3424658/s
-Haversine-GIS::Distance::Fast::Haversine::distance-xs 8620690/s
+PP Haversine - GIS::Distance->distance                   125913/s
+XS Haversine - GIS::Distance->distance                   203335/s
+PP Haversine - GIS::Distance->distance_metal             366569/s
+PP Haversine - GIS::Distance::Haversine::distance        390320/s
+XS Haversine - GIS::Distance->distance_metal            3289474/s
+XS Haversine - GIS::Distance::Fast::Haversine::distance 8064516/s
 ```
 
-You can run your own benchmarks using the included \`author/bench\`
-script.  I ran \`author/bench --f=Haversine\` to produce the above output.
+You can run your own benchmarks using the included `author/bench`
+script.  The above results were produced with:
 
-My conclusion is that if you're needing some speed, switching to
-["distance\_metal"](#distance_metal) is ideal.
+```
+author/bench -f Haversine
+```
+
+Even the slowest result was `125913/s`, which is `125.913/ms`, which
+means each call took about `0.0079ms`.
+
+In conclusion, if you can justify the speed gain, switching to
+["distance\_metal"](#distance_metal) and installing [GIS::Distance::Fast](https://metacpan.org/pod/GIS::Distance::Fast), seems
+the ideal setup.
+
+As always, YMMV.
 
 # COORDINATES
 

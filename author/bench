@@ -8,6 +8,10 @@ use List::MoreUtils qw( zip uniq );
 use Module::Find qw( findallmod );
 use Getopt::Long;
 
+Getopt::Long::Configure(qw(
+    gnu_getopt no_ignore_case
+));
+
 GetOptions(
     'formula|f=s' => \my @formulas,
 
@@ -80,13 +84,13 @@ foreach my $formula (sort @formulas) {
         my $code = $pp_module->can('distance');
 
         push @tests, (
-            ["$formula-GIS::Distance::distance-pp" => sub{
+            ["PP $formula - GIS::Distance->distance" => sub{
                 return $gis->distance( @coords )->km();
             }],
-            ["$formula-GIS::Distance::distance_metal-pp" => sub{
+            ["PP $formula - GIS::Distance->distance_metal" => sub{
                 return $gis->distance_metal( @coords );
             }],
-            ["$formula-${pp_module}::distance-pp" => sub{
+            ["PP $formula - $pp_module\::distance" => sub{
                 return $code->( @coords );
             }],
         );
@@ -98,13 +102,13 @@ foreach my $formula (sort @formulas) {
         my $code = $xs_module->can('distance');
 
         push @tests, (
-            ["$formula-GIS::Distance::distance-xs" => sub{
+            ["XS $formula - GIS::Distance->distance" => sub{
                 return $gis->distance( @coords )->km();
             }],
-            ["$formula-GIS::Distance::distance_metal-xs" => sub{
+            ["XS $formula - GIS::Distance->distance_metal" => sub{
                 return $gis->distance_metal( @coords );
             }],
-            ["$formula-${xs_module}::distance-xs" => sub{
+            ["XS $formula - $xs_module\::distance" => sub{
                 return $code->( @coords );
             }],
         );
@@ -116,19 +120,19 @@ foreach my $formula (sort @formulas) {
         $geo->formula( $geo_formula );
 
         push @tests, (
-            ["$geo_formula-Geo::Distance::old_distance-geo_pp" => sub{
+            ["PP $geo_formula - Geo::Distance->old_distance" => sub{
                 return $geo->old_distance( 'kilometer', @geo_coords );
             }],
         ) if $do_pp;
 
         push @tests, (
-            ["$geo_formula-Geo::Distance::new_distance-gis_xs" => sub{
+            ["XS $geo_formula - Geo::Distance->new_distance" => sub{
                 return $geo->new_distance( 'kilometer', @geo_coords );
             }],
-            ["$geo_formula-Geo::Distance::distance-geo_xs" => sub{
+            ["XS $geo_formula - Geo::Distance::XS->distance" => sub{
                 return $geo->distance( 'kilometer', @geo_coords );
             }],
-            ["$geo_formula-Geo::Distance::XS::distance-xs" => sub{
+            ["XS $geo_formula - Geo::Distance::XS::distance" => sub{
                 return Geo::Distance::XS::distance(
                     $geo, 'kilometer', @geo_coords,
                 );
@@ -162,10 +166,6 @@ __END__
 
 author/bench - Benchmark formulas and the various interfaces to them.
 
-=head1 USAGE
-
-    author/bench [OPTIONS]
-
 =head1 SYNOPSIS
 
     # Benchmark every GIS::Distance and GIS::Distance::Fast formula.
@@ -184,7 +184,7 @@ author/bench - Benchmark formulas and the various interfaces to them.
 
     --formula=<formula-short-name>
     --formaul=Null
-    -f=Haversine -f=Cosine
+    -f Haversine -f Cosine
 
 By default all formulas will be considered for benchmarking.
 If you'd like to limit this then you can specify one or more
@@ -214,7 +214,7 @@ included.
 =head2 iters
 
     --iters=100
-    -i=10000000
+    -i 10000000
 
 The number of iterations to benchmark each formula against.
 
