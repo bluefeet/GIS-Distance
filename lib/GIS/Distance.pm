@@ -14,8 +14,8 @@ sub new {
     $formula ||= 'Haversine';
 
     my $self = bless {
-        formula => $formula,
-        args    => \@args,
+        formula      => $formula,
+        formula_args => \@args,
     }, $class;
 
     my @modules;
@@ -40,7 +40,7 @@ sub new {
             die "$module does not have a distance() function" if !$code;
         }
 
-        $self->{module} = $module;
+        $self->{formula_module} = $module;
         $self->{code} = $code;
         last;
     }
@@ -52,8 +52,8 @@ sub new {
 };
 
 sub formula { $_[0]->{formula} }
-sub args { $_[0]->{args} }
-sub module { $_[0]->{module} }
+sub formula_args { $_[0]->{args} }
+sub formula_module { $_[0]->{module} }
 
 sub distance {
     my $self = shift;
@@ -72,7 +72,7 @@ sub distance {
         if @coords!=4;
 
     return length(
-        $self->{code}->( @coords, @{$self->{args}} ),
+        $self->{code}->( @coords, @{$self->{formula_args}} ),
         'km',
     );
 }
@@ -155,18 +155,28 @@ Does no argument checking.
 
 =item *
 
-Does not support formula L</args>, which are needed by at least the
+Does not support L</formula_args>, which are supported by at least the
 L<GIS::Distance::GeoEllipsoid> formula.  Read more in the L</SPEED> section.
 
 =back
 
 Calling this gets you pretty close to the fastest bare metal speed you can get.
-The speed improvements of calling this is noticeable over millions of iterations
-only and you've got to decide if its worth the safety and features you are dropping.
+The speed improvements of calling this is noticeable over hundreds of thousands of
+iterations only and you've got to decide if its worth the safety and features
+you are dropping.
+
+=head1 ARGUMENTS
+
+    my $gis = GIS::Distance->new( $formula, @formula_args );
+
+When you call C<GIS::Distance->new()> you may pass a formula for L</formula>
+and any additional arguments will be slurped into L</formula_args>.
 
 =head1 ATTRIBUTES
 
 =head2 formula
+
+    print $gis->formula();
 
 Returns the formula name which was passed as the first argument to C<new()>.
 
@@ -186,17 +196,20 @@ the C<Fast::> versions of the formulas, written in C, are not available and the
 pure perl ones will be used instead.  If you would like the C<Fast::> formulas
 then install L<GIS::Distance::Fast> and they will be automatically used.
 
-You may disable the automatic use of the C<Fast::> formulas by setting the
-C<GIS_DISTANCE_PP> environment variable.
+You may globally disable the automatic use of the C<Fast::> formulas by setting
+the C<GIS_DISTANCE_PP> environment variable.  Although, its likely simpler to
+just provide a full module name of a formula to get the same effect:
 
-=head2 args
+    my $gis = GIS::Distance->new( 'GIS::Distance::Haversine' );
+
+=head2 formula_args
 
 Returns the formula arguments, an array ref, containing the rest of the
 arguments passed to C<new()> (anything passed after the L</formula>).
 Most formulas do not take arguments.  If they do it will be described in
 their respective documentation.
 
-=head2 module
+=head2 formula_module
 
 Returns the fully qualified module name that L</formula> resolved to.
 

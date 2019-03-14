@@ -2,6 +2,9 @@ Revision history for Perl extension GIS-Distance.
 
 {{$NEXT}}
 
+ - Renamed the args and module attributes to formula_args
+   and formula_module to make them less generic and a bit
+   more accurate.
  - Fix a pretty bad math typo in the SPEED section.
  - Lots of other documentation edits.
 
