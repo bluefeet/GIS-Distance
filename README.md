@@ -134,12 +134,12 @@ PP formulas.
 
 Use ["distance\_metal"](#distance_metal) instead of ["distance"](#distance).
 
-Call the undocumented `distance()` function that each formula module
+Call the undocumented `_distance()` function that each formula module
 has.  For example you could bypass this module entirely and just do:
 
 ```perl
 use GIS::Distance::Fast::Haversine;
-my $km = GIS::Distance::Fast::Haversine::distance( @coords );
+my $km = GIS::Distance::Fast::Haversine::_distance( @coords );
 ```
 
 The above would be the ultimate speed demon (as shown in benchmarking)
@@ -157,9 +157,9 @@ GIS::Distance::Haversine 0.15
 PP Haversine - GIS::Distance->distance                   123213/s
 XS Haversine - GIS::Distance->distance                   196232/s
 PP Haversine - GIS::Distance->distance_metal             356379/s
-PP Haversine - GIS::Distance::Haversine::distance        385208/s
-XS Haversine - GIS::Distance->distance_metal            3205128/s
-XS Haversine - GIS::Distance::Fast::Haversine::distance 8620690/s
+PP Haversine - GIS::Distance::Haversine::_distance       385208/s
+XS Haversine - GIS::Distance->distance_metal             3205128/s
+XS Haversine - GIS::Distance::Fast::Haversine::_distance 8620690/s
 ```
 
 You can run your own benchmarks using the included `author/bench`

@@ -224,11 +224,11 @@ PP formulas.
 
 Use L</distance_metal> instead of L</distance>.
 
-Call the undocumented C<distance()> function that each formula module
+Call the undocumented C<_distance()> function that each formula module
 has.  For example you could bypass this module entirely and just do:
 
     use GIS::Distance::Fast::Haversine;
-    my $km = GIS::Distance::Fast::Haversine::distance( @coords );
+    my $km = GIS::Distance::Fast::Haversine::_distance( @coords );
 
 The above would be the ultimate speed demon (as shown in benchmarking)
 but throws away some flexibility and adds some foot-gun support.
@@ -244,9 +244,9 @@ Here's a benchmarks for these options:
     PP Haversine - GIS::Distance->distance                   123213/s
     XS Haversine - GIS::Distance->distance                   196232/s
     PP Haversine - GIS::Distance->distance_metal             356379/s
-    PP Haversine - GIS::Distance::Haversine::distance        385208/s
-    XS Haversine - GIS::Distance->distance_metal            3205128/s
-    XS Haversine - GIS::Distance::Fast::Haversine::distance 8620690/s
+    PP Haversine - GIS::Distance::Haversine::_distance       385208/s
+    XS Haversine - GIS::Distance->distance_metal             3205128/s
+    XS Haversine - GIS::Distance::Fast::Haversine::_distance 8620690/s
 
 You can run your own benchmarks using the included C<author/bench>
 script.  The above results were produced with:
