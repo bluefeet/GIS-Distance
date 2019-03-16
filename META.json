@@ -76,7 +76,7 @@
          "web" : "https://github.com/bluefeet/GIS-Distance"
       }
    },
-   "version" : "0.15",
+   "version" : "0.16",
    "x_authority" : "cpan:BLUEFEET",
    "x_serialization_backend" : "JSON::PP version 4.02",
    "x_static_install" : 1
