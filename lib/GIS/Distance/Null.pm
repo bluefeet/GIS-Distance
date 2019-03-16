@@ -3,7 +3,9 @@ use 5.008001;
 use strictures 2;
 our $VERSION = '0.15';
 
-sub distance { 0 }
+use parent 'GIS::Distance::Formula';
+
+sub _distance { 0 }
 
 1;
 __END__

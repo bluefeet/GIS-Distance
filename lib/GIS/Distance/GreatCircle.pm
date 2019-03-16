@@ -3,11 +3,13 @@ use 5.008001;
 use strictures 2;
 our $VERSION = '0.15';
 
+use parent 'GIS::Distance::Formula';
+
 use Math::Trig qw( deg2rad asin );
 use GIS::Distance::Constants qw( :all );
 use namespace::clean;
 
-sub distance {
+sub _distance {
     my ($lat1, $lon1, $lat2, $lon2) = @_;
 
     $lon1 = deg2rad($lon1);

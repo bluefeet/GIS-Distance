@@ -36,8 +36,8 @@ sub new {
                 next;
             }
 
-            $code = $module->can('distance');
-            die "$module does not have a distance() function" if !$code;
+            $code = $module->can('_distance') || $module->can('distance');
+            die "$module does not have a _distance() or distance() sub" if !$code;
         }
 
         $self->{formula_module} = $module;

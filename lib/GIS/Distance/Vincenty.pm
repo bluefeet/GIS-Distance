@@ -3,10 +3,12 @@ use 5.008001;
 use strictures 2;
 our $VERSION = '0.15';
 
+use parent 'GIS::Distance::Formula';
+
 use Math::Trig qw( deg2rad pi tan atan asin );
 use namespace::clean;
 
-sub distance {
+sub _distance {
     my ($lat1, $lon1, $lat2, $lon2) = @_;
 
     return 0 if (($lon1==$lon2) and ($lat1==$lat2));
