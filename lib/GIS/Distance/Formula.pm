@@ -74,7 +74,7 @@ GIS::Distance::Formula - Formula base class.
 This is the parent class for all L<GIS::Distance> formula classes such as
 those listed at L<GIS::Distance/FORMULAS>.
 
-To author your own formula all you need to do is start here:
+To author your own formula class:
 
     package My::Formula;
     
