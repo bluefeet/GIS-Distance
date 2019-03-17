@@ -1,7 +1,7 @@
 package GIS::Distance;
 use 5.008001;
 use strictures 2;
-our $VERSION = '0.16';
+our $VERSION = '0.17';
 
 sub new {
     my ($class, $formula, @args) = @_;
