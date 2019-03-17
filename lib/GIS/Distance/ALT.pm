@@ -70,7 +70,7 @@ The ALT formula is intended as a much faster, but slightly less accurate,
 alternative of the L<GIS::Distance::Vincenty> formula. This formulas is
 about 5x faster than Vincenty.
 
-The code for this formula was taken from L<GIS::Distance::XS> and
+The code for this formula was taken from L<Geo::Distance::XS> and
 modified to fit.
 
 A faster (XS) version of this formula is available as
