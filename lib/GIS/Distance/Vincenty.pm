@@ -87,7 +87,7 @@ A faster (XS) version of this formula is available as
 L<GIS::Distance::Fast::Vincenty>.
 
 Normally this module is not used directly.  Instead L<GIS::Distance>
-is used which in turn interfaces with the various formula modules.
+is used which in turn interfaces with the various formula classes.
 
 =head1 FORMULA
 

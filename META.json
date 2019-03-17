@@ -42,7 +42,7 @@
       },
       "runtime" : {
          "recommends" : {
-            "GIS::Distance::Fast" : "0.09"
+            "GIS::Distance::Fast" : "0.13"
          },
          "requires" : {
             "Carp" : "0",
@@ -51,6 +51,7 @@
             "Math::Trig" : "0",
             "Scalar::Util" : "0",
             "namespace::clean" : "0.24",
+            "parent" : "0",
             "perl" : "5.008001",
             "strictures" : "2.000000"
          },

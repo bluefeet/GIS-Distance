@@ -2,6 +2,8 @@ Revision history for Perl extension GIS-Distance.
 
 {{$NEXT}}
 
+ - Finalize the new internal formula interface.
+
 0.16 2019-03-16T22:19:33Z
 
  - Renamed the args and module attributes to formula_args

@@ -23,7 +23,7 @@ __END__
 
 =head1 NAME
 
-GIS::Distance::Constants - Constants used by formula modules.
+GIS::Distance::Constants - Constants used by formula classes.
 
 =head1 CONSTANTS
 

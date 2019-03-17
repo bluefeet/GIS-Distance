@@ -3,20 +3,10 @@ use 5.008001;
 use strictures 2;
 our $VERSION = '0.16';
 
-use Class::Measure::Length qw( length );
-use Carp qw( croak );
-use Scalar::Util qw( blessed );
-use namespace::clean;
-
 sub new {
     my ($class, $formula, @args) = @_;
 
     $formula ||= 'Haversine';
-
-    my $self = bless {
-        formula      => $formula,
-        formula_args => \@args,
-    }, $class;
 
     my @modules;
     push @modules, "GIS::Distance::Fast::${formula}"
@@ -25,61 +15,30 @@ sub new {
     push @modules, $formula;
 
     foreach my $module (@modules) {
-        my $code = $module->can('distance');
+        next if !_try_load_module( $module );
+        next if !$module->isa('GIS::Distance::Formula');
 
-        if (!$code) {
-            local $@;
-            my $loaded_ok = eval( "require $module; 1" );
-
-            if (!$loaded_ok) {
-                die $@ if $@ !~ m{^Can't locate};
-                next;
-            }
-
-            $code = $module->can('_distance') || $module->can('distance');
-            die "$module does not have a _distance() or distance() sub" if !$code;
-        }
-
-        $self->{formula_module} = $module;
-        $self->{code} = $code;
-        last;
+        return $module->new( @args );
     }
 
-    die "Cannot find a GIS::Distance formula module for $formula"
-        if !$self->{code};
-
-    return $self;
+    die "Cannot find a GIS::Distance::Formula class for $formula";
 };
 
-sub formula { $_[0]->{formula} }
-sub formula_args { $_[0]->{args} }
-sub formula_module { $_[0]->{module} }
+my %tried_modules;
 
-sub distance {
-    my $self = shift;
+sub _try_load_module {
+    my ($module) = @_;
 
-    my @coords;
-    foreach my $coord (@_) {
-        if ((blessed($coord)||'') eq 'Geo::Point') {
-            push @coords, $coord->latlong();
-            next;
-        }
+    return $tried_modules{ $module }
+        if defined $tried_modules{ $module };
 
-        push @coords, $coord;
-    }
+    $tried_modules{ $module } = 1;
+    my $ok = eval( "require $module; 1" );
+    return 1 if $ok;
 
-    croak 'Invalid arguments passsed to distance()'
-        if @coords!=4;
-
-    return length(
-        $self->{code}->( @coords, @{$self->{formula_args}} ),
-        'km',
-    );
-}
-
-sub distance_metal {
-    my $self = shift;
-    return $self->{code}->( @_ );
+    $tried_modules{ $module } = 0;
+    die $@ if $@ !~ m{^Can't locate};
+    return 0;
 }
 
 1;
@@ -167,21 +126,13 @@ you are dropping.
 
 =head1 ARGUMENTS
 
-    my $gis = GIS::Distance->new( $formula, @formula_args );
+    my $gis = GIS::Distance->new( $formula );
 
-When you call C<GIS::Distance->new()> you may pass a formula for L</formula>
-and any additional arguments will be slurped into L</formula_args>.
+When you call C<GIS::Distance->new()> you may pass a partial or full formula
+class name as the first argument.  If you do not specify a formula then this
+defaults to C<Haversive>.
 
-=head1 ATTRIBUTES
-
-=head2 formula
-
-    print $gis->formula();
-
-Returns the formula name which was passed as the first argument to C<new()>.
-
-The formula can be specified as a partial or full module name for that
-formula.  For example, if the formula is set to C<Haversine> as in:
+If you pass a partial name, as in:
 
     my $gis = GIS::Distance->new( 'Haversine' );
 
@@ -198,20 +149,9 @@ then install L<GIS::Distance::Fast> and they will be automatically used.
 
 You may globally disable the automatic use of the C<Fast::> formulas by setting
 the C<GIS_DISTANCE_PP> environment variable.  Although, its likely simpler to
-just provide a full module name of a formula to get the same effect:
+just provide a full class name to get the same effect:
 
     my $gis = GIS::Distance->new( 'GIS::Distance::Haversine' );
-
-=head2 formula_args
-
-Returns the formula arguments, an array ref, containing the rest of the
-arguments passed to C<new()> (anything passed after the L</formula>).
-Most formulas do not take arguments.  If they do it will be described in
-their respective documentation.
-
-=head2 formula_module
-
-Returns the fully qualified module name that L</formula> resolved to.
 
 =head1 SPEED
 
@@ -224,7 +164,7 @@ PP formulas.
 
 Use L</distance_metal> instead of L</distance>.
 
-Call the undocumented C<_distance()> function that each formula module
+Call the undocumented C<_distance()> function that each formula class
 has.  For example you could bypass this module entirely and just do:
 
     use GIS::Distance::Fast::Haversine;
@@ -261,7 +201,7 @@ In conclusion, if you can justify the speed gain, switching to
 L</distance_metal> and installing L<GIS::Distance::Fast> looks to be an
 ideal setup.
 
-As always, YMMV.
+As always with performance and benchmarking, YMMV.
 
 =head1 COORDINATES
 
@@ -331,6 +271,11 @@ L<GIS::Distance::Fast/FORMULAS>
 L<GIS::Distance::GeoEllipsoid>
 
 =back
+
+=head1 AUTHORING
+
+Take a look at L<GIS::Distance::Formula> for instructions on authoring
+new formula classes.
 
 =head1 SEE ALSO
 

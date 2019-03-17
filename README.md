@@ -68,24 +68,14 @@ you are dropping.
 # ARGUMENTS
 
 ```perl
-my $gis = GIS::Distance->new( $formula, @formula_args );
+my $gis = GIS::Distance->new( $formula );
 ```
 
-When you call `GIS::Distance-`new()> you may pass a formula for ["formula"](#formula)
-and any additional arguments will be slurped into ["formula\_args"](#formula_args).
+When you call `GIS::Distance-`new()> you may pass a partial or full formula
+class name as the first argument.  If you do not specify a formula then this
+defaults to `Haversive`.
 
-# ATTRIBUTES
-
-## formula
-
-```
-print $gis->formula();
-```
-
-Returns the formula name which was passed as the first argument to `new()`.
-
-The formula can be specified as a partial or full module name for that
-formula.  For example, if the formula is set to `Haversine` as in:
+If you pass a partial name, as in:
 
 ```perl
 my $gis = GIS::Distance->new( 'Haversine' );
@@ -106,22 +96,11 @@ then install [GIS::Distance::Fast](https://metacpan.org/pod/GIS::Distance::Fast)
 
 You may globally disable the automatic use of the `Fast::` formulas by setting
 the `GIS_DISTANCE_PP` environment variable.  Although, its likely simpler to
-just provide a full module name of a formula to get the same effect:
+just provide a full class name to get the same effect:
 
 ```perl
 my $gis = GIS::Distance->new( 'GIS::Distance::Haversine' );
 ```
-
-## formula\_args
-
-Returns the formula arguments, an array ref, containing the rest of the
-arguments passed to `new()` (anything passed after the ["formula"](#formula)).
-Most formulas do not take arguments.  If they do it will be described in
-their respective documentation.
-
-## formula\_module
-
-Returns the fully qualified module name that ["formula"](#formula) resolved to.
 
 # SPEED
 
@@ -134,7 +113,7 @@ PP formulas.
 
 Use ["distance\_metal"](#distance_metal) instead of ["distance"](#distance).
 
-Call the undocumented `_distance()` function that each formula module
+Call the undocumented `_distance()` function that each formula class
 has.  For example you could bypass this module entirely and just do:
 
 ```perl
@@ -177,7 +156,7 @@ In conclusion, if you can justify the speed gain, switching to
 ["distance\_metal"](#distance_metal) and installing [GIS::Distance::Fast](https://metacpan.org/pod/GIS::Distance::Fast) looks to be an
 ideal setup.
 
-As always, YMMV.
+As always with performance and benchmarking, YMMV.
 
 # COORDINATES
 
@@ -213,6 +192,11 @@ These formulas are available on CPAN:
 
 - ["FORMULAS" in GIS::Distance::Fast](https://metacpan.org/pod/GIS::Distance::Fast#FORMULAS)
 - [GIS::Distance::GeoEllipsoid](https://metacpan.org/pod/GIS::Distance::GeoEllipsoid)
+
+# AUTHORING
+
+Take a look at [GIS::Distance::Formula](https://metacpan.org/pod/GIS::Distance::Formula) for instructions on authoring
+new formula classes.
 
 # SEE ALSO
 
