@@ -96,7 +96,7 @@ Then use it:
     my $km = $gis->distance( @coords );
 
 The global C<$GIS::Distance::Formula::SELF> is available when your
-C<_distance()> subroutine is called if, and only of, the entry point
+C<_distance()> subroutine is called if, and only if, the entry point
 was L<GIS::Distance/distance> and NOT L</GIS::Distance/distance_metal>
 or otherwise.
 
