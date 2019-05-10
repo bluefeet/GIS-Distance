@@ -318,6 +318,7 @@ L<https://github.com/bluefeet/GIS-Distance/issues>
 =head1 AUTHORS
 
     Aran Clary Deltac <bluefeet@gmail.com>
+    Mohammad S Anwar <mohammad.anwar@yahoo.com>
 
 =head1 LICENSE
 

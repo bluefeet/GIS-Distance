@@ -219,6 +219,7 @@ GIS-Distance GitHub issue tracker:
 
 ```
 Aran Clary Deltac <bluefeet@gmail.com>
+Mohammad S Anwar <mohammad.anwar@yahoo.com>
 ```
 
 # LICENSE

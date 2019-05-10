@@ -2,6 +2,7 @@ Revision history for Perl extension GIS-Distance.
 
 {{$NEXT}}
 
+ - Fixed pod error as reported by CPANTS.
  - Documentation edits.
 
 0.17 2019-03-17T17:01:31Z
