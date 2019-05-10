@@ -97,7 +97,7 @@ Then use it:
 
 The global C<$GIS::Distance::Formula::SELF> is available when your
 C<_distance()> subroutine is called if, and only if, the entry point
-was L<GIS::Distance/distance> and NOT L</GIS::Distance/distance_metal>
+was L<GIS::Distance/distance> and NOT L<GIS::Distance/distance_metal>
 or otherwise.
 
 Much of the interface described in L<GIS::Distance> is actually
