@@ -52,9 +52,9 @@ See L<GIS::Distance/SUPPORT>.
 
 See L<GIS::Distance/AUTHORS>.
 
-=head1 LICENSE
+=head1 COPYRIGHT AND LICENSE
 
-See L<GIS::Distance/LICENSE>.
+See L<GIS::Distance/COPYRIGHT AND LICENSE>.
 
 =cut
 
