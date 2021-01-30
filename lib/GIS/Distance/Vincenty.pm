@@ -146,9 +146,9 @@ See L<GIS::Distance/SUPPORT>.
 
 See L<GIS::Distance/AUTHORS>.
 
-=head1 COPYRIGHT AND LICENSE
+=head1 LICENSE
 
-See L<GIS::Distance/COPYRIGHT AND LICENSE>.
+See L<GIS::Distance/LICENSE>.
 
 =cut
 
