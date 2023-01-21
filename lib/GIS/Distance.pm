@@ -71,7 +71,7 @@ This module calculates distances between geographic points on, at the moment,
 planet Earth.  Various L</FORMULAS> are available that provide different levels
 of accuracy versus speed.
 
-L<GIS::Distance::Fast>, a separate distribution, ships with C implmentations of
+L<GIS::Distance::Fast>, a separate distribution, ships with C implementations of
 some of the formulas shipped with GIS::Distance.  If you're looking for speed
 then install it and the ::Fast formulas will be automatically used by this module.
 
