@@ -225,6 +225,7 @@ Aran Clary Deltac <bluefeet@gmail.com>
 
 ```
 Mohammad S Anwar <mohammad.anwar@yahoo.com>
+Florian Schlichting <fsfs@debian.org>
 ```
 
 # LICENSE

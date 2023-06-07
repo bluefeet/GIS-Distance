@@ -322,6 +322,7 @@ L<https://github.com/bluefeet/GIS-Distance/issues>
 =head1 CONTRIBUTORS
 
     Mohammad S Anwar <mohammad.anwar@yahoo.com>
+    Florian Schlichting <fsfs@debian.org>
 
 =head1 LICENSE
 
