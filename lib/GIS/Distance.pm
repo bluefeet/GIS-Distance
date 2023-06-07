@@ -315,9 +315,12 @@ GIS-Distance GitHub issue tracker:
 
 L<https://github.com/bluefeet/GIS-Distance/issues>
 
-=head1 AUTHORS
+=head1 AUTHOR
 
     Aran Clary Deltac <bluefeet@gmail.com>
+
+=head1 CONTRIBUTORS
+
     Mohammad S Anwar <mohammad.anwar@yahoo.com>
 
 =head1 LICENSE
